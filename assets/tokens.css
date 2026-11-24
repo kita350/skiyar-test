@@ -1,0 +1,85 @@
+/* Hallmark · genre: atmospheric · theme: custom (SKIYAR brand: night #02030A + one blue #5296E1, Manrope + Noto Sans Armenian) · signature: the live phone in the hero playing the 23:47 booking · copy: verbatim */
+/* Hallmark · critique: one accent, real product UI on every screen, motion only on the phone, reveal and button press */
+/* Hallmark · waive 47b · drawn phone frames hold our own booking and chat screens · the phone is the product being sold */
+/* Hallmark · waive 37 · four extra serif families live only inside the sample-site previews · Liora Beauty, Velour Lodge and Oriane Grill keep their own fonts */
+/* Hallmark · waive 64 · the monospace lines imitate the paper notebook of Gor · Гор writes bookings by hand in the «было» half */
+/* Hallmark · waive 24b · small 2/6/10/14px steps sit inside the drawn phone screens · Liora Beauty booking screens copy real messenger density */
+/* Hallmark · waive 26b · the site has no disabled controls at all · every button and link is always active */
+/* Цвета, вынесенные из стилей (tools/tokens.py). Бренд — в :root site.css. */
+:root{
+  --c-000:#000;
+  --c-02030a:#02030a;
+  --c-04210f:#04210f;
+  --c-05070f:#05070f;
+  --c-0a0f1c:#0a0f1c;
+  --c-0a1630:#0a1630;
+  --c-0b1a33:#0b1a33;
+  --c-0f1a33:#0f1a33;
+  --c-10131a:#10131a;
+  --c-11663a:#11663a;
+  --c-121a2e:#121a2e;
+  --c-13305e:#13305e;
+  --c-141b2e:#141b2e;
+  --c-1d3e74:#1d3e74;
+  --c-203029:#203029;
+  --c-211b16:#211b16;
+  --c-25d366:#25d366;
+  --c-2c2b29:#2c2b29;
+  --c-2f5da3:#2f5da3;
+  --c-3a4664:#3a4664;
+  --c-4b5262:#4b5262;
+  --c-4f9de0:#4f9de0;
+  --c-5296e1:#5296e1;
+  --c-53664f:#53664f;
+  --c-5d6b8a:#5d6b8a;
+  --c-5f6673:#5f6673;
+  --c-6274a6:#6274a6;
+  --c-68a6ea:#68a6ea;
+  --c-6b7280:#6b7280;
+  --c-6f7682:#6f7682;
+  --c-765f42:#765f42;
+  --c-7fb2ec:#7fb2ec;
+  --c-8a909c:#8a909c;
+  --c-8d94a0:#8d94a0;
+  --c-a9b3c7:#a9b3c7;
+  --c-bff3d2:#bff3d2;
+  --c-c3cad8:#c3cad8;
+  --c-c5cad5:#c5cad5;
+  --c-c9a56b:#c9a56b;
+  --c-c9ced8:#c9ced8;
+  --c-cfd4dd:#cfd4dd;
+  --c-d3d9e5:#d3d9e5;
+  --c-d4f5dd:#d4f5dd;
+  --c-dbe0ea:#dbe0ea;
+  --c-ddf5e5:#ddf5e5;
+  --c-dfe2e8:#dfe2e8;
+  --c-e0d9ce:#e0d9ce;
+  --c-e1e4ea:#e1e4ea;
+  --c-e3e5ea:#e3e5ea;
+  --c-e3eefb:#e3eefb;
+  --c-e6e8ec:#e6e8ec;
+  --c-e9ddd0:#e9ddd0;
+  --c-ece7df:#ece7df;
+  --c-efe5d4:#efe5d4;
+  --c-f4f5f7:#f4f5f7;
+  --c-f6f1ea:#f6f1ea;
+  --c-fbf8f4:#fbf8f4;
+  --c-fbfbf8:#fbfbf8;
+  --c-fdfdfb:#fdfdfb;
+  --c-rgba-0-0-0-45:rgba(0,0,0,.45);
+  --c-rgba-0-0-0-9:rgba(0,0,0,.9);
+  --c-rgba-121-137-170-06:rgba(121,137,170,.06);
+  --c-rgba-121-137-170-09:rgba(121,137,170,.09);
+  --c-rgba-121-137-170-14:rgba(121,137,170,.14);
+  --c-rgba-121-137-170-22:rgba(121,137,170,.22);
+  --c-rgba-121-137-170-3:rgba(121,137,170,.3);
+  --c-rgba-142-178-223-5:rgba(142,178,223,.5);
+  --c-rgba-2-3-10-72:rgba(2,3,10,.72);
+  --c-rgba-2-3-10-95:rgba(2,3,10,.95);
+  --ease-out:cubic-bezier(.23,1,.32,1); /* одна кривая плавности для всего сайта (стандарт Эмиля Ковальски) */
+  --c-rgba-255-255-255-1:rgba(255,255,255,.1);
+  --c-rgba-37-211-102-1:rgba(37,211,102,.1);
+  --c-rgba-82-150-225-14:rgba(82,150,225,.14);
+  --c-rgba-82-150-225-45:rgba(82,150,225,.45);
+  --c-rgba-82-150-225-55:rgba(82,150,225,.55);
+}

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="hy">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>404 — SKIYAR</title>
+<meta name="theme-color" content="#02030A">
+<link rel="icon" href="/skiyar-test/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Noto+Sans+Armenian:wght@400;700;800&display=swap">
+<!-- Своя страница «не найдено». Пути абсолютные: GitHub Pages показывает её по любому адресу. Армянский — на проверку Ани. -->
+<style>
+:root{--night:#02030A;--card:#0D1221;--deep:#1D3E74;--blue:#5296E1;--sky:#8EB2DF;--white:#fff;--muted:#7989AA;--line:rgba(121,137,170,.22);--line-2:rgba(121,137,170,.38);--font:"Manrope","Noto Sans Armenian",system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;min-height:100svh;display:flex;flex-direction:column;background:var(--night);color:var(--white);font:400 17px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.top{display:flex;align-items:center;gap:10px;height:60px;padding:0 16px;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:9px;margin-right:auto;text-decoration:none;font-weight:800;font-size:17px;letter-spacing:.14em;min-height:44px}
+.logo i{width:26px;height:26px;border-radius:7px;background:var(--card);border:1px solid var(--line-2);display:grid;place-items:center;color:var(--blue);font-style:normal;letter-spacing:0;font-size:15px}
+.langs a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 8px;border-radius:8px;font-size:14px;color:var(--muted);text-decoration:none}
+.langs a[aria-current]{color:var(--white);background:var(--card)}
+main{flex:1;display:flex;align-items:center}
+.wrap{width:100%;max-width:760px;margin:0 auto;padding:32px 16px 48px}
+.big{font-weight:800;font-size:clamp(112px,30vw,200px);line-height:.82;letter-spacing:-.06em;color:#3f6fb8;font-variant-numeric:tabular-nums}
+h1{margin:20px 0 10px;font-weight:800;font-size:clamp(28px,7.6vw,48px);line-height:1.08;letter-spacing:-.03em}
+[lang="hy"] h1{font-size:clamp(25px,6.6vw,40px);line-height:1.15}
+p{margin:0;color:#c3cad8;max-width:30em}
+.scene{display:flex;align-items:flex-end;gap:12px;margin:24px 0 20px}
+.scene img{width:72px;height:108px;image-rendering:pixelated}
+.bubble{padding:10px 12px;border-radius:14px 14px 14px 4px;background:var(--card);border:1px solid var(--line-2);font-size:15px;line-height:1.35}
+.links{display:grid;gap:8px}
+.b{position:relative;overflow:hidden;isolation:isolate;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:0 20px;border-radius:14px;font-weight:800;font-size:16px;text-decoration:none;border:1px solid var(--line-2);transition:transform .12s cubic-bezier(.3,.7,.4,1),border-color .2s}
+.b:active{transform:translateY(2px) scale(.985)}
+.b:hover{border-color:var(--sky)}
+.b.main{background:var(--blue);border-color:var(--blue);color:var(--night)}
+.b.main::before{content:"";position:absolute;left:0;right:0;bottom:0;height:0;background:#7fb2ec;z-index:-1;transition:height .28s cubic-bezier(.2,.8,.2,1)}
+.b.main:hover::before{height:100%}
+.b small{font-weight:600;font-size:13px;opacity:.7}
+@media (min-width:700px){.links{grid-template-columns:repeat(3,1fr)}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/skiyar-test/" id="home1"><i>S</i>SKIYAR</a>
+  <nav class="langs"><a href="/skiyar-test/" data-l="hy">Հայ</a><a href="/skiyar-test/ru/" data-l="ru">Рус</a><a href="/skiyar-test/en/" data-l="en">Eng</a></nav>
+</header>
+<main>
+  <div class="wrap">
+    <div class="big" aria-hidden="true">404</div>
+    <h1 id="h"></h1>
+    <p id="p"></p>
+    <div class="scene"><img src="/skiyar-test/assets/img/px/hero-ruzan-1x.png" width="48" height="72" alt=""><div class="bubble" id="q"></div></div>
+    <div class="links">
+      <a class="b main" id="home" href="/skiyar-test/"><span id="lHome"></span><small>23:47</small></a>
+      <a class="b" id="pk" href="/skiyar-test/packages.html"><span id="lPk"></span></a>
+      <a class="b" id="wa" target="_blank" rel="noopener" href="https://wa.me/37498337187"><span id="lWa"></span><small>WhatsApp</small></a>
+    </div>
+  </div>
+</main>
+<script>
+(function () {
+  var T = {
+    hy: { h: "Այդպիսի էջ չկա։ Գրանցումը՝ կա։", p: "Հղումը հնացել է կամ սխալ է։ Տիկին Ռուզանն էլ սկզբում սխալ տեղ էր փնտրում։", q: "23:47։ Որտե՞ղ գրանցվեմ։",
+          home: "Գլխավոր էջ", pk: "Փաթեթներ և գներ", wa: "Գրել ԴԵՄՈ", msg: "ԴԵՄՈ\nԲարև ձեզ։ Ուզում եմ կայքի օրինակ իմ բիզնեսի անունով։ Անունը՝ ", dir: "/" },
+    ru: { h: "Такой страницы нет. Запись — есть.", p: "Ссылка устарела или в ней опечатка. Тикин Рузан тоже сначала искала не там.", q: "23:47. Где тут записаться?",
+          home: "На главную", pk: "Пакеты и цены", wa: "Написать ДЕМО", msg: "ДЕМО\nЗдравствуйте! Хочу пример сайта с названием моего бизнеса. Название: ", dir: "/ru/" },
+    en: { h: "This page doesn’t exist. Booking does.", p: "The link is outdated or has a typo. Mrs Ruzan looked in the wrong place at first too.", q: "23:47. Where do I book?",
+          home: "Home page", pk: "Packages and prices", wa: "Send DEMO", msg: "DEMO\nHello! I'd like a sample site with my business name. Name: ", dir: "/en/" }
+  };
+  var path = location.pathname, nav = (navigator.language || "").slice(0, 2);
+  var L = /^\/ru(\/|$)/.test(path) ? "ru" : /^\/en(\/|$)/.test(path) ? "en" : nav === "ru" ? "ru" : nav === "en" ? "en" : "hy";
+  var t = T[L], $ = function (id) { return document.getElementById(id); };
+  document.documentElement.lang = L;
+  $("h").textContent = t.h; $("p").textContent = t.p; $("q").textContent = t.q;
+  $("lHome").textContent = t.home; $("lPk").textContent = t.pk; $("lWa").textContent = t.wa;
+  $("home").href = $("home1").href = t.dir; $("pk").href = t.dir + "packages.html";
+  $("wa").href = "https://wa.me/37498337187?text=" + encodeURIComponent(t.msg);
+  var ls = document.querySelectorAll(".langs a");
+  for (var i = 0; i < ls.length; i++) if (ls[i].getAttribute("data-l") === L) ls[i].setAttribute("aria-current", "page");
+})();
+</script>
+</body>
+</html>

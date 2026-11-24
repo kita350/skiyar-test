@@ -1,0 +1,2 @@
+/* Средний цвет каждого фото — фон, пока картинка грузится. Создан скриптом по самим файлам. */
+window.IMG_BG = {"attic": "#927961", "breakfast": "#625a4b", "hero": "#6c734f", "lake": "#7a8359", "meadow": "#a1a59a", "monastery": "#828983", "suite": "#5b391c", "sun": "#73685d", "white": "#8a8175", "window": "#3c4038", "window-yerevan": "#494842", "cascade": "#7c746b", "republic": "#819fb2", "matenadaran": "#6f7969", "hero-yerevan": "#4f4e58"};

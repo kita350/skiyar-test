@@ -1,0 +1,117 @@
+/* ───── v3 (24.11.2026): шапка с ДЕМО, микроанимация кнопок, призыв ДЕМО, пакеты бенто, подвал ───── */
+
+/* шапка — одна заметная кнопка ДЕМО, на телефоне меню */
+.nav .wrap{position:relative}
+.nav-panel{display:none}
+.nav.open .nav-panel{display:flex;flex-direction:column;gap:14px;position:absolute;top:calc(var(--nav) - 1px);left:0;right:0;padding:18px var(--gut) 22px;background:var(--night);border-bottom:1px solid var(--line-2)}
+.nav.open .nav-links{display:flex;flex-direction:column;gap:2px;margin:0;font-size:18px}
+.nav.open .nav-links a{padding:10px 0;color:var(--white)}
+.nav-clock{margin-left:auto;padding:6px 8px;border-radius:8px;background:var(--card);color:var(--sky);font:800 13px/1 var(--font);font-variant-numeric:tabular-nums}
+.nav-demo{display:inline-flex;align-items:center;height:40px;padding:0 15px;border-radius:10px;background:var(--blue);color:var(--night);font-weight:800;font-size:14px;text-decoration:none;transition:transform .12s var(--ease-out),background-color .2s}
+.nav-demo:hover{background:var(--c-7fb2ec)}
+.nav-demo:active{transform:translateY(2px) scale(.97)}
+.nav-burger{width:40px;height:40px;padding:0;border-radius:10px;border:1px solid var(--line-2);background:none;display:grid;place-items:center;cursor:pointer}
+.nav-burger i,.nav-burger i::before,.nav-burger i::after{display:block;width:16px;height:2px;border-radius:1px;background:var(--white);position:relative;transition:transform .2s}
+.nav-burger i::before,.nav-burger i::after{content:"";position:absolute;left:0}
+.nav-burger i::before{top:-5px}
+.nav-burger i::after{top:5px}
+.nav.open .nav-burger i{background:transparent}
+.nav.open .nav-burger i::before{transform:translateY(5px) rotate(45deg)}
+.nav.open .nav-burger i::after{transform:translateY(-5px) rotate(-45deg)}
+@media (min-width:900px){
+  .nav-panel,.nav.open .nav-panel{display:flex;flex-direction:row;position:static;flex:1;align-items:center;padding:0;background:none;border:0}
+  .nav-panel .nav-links,.nav.open .nav-links{display:flex;flex-direction:row;gap:26px;margin-left:24px;font-size:15px}
+  .nav.open .nav-links a{padding:0;color:var(--muted)}
+  .nav-panel .langs{margin-left:auto}
+  .nav-clock{margin-left:12px}
+  .nav-burger{display:none}
+}
+
+/* одна микроанимация на все кнопки: нажатие проседает, заливка наезжает снизу */
+.btn{position:relative;overflow:hidden;isolation:isolate;transition:transform .12s var(--ease-out),border-color .2s}
+.btn:active{transform:translateY(2px) scale(.985)}
+.btn-main::before{content:"";position:absolute;inset:0;transform:scaleY(0);transform-origin:50% 100%;background:var(--c-7fb2ec);z-index:-1;transition:transform .28s var(--ease-out)}
+.btn-main:hover{background:var(--blue)}
+.btn-main:hover::before{transform:scaleY(1)}
+.btn small{font-weight:600;font-size:13px;opacity:.7}
+.btn:has(small){justify-content:space-between}
+
+/* призыв ДЕМО */
+.ty-kw{display:flex;align-items:baseline;gap:10px;margin:0 0 14px}
+.ty-kw b{font-weight:800;font-size:52px;line-height:.9;letter-spacing:-.04em}
+.ty-kw span{color:var(--sky);font-size:14px;font-weight:700}
+.ty-claim{display:flex;align-items:stretch;height:60px;border-radius:14px;border:2px solid var(--blue);background:var(--night);overflow:hidden}
+.ty-pre{display:flex;align-items:center;padding:0 12px 0 14px;background:var(--c-rgba-82-150-225-14);color:var(--ice);font-weight:800;font-size:14px}
+.ty-claim .ty-input{height:100%;border:0;border-radius:0;background:transparent}
+.ty-claim:focus-within{border-color:var(--ice)}
+.ty-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:16px 0 0;padding:0;list-style:none;counter-reset:d}
+.ty-steps li{counter-increment:d;padding:10px 9px;border-radius:12px;background:var(--c-rgba-121-137-170-09);color:var(--c-c3cad8);font-size:12.5px;line-height:1.3}
+.ty-steps li::before{content:counter(d);display:block;color:var(--white);font-weight:800;font-size:14px;margin-bottom:2px}
+.ty-ig{margin:14px 0 0;color:var(--c-c3cad8);font-size:14.5px}
+.ty-ig a{color:var(--white);font-weight:700;text-underline-offset:3px}
+
+/* пакеты бенто-сеткой на главной: одна главная плитка, остальные разные */
+.pkb-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pkt{position:relative;display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:18px;background:var(--card)}
+.pkt h3{margin:0;font-weight:800;font-size:17px;letter-spacing:-.01em}
+.pkt p{margin:0;color:var(--c-c3cad8);font-size:14px;line-height:1.4}
+.pkt .pr,.pkt .pl-p{margin-top:auto;padding-top:8px;color:var(--white);font-weight:800;font-size:22px;letter-spacing:-.02em;white-space:nowrap}
+.pkt .pr small,.pkt .pl-p small{font-size:12.5px;font-weight:600;color:var(--sky);letter-spacing:0}
+.pkt-a{color:var(--sky);font-size:13.5px;text-underline-offset:3px}
+.pkt-on{grid-column:1/-1;padding:20px;background:var(--c-0f1a33);border:1px solid var(--c-rgba-82-150-225-45)}
+.pkt-on .main{position:static;align-self:flex-start;margin-bottom:6px}
+.pkt-on .pl-p{font-size:46px;line-height:1;margin-top:10px}
+.pkt-on .pl-eq,.pkt-on .pl-s,.pkt-on .pl-y{min-height:0;margin:0}
+.pkt-on .btn{margin-top:14px;width:100%}
+.pkt-ai{background:none;border:1px dashed var(--line-2)}
+.pkt-ai .soon{position:static;align-self:flex-start;margin-bottom:4px}
+.pkt-g{grid-column:1/-1;flex-direction:row;align-items:center;gap:14px;background:var(--blue)}
+.pkt-g b{font-weight:800;font-size:48px;line-height:.9;letter-spacing:-.05em;color:var(--night)}
+.pkt-g p{color:var(--c-0a1630);font-weight:700;font-size:15px}
+.pkt-seats{grid-column:1/-1;gap:12px}
+.pkt-seats .left{display:flex;align-items:center;gap:10px;margin:6px 0;color:var(--white);font-size:15px}
+.pkt-seats .btn{width:100%}
+.pk-rules{margin:16px 0 0;display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--c-c3cad8);font-size:14px}
+.pk-rules span{position:relative;padding-left:14px}
+.pk-rules span::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:2px;background:var(--blue)}
+@media (min-width:900px){
+  .pkb-grid{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(150px,auto);gap:16px}
+  .pkt{padding:24px}
+  .pkt-on{grid-column:1/3;grid-row:1/3;padding:32px}
+  .pkt-on .pl-p{font-size:60px}
+  .pkt-on .btn{width:auto;align-self:flex-start;min-width:260px}
+  .pkt-g{grid-column:3/5;grid-row:2}
+  .pkt-seats{grid-column:3/5;flex-direction:row;align-items:center;justify-content:space-between}
+  .pkt-seats .btn{width:auto}
+}
+
+/* подвал — фраза бренда, короткие столбцы, реквизиты мелко */
+.foot{padding:40px 0 110px}
+.foot .wrap{display:block}
+.foot-big{margin:0 0 24px;color:var(--white);font-weight:800;font-size:clamp(26px,7vw,44px);line-height:1.08;letter-spacing:-.035em;max-width:14em}
+[data-lang="hy"] .foot-big{font-size:clamp(23px,6vw,38px)}
+.foot-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px 16px;margin-bottom:26px}
+.foot-cols small{display:block;margin-bottom:6px;color:var(--muted);font-size:12.5px}
+.foot-cols a{display:block;color:var(--white);font-weight:600;font-size:14.5px;text-decoration:none;overflow-wrap:anywhere;line-height:1.7}
+.foot-cols a:hover{text-decoration:underline;text-underline-offset:3px}
+.foot-legal{margin:0;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.6}
+.foot-legal a{color:var(--c-c3cad8)}
+@media (min-width:900px){
+  .foot{padding:64px 0 40px}
+  .foot-cols{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+/* маленькие плитки: подпись цены — второй строкой */
+.pkt:not(.pkt-on) .pl-p small,.pkt:not(.pkt-on) .pr small{display:block;margin-top:2px}
+/* телефон: сначала ДЕМО-форма, живое превью — под ней */
+@media (max-width:899px){ .try .pv{order:3} }
+/* правки после проверки свежим агентом */
+.pkt-g{background:var(--c-0f1a33);border:1px solid var(--c-rgba-82-150-225-45)}
+.pkt-g b{color:var(--blue)}
+.pkt-g p{color:var(--white)}
+.pkt-seats .btn{white-space:nowrap}
+.ty-steps li{overflow-wrap:anywhere}
+.ty-kinds button[aria-checked="true"]{background:var(--c-rgba-255-255-255-1)}
+.btn-main small{opacity:.85}
+.foot-big{display:none}
+@media (max-width:899px){ .foot-cols > div:nth-child(2){grid-column:1/-1} }
+.foot-cols a{overflow-wrap:normal;word-break:normal}

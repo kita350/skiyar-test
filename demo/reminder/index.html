@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="hy">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Հիշեցում WhatsApp-ով</title>
+<meta name="description" content="Пример: так выглядит напоминание клиенту в WhatsApp накануне визита (SKIYAR Online).">
+<meta name="theme-color" content="#02030A">
+<style>
+@font-face {font-family:'Noto Serif Armenian';font-style:normal;font-weight:300;font-stretch:100%;font-display:swap;src:url(../assets/fonts/noto-serif-armenian-armenian-bfh8e2ew.woff2) format('woff2');unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
+@font-face {font-family:'Noto Serif Armenian';font-style:normal;font-weight:400;font-stretch:100%;font-display:swap;src:url(../assets/fonts/noto-serif-armenian-armenian-bfh8e2ew.woff2) format('woff2');unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
+@font-face {font-family:'Spectral';font-style:normal;font-weight:300;font-display:swap;src:url(../assets/fonts/spectral-cyrillic-3fafadwq.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face {font-family:'Spectral';font-style:normal;font-weight:300;font-display:swap;src:url(../assets/fonts/spectral-latin-ssg3bafy.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face {font-family:'Spectral';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/spectral-cyrillic-m9knj-sa.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face {font-family:'Spectral';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/spectral-latin-ma9m5kng.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face {font-family:'Geologica';font-style:normal;font-weight:300;font-display:swap;src:url(../assets/fonts/geologica-cyrillic-wf1lep2a.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face {font-family:'Geologica';font-style:normal;font-weight:300;font-display:swap;src:url(../assets/fonts/geologica-latin-ckuwe1le.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face {font-family:'Geologica';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/geologica-cyrillic-wf1lep2a.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face {font-family:'Geologica';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/geologica-latin-ckuwe1le.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face {font-family:'Geologica';font-style:normal;font-weight:500;font-display:swap;src:url(../assets/fonts/geologica-cyrillic-wf1lep2a.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face {font-family:'Geologica';font-style:normal;font-weight:500;font-display:swap;src:url(../assets/fonts/geologica-latin-ckuwe1le.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face {font-family:'Noto Sans Armenian';font-style:normal;font-weight:300;font-stretch:100%;font-display:swap;src:url(../assets/fonts/noto-sans-armenian-armenian-xzhvodur.woff2) format('woff2');unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
+@font-face {font-family:'Noto Sans Armenian';font-style:normal;font-weight:400;font-stretch:100%;font-display:swap;src:url(../assets/fonts/noto-sans-armenian-armenian-xzhvodur.woff2) format('woff2');unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
+@font-face {font-family:'Noto Sans Armenian';font-style:normal;font-weight:500;font-stretch:100%;font-display:swap;src:url(../assets/fonts/noto-sans-armenian-armenian-xzhvodur.woff2) format('woff2');unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
+:root{--night:#02030A;--card:#0D1221;--blue:#5296E1;--sky:#8EB2DF;--muted:#7989AA;--sans:"Geologica","Noto Sans Armenian",system-ui,sans-serif;--gut:20px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--night);color:#fff;font:400 17px/1.5 var(--sans)}
+#skiyar-bar{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:6px var(--gut);background:#0D1221;color:#c3cad8;font:400 13px/1.35 var(--sans)}
+#skiyar-bar .skb-a{flex:none;color:#fff;white-space:nowrap}
+.wrap{max-width:980px;margin:0 auto;padding:0 var(--gut)}
+.top{display:flex;justify-content:flex-end;padding:16px 0}
+.langs{display:flex;gap:2px}
+.langs button{background:none;border:0;padding:8px 9px;border-radius:8px;font:400 14px/1 var(--sans);color:var(--muted);cursor:pointer}
+.langs button[aria-pressed="true"]{background:var(--card);color:#fff}
+.grid{display:grid;gap:36px;padding:8px 0 56px;align-items:center}
+h1{margin:0 0 14px;font-weight:700;font-size:clamp(32px,8.6vw,54px);line-height:1.08;letter-spacing:-.02em}
+.lead{margin:0;color:#c3cad8;font-size:18px;max-width:28em}
+.facts{margin:24px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.facts li{padding-left:20px;position:relative;color:#c3cad8}
+.facts li::before{content:"";position:absolute;left:2px;top:.6em;width:8px;height:8px;border-radius:2px;background:var(--blue)}
+.phone{width:min(330px,100%);margin:0 auto;aspect-ratio:330/660;border-radius:46px;padding:10px;background:#05070f;border:1px solid rgba(82,150,225,.55)}
+.scr{height:100%;border-radius:37px;overflow:hidden;background:#ece7df;display:flex;flex-direction:column;color:#10131a}
+.sb{display:flex;justify-content:space-between;padding:12px 26px 6px;background:#fff;font-weight:600;font-size:13px}
+.hd{display:flex;align-items:center;gap:10px;padding:8px 14px 12px;background:#fff;border-bottom:1px solid #e3e5ea}
+.av{width:36px;height:36px;border-radius:50%;background:#e9ddd0;color:#765f42;display:grid;place-items:center;font:500 16px/1 Georgia,serif}
+.hd b{display:block;font-size:15px}
+.hd small{display:flex;align-items:center;gap:5px;color:#11663a;font-size:12px}
+.hd small::before{content:"";width:7px;height:7px;border-radius:50%;background:#25D366}
+.body{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;padding:16px 12px}
+.day{align-self:center;padding:4px 10px;border-radius:8px;background:#fff;color:#5f6673;font-size:12px}
+.msg{align-self:flex-start;max-width:88%;padding:10px 12px 6px;border-radius:14px 14px 14px 4px;background:#fff;font-size:14.5px;line-height:1.42}
+.msg time{display:block;text-align:right;color:#8a909c;font-size:11px;margin-top:2px}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px;padding-top:8px;border-top:1px solid #e6e8ec}
+.btns span{text-align:center;color:#11663a;font-weight:700;font-size:13px;padding:4px}
+.me{align-self:flex-end;max-width:80%;padding:8px 12px 6px;border-radius:14px 14px 4px 14px;background:#d4f5dd;font-size:14.5px}
+.me time{display:block;text-align:right;color:#5b8a6a;font-size:11px}
+.bar{margin:0 10px 12px;height:38px;border-radius:19px;background:#fff}
+footer{padding:20px 0 40px;color:var(--muted);font-size:14px}
+@media (min-width:860px){.grid{grid-template-columns:1fr auto;gap:72px;padding:40px 0 80px}}
+</style>
+</head>
+<body data-lang="hy">
+<div class="wrap">
+  <div class="top"><div class="langs" role="group" data-i-aria="langAria"><button type="button" data-lang-btn="hy">Հայ</button><button type="button" data-lang-btn="ru">Рус</button><button type="button" data-lang-btn="en">Eng</button></div></div>
+  <main class="grid">
+    <div>
+      <h1 data-i="h1"></h1>
+      <p class="lead" data-i="lead"></p>
+      <ul class="facts"><li data-i="f1"></li><li data-i="f2"></li><li data-i="f3"></li></ul>
+    </div>
+    <div class="phone" aria-label="" data-i-aria="phoneAria">
+      <div class="scr">
+        <div class="sb"><span>18:00</span><span>●●●</span></div>
+        <div class="hd"><span class="av" id="av">L</span><div><b data-i="brand"></b><small data-i="label"></small></div></div>
+        <div class="body">
+          <span class="day" data-i="today"></span>
+          <div class="msg"><span id="msg"></span><time>18:00 ✓✓</time><div class="btns"><span data-i="yes"></span><span data-i="move"></span></div></div>
+          <div class="me"><span data-i="yes"></span><time>18:04</time></div>
+        </div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  </main>
+  <footer data-i="footer"></footer>
+</div>
+<script src="../assets/demo.js"></script>
+<script>
+(function () {
+  var D = window.DEMO;
+  var I = {
+    hy: { _title: "Հիշեցում WhatsApp-ով — {name}", _noName: "Ձեր սրահը", brand: "{name}", langAria: "Կայքի լեզուն", phoneAria: "Հիշեցման օրինակ WhatsApp-ում",
+      h1: "Այսպես է հաճախորդը ստանում հիշեցումը", lead: "Նախորդ օրը՝ ժամը 18:00-ին, ավտոմատ։ Հաճախորդը հաստատում կամ տեղափոխում է մեկ սեղմումով, իսկ դուք տեսնում եք պատասխանը։",
+      f1: "Ձեր բիզնեսի անունով", f2: "Հայերեն, ռուսերեն կամ անգլերեն՝ հաճախորդի լեզվով", f3: "Մտնում է Online փաթեթի մեջ",
+      label: "Հիշեցում", today: "Այսօր", yes: "Այո, կգամ", move: "Տեղափոխել",
+      msg: "Բարև ձեզ, տիկին Ռուզան։ Հիշեցնում ենք՝ վաղը՝ ժամը 11:00-ին, մատնահարդարում «{name}»-ում։ Կգա՞ք։",
+      footer: "Սա հիշեցման օրինակ է SKIYAR-ից։ Անունները և ժամերը՝ օրինակի համար։" },
+    ru: { _title: "Напоминание в WhatsApp — {name}", _noName: "Ваш салон", brand: "{name}", langAria: "Язык сайта", phoneAria: "Пример напоминания в WhatsApp",
+      h1: "Так клиент получает напоминание", lead: "Накануне, в 18:00, автоматически. Клиент подтверждает или переносит визит в одно касание, а вы видите ответ.",
+      f1: "С названием вашего бизнеса", f2: "На армянском, русском или английском — на языке клиента", f3: "Входит в пакет Online",
+      label: "Напоминание", today: "Сегодня", yes: "Да, приду", move: "Перенести",
+      msg: "Здравствуйте, тикин Рузан! Напоминаем: завтра в 11:00 маникюр в «{name}». Придёте?",
+      footer: "Это пример напоминания от SKIYAR. Имена и время — для примера." },
+    en: { _title: "WhatsApp reminder — {name}", _noName: "Your salon", brand: "{name}", langAria: "Site language", phoneAria: "Sample WhatsApp reminder",
+      h1: "This is how a client gets the reminder", lead: "The day before, at 18:00, automatically. The client confirms or reschedules in one tap, and you see the reply.",
+      f1: "With your business name", f2: "In Armenian, Russian or English — the client’s language", f3: "Included in the Online package",
+      label: "Reminder", today: "Today", yes: "Yes, I’ll be there", move: "Reschedule",
+      msg: "Hello Mrs Ruzan! A reminder: tomorrow at 11:00, manicure at “{name}”. Will you come?",
+      footer: "This is a sample reminder by SKIYAR. Names and times are examples." }
+  };
+  D.init(I, function () {
+    document.getElementById("msg").textContent = D.t("msg");
+    document.getElementById("av").textContent = (D.name || D.t("_noName")).charAt(0).toUpperCase();
+  });
+})();
+</script>
+</body>
+</html>

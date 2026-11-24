@@ -1,0 +1,66 @@
+/* SKIYAR — общие стили сайта. Цвета — из brand/README.md. */
+:root{
+  --night:#02030A; --card:#0D1221; --card-2:#121a2e; --deep:#1D3E74; --blue:#5296E1; --sky:#8EB2DF; --ice:#C8F5FF;
+  --white:#f7f9ff; --muted:#7989AA; --line:rgba(121,137,170,.22); --line-2:rgba(121,137,170,.38);
+  --wa:#25D366;
+  --f-salon:"Cormorant Garamond","Noto Serif Armenian",Georgia,serif; --f-salon-sans:"Jost","Noto Sans Armenian",sans-serif; --f-rest:"Forum","Noto Serif Armenian",Georgia,serif; --f-hotel:"Spectral","Noto Serif Armenian",Georgia,serif;
+  --ink-2:#c3cad8; --shadow:rgba(0,0,0,.8); --blue-soft:rgba(82,150,225,.14);
+  --phone-body:#05070f; --phone-rim:rgba(82,150,225,.5);
+  --app-paper:#fdfdfb; --app-soft:#f4f5f7; --app-ink:#10131a; --app-muted:#6b7280; --app-muted-2:#4b5262; --app-line:#e3e5ea;
+  --chat-bg:#ece7df; --ok-bg:#d4f5dd; --ok-ink:#0d4a28; --salon-sand:#e9ddd0; --salon-umber:#765f42;
+  --was-bg:#1a1410; --was-line:#3a2f22; --was-gold:#e9c98f; --was-chip:rgba(233,201,143,.08); --was-ink:#d8c7ad; --was-hot:#f0b46a;
+  --now-bg:#0f1a33; --note-paper:#f3ead6; --note-ink:#3b2c1a; --note-red:#b0412e; --note-shadow:#a88f63;
+  --font:"Manrope","Noto Sans Armenian",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --gut:16px; --max:1240px; --nav:60px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--nav) + 8px);color-scheme:dark}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--night);color:var(--white);font:400 17px/1.55 var(--font);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--sky);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.px{image-rendering:pixelated;image-rendering:crisp-edges}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* верхнее меню. Размытие под ним только на компьютере: на телефоне оно пересчитывается на каждом кадре прокрутки и даёт рывки,
+   поэтому там фон почти непрозрачный (вид тот же). */
+.nav{position:sticky;top:0;z-index:50;height:var(--nav);background:var(--c-rgba-2-3-10-95);border-bottom:1px solid var(--line)}
+@media (min-width:900px) and (hover:hover){.nav{background:var(--c-rgba-2-3-10-72);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px)}}
+.nav .wrap{height:100%;display:flex;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;font-weight:800;font-size:17px;letter-spacing:.14em}
+.logo i{width:26px;height:26px;border-radius:7px;background:var(--card);border:1px solid var(--line-2);display:grid;place-items:center;font:800 15px/1 var(--font);letter-spacing:0;color:var(--blue);font-style:normal}
+.nav-links{display:none;gap:26px;margin-left:24px;font-size:15px}
+.nav-links a{text-decoration:none;color:var(--muted)}
+.nav-links a:hover{color:var(--white)}
+.nav-end{margin-left:auto;display:flex;align-items:center;gap:6px}
+.langs{display:flex;gap:2px}
+.langs button{background:none;border:0;padding:7px 8px;border-radius:8px;font-size:14px;color:var(--muted);cursor:pointer}
+.langs button[aria-pressed="true"]{color:var(--white);background:var(--card)}
+.nav .btn{display:none;min-height:38px;padding:0 16px;font-size:14px;margin-left:8px}
+
+/* кнопки */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border-radius:12px;text-decoration:none;font-weight:700;font-size:16px;border:1px solid transparent;cursor:pointer;transition:background-color .2s,border-color .2s}
+.btn-main{background:var(--blue);color:var(--night)}
+.btn-main:hover{background:var(--c-68a6ea)}
+.btn-line{border-color:var(--line-2);color:var(--white)}
+.btn-line:hover{border-color:var(--sky)}
+
+/* телефон */
+.phone{position:relative;width:300px;aspect-ratio:300/620;border-radius:46px;padding:10px;background:var(--c-05070f);border:1px solid var(--c-rgba-82-150-225-55);box-shadow:0 30px 80px -30px var(--c-rgba-0-0-0-9)}
+.phone .screen{position:relative;width:100%;height:100%;border-radius:37px;overflow:hidden;background:var(--c-f6f1ea)}
+.phone .screen img{width:100%;height:100%;object-fit:cover;object-position:top}
+.phone .notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:92px;height:26px;border-radius:0 0 16px 16px;background:var(--c-05070f);z-index:2}
+
+@media (min-width:900px){
+  :root{--gut:40px;--nav:64px}
+  .nav-links{display:flex}
+  .nav .btn{display:inline-flex}
+}
+.nw{white-space:nowrap}
+.langs a{padding:7px 8px;border-radius:8px;font-size:14px;color:var(--muted);text-decoration:none}
+.langs a[aria-current="page"]{color:var(--white);background:var(--card)}
+/* content-visibility:auto убран: блок рисовался целиком в момент подхода (длинная задача посреди прокрутки),
+   а высота-заглушка 900px не совпадала с настоящей — на телефоне это рывки и прыжки. */

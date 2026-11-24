@@ -1,0 +1,127 @@
+/* История одной записи: липкий телефон, 6 сцен. */
+.story{position:relative;border-bottom:1px solid var(--line)}
+.st-head{padding-top:72px;padding-bottom:8px}
+.st-head h2{margin:0;font-weight:800;font-size:clamp(30px,8vw,56px);line-height:1.04;letter-spacing:-.035em;max-width:12em}
+[data-lang="hy"] .st-head h2{font-size:clamp(27px,7.2vw,48px);line-height:1.1}
+.st-track{position:relative;height:calc(var(--n) * 85svh)}
+.st-stage{position:sticky;top:var(--nav);height:calc(100svh - var(--nav));overflow:hidden}
+.st-grid{height:100%;display:flex;flex-direction:column;justify-content:center;gap:16px;padding-top:12px;padding-bottom:18px}
+
+/* телефон рисуем в 300×620 и масштабируем под высоту экрана (--k из story.js) */
+.st-phone{position:relative;flex:1 1 auto;min-height:0;display:flex;justify-content:flex-end;align-items:flex-end;padding-right:4px}
+.st-ph-box{position:relative;width:calc(264px * var(--k,1));height:calc(546px * var(--k,1))}
+.st-ph-box .phone{position:absolute;left:0;top:0;width:264px;transform:scale(var(--k,1));transform-origin:0 0}
+.st-px{position:absolute;z-index:3;bottom:0;right:calc(100% + 2px);width:96px;height:144px;opacity:0;transition:opacity .25s var(--ease-out)}
+.st-px.on{opacity:1}
+
+.screen.app{background:var(--c-f4f5f7);color:var(--c-10131a);font-size:13px;line-height:1.35}
+.sb{position:absolute;top:0;left:0;right:0;height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 24px 0 28px;font:700 13px/1 var(--font);color:var(--c-10131a);z-index:1;font-variant-numeric:tabular-nums}
+.sb i{width:22px;height:10px;border:1.5px solid var(--c-10131a);border-radius:3px;position:relative}
+.sb i::after{content:"";position:absolute;inset:1.5px 6px 1.5px 1.5px;background:var(--c-10131a);border-radius:1px}
+.js .scr{position:absolute;inset:40px 0 0;display:flex;flex-direction:column;opacity:0;transform:translateY(8px);transition:opacity .25s var(--ease-out),transform .25s var(--ease-out);pointer-events:none}
+.js .scr.on{opacity:1;transform:none}
+
+/* чат в Instagram */
+.ch-h,.wa-h{display:flex;align-items:center;gap:10px;padding:10px 14px 12px;border-bottom:1px solid var(--c-e3e5ea);background:var(--c-fdfdfb)}
+.av{width:32px;height:32px;border-radius:50%;background:var(--c-e9ddd0);color:var(--c-765f42);display:grid;place-items:center;font:500 15px/1 Georgia,serif;font-style:normal;flex:none}
+.ch-h b,.wa-h b{display:block;font-size:14px}
+.ch-h small{color:var(--c-6b7280);font-size:11.5px}
+.ch-body{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:16px 12px 10px}
+.compose{margin:0 10px 12px;height:34px;border-radius:17px;border:1px solid var(--c-dfe2e8);background:var(--c-fdfdfb)}
+.bub{max-width:84%;padding:9px 12px;border-radius:16px;font-size:13px}
+.bub.out{align-self:flex-end;background:var(--c-5296e1);color:var(--c-02030a);border-bottom-right-radius:5px}
+.bub.in{align-self:flex-start;background:var(--c-fdfdfb);border:1px solid var(--c-e3e5ea);border-bottom-left-radius:5px}
+.ch-time{align-self:flex-end;font-size:10.5px;color:var(--c-5f6673);margin:-2px 4px 8px}
+.lbl{display:block;font-size:10.5px;color:var(--c-6b7280);margin-bottom:3px}
+.bub-btn{display:block;margin-top:9px;padding:8px 10px;border-radius:10px;background:var(--c-10131a);color:var(--c-fdfdfb);text-align:center;font-weight:700;font-size:12.5px}
+.js .b2{opacity:0;transform:translateY(6px);transition:opacity .25s var(--ease-out) .1s,transform .25s var(--ease-out) .1s}
+.js .b2.on{opacity:1;transform:none}
+
+/* страница записи */
+.bk{padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.bk .bk-t{font-weight:800;margin:2px 0 0;font-size:18px;letter-spacing:-.01em}
+.bk-svc{padding:10px 12px;border-radius:12px;background:var(--c-fdfdfb);border:1px solid var(--c-e3e5ea);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.bk-svc b{font-weight:700}
+.bk-svc span{white-space:nowrap}
+.bk-m{color:var(--c-4b5262)}
+.bk-days{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.bk-days i{font-style:normal}
+.bk-days span{display:grid;place-items:center;height:52px;border-radius:12px;border:1px solid var(--c-dfe2e8);background:var(--c-fdfdfb);font-size:11px;color:var(--c-6b7280);line-height:1.25}
+.bk-days b{font-size:16px;color:var(--c-10131a)}
+.bk-days .sel{background:var(--c-10131a);border-color:var(--c-10131a);color:var(--c-c5cad5)}
+.bk-days .sel b{color:var(--c-fdfdfb)}
+.bk-times{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.bk-times span{display:grid;place-items:center;height:36px;border-radius:10px;border:1px solid var(--c-dfe2e8);background:var(--c-fdfdfb);font-weight:700;font-size:13px}
+.bk-times .off{color:var(--c-8d94a0);text-decoration:line-through;font-weight:500}
+.bk-times .sel{background:var(--c-5296e1);border-color:var(--c-5296e1);color:var(--c-02030a)}
+.bk-sum{font-size:12px;color:var(--c-4b5262);text-align:center}
+.bk-btn{margin-top:4px;height:44px;border-radius:12px;background:var(--c-10131a);color:var(--c-fdfdfb);display:grid;place-items:center;font-weight:700}
+
+/* расписание мастера */
+.cal-h{padding:12px 14px 10px;background:var(--c-fdfdfb);border-bottom:1px solid var(--c-e3e5ea)}
+.cal-h b{display:block;font-size:17px}
+.cal-h small{color:var(--c-6b7280)}
+.cal{padding:6px 12px;display:flex;flex-direction:column}
+.cr{display:grid;grid-template-columns:44px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--c-e3e5ea)}
+.cr time{font-weight:700;font-size:12.5px;color:var(--c-4b5262);padding-top:2px}
+.cr div{padding-left:10px;border-left:3px solid var(--c-cfd4dd)}
+.cr b{display:block;font-size:13px}
+.cr small{color:var(--c-6b7280);font-size:11.5px}
+.cr.free b{color:var(--c-6f7682);font-weight:500}
+.cr.hot div{border-left-color:var(--c-5296e1)}
+.cr.hot.on div{border-left-color:var(--c-25d366)}
+.tag{display:inline-block;margin-top:5px;padding:3px 8px;border-radius:999px;font-size:10.5px;font-weight:700;background:var(--c-e3eefb);color:var(--c-1d3e74)}
+.tag.came{background:var(--c-ddf5e5);color:var(--c-11663a)}
+.cr .t-came{display:none}
+.cr.on .t-new{display:none}
+.cr.on .t-came{display:inline-block}
+
+/* напоминание в WhatsApp */
+.wa-h small{display:flex;align-items:center;gap:5px;color:var(--c-11663a);font-size:11.5px}
+.wa-h small::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c-25d366)}
+.wa-body{flex:1;background:var(--c-ece7df);padding:16px 12px 10px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px}
+.wa-body .compose{margin:8px -2px 0;flex:none}
+.wa-body .bub.in{border-color:var(--c-e0d9ce)}
+.wa-btns{display:grid;grid-template-columns:1fr 1fr;gap:5px;max-width:84%}
+.wa-btns span{padding:7px 4px;border-radius:10px;background:var(--c-fdfdfb);text-align:center;color:var(--c-11663a);font-weight:700;font-size:12px}
+.bub.mine{align-self:flex-end;background:var(--c-d4f5dd);border-bottom-right-radius:5px;margin-top:8px}
+
+/* подписи и шкала времени */
+.st-copy{position:relative;flex:none}
+.st-rail{display:flex;gap:4px;margin:0 0 12px;padding:0;list-style:none}
+.st-rail li{flex:1}
+.st-rail button{display:block;width:100%;height:20px;padding:0;border:0;background:none;cursor:pointer;position:relative;color:var(--muted)}
+.st-rail button::before{content:"";position:absolute;left:0;right:0;top:9px;height:3px;border-radius:2px;background:var(--line-2)}
+.st-rail button[aria-current="step"]::before,.st-rail button.done::before{background:var(--blue)}
+.st-rail span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.st-caps{position:relative;min-height:122px}
+.js .cap{position:absolute;inset:0 0 auto;opacity:0;transform:translateY(8px);transition:opacity .25s var(--ease-out),transform .25s var(--ease-out)}
+.js .cap.on{opacity:1;transform:none}
+.cap-t{margin:0 0 4px;font-weight:800;font-size:20px;letter-spacing:-.01em;color:var(--blue);font-variant-numeric:tabular-nums}
+.cap-p{margin:0;font-size:18px;line-height:1.42;color:var(--white);max-width:24em}
+.st-note{margin:0;padding:28px 0 64px;font-size:15px;color:var(--muted);max-width:40em}
+
+@media (min-width:900px){
+  .st-head{padding-top:120px;padding-bottom:0}
+  .st-track{height:calc(var(--n) * 100svh)}
+  .st-grid{display:grid;grid-template-columns:minmax(0,440px) auto;justify-content:center;align-items:center;gap:clamp(56px,7vw,120px);padding-top:24px;padding-bottom:24px}
+  .st-copy{grid-column:1;grid-row:1}
+  .st-phone{grid-column:2;grid-row:1;height:100%;align-items:center;justify-content:center;padding:0}
+  .st-px{right:calc(100% + 28px)}
+  .st-caps{min-height:230px}
+  .cap-t{font-size:clamp(28px,2.6vw,40px);letter-spacing:-.03em;margin-bottom:12px}
+  .cap-p{font-size:24px;line-height:1.38}
+  [data-lang="hy"] .cap-p{font-size:21px}
+  .st-rail{margin-bottom:28px;max-width:280px}
+  .st-note{padding:40px 0 96px}
+}
+
+/* Телефон: без прилипания и без 5 экранов прокрутки — блок обычной высоты, шаги сменяются сами (story.js). */
+@media (max-width:899px){
+  .st-track{height:auto}
+  .st-stage{position:relative;top:auto;height:auto;overflow:visible}
+  .st-grid{height:auto;justify-content:flex-start;padding-top:8px;padding-bottom:40px}
+  .st-phone{flex:none}
+  .st-rail button{height:28px}
+  .st-rail button::before{top:13px}
+}

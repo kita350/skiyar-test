@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="hy">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Ձեր ռեստորանը — մենյու</title>
+<meta name="description" content="Пример QR-меню ресторана от SKIYAR.">
+<meta name="theme-color" content="#211b16">
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/noto-serif-armenian-armenian-bfh8e2ew.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/forum-latin-ew8iropi.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/eb-garamond-latin-6_rkbi9_.woff2" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect width=%2216%22 height=%2216%22 rx=%223%22 fill=%22%23999%22/%3E%3C/svg%3E">
+<style>
+@font-face {font-family:'EB Garamond';font-style:italic;font-weight:400;font-display:swap;src:url(../assets/fonts/eb-garamond-cyrillic-95u6ingq.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face {font-family:'EB Garamond';font-style:italic;font-weight:400;font-display:swap;src:url(../assets/fonts/eb-garamond-latin-8ql99u6g.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face {font-family:'EB Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/eb-garamond-cyrillic-kai9_s6w.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face {font-family:'EB Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/eb-garamond-latin-6_rkbi9_.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face {font-family:'Forum';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/forum-cyrillic-ivopiq3g.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face {font-family:'Forum';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/forum-latin-ew8iropi.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face {font-family:'Noto Serif Armenian';font-style:normal;font-weight:400;font-stretch:100%;font-display:swap;src:url(../assets/fonts/noto-serif-armenian-armenian-bfh8e2ew.woff2) format('woff2');unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
+@font-face {font-family:'Noto Serif Armenian';font-style:normal;font-weight:500;font-stretch:100%;font-display:swap;src:url(../assets/fonts/noto-serif-armenian-armenian-bfh8e2ew.woff2) format('woff2');unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
+</style>
+<style>
+:root{--bg:#211b16;--paper:#efe5d4;--muted:#ad9e8b;--brass:#c9a56b;--line:#4a3d31;
+  --display:"Forum","Noto Serif Armenian",Georgia,serif;--serif:"EB Garamond","Noto Serif Armenian",Georgia,serif;--gut:20px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:104px}
+body{margin:0;background:var(--bg);color:var(--paper);font:400 19px/1.5 var(--serif);font-variant-numeric:lining-nums;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.wrap{max-width:680px;margin:0 auto;padding:0 var(--gut)}
+#skiyar-bar{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:6px var(--gut);background:var(--paper);color:#2a221b;font:400 14px/1.3 var(--serif)}
+#skiyar-bar .skb-a{flex:none;white-space:nowrap;text-decoration:underline;text-underline-offset:3px}
+header{padding:28px 0 6px;text-align:center}
+.langs{display:flex;justify-content:center;gap:2px;margin-bottom:18px}
+.langs button{background:none;border:0;padding:8px 10px;color:var(--muted);cursor:pointer;font-size:16px}
+.langs button[aria-pressed="true"]{color:var(--paper);text-decoration:underline;text-decoration-color:var(--brass);text-underline-offset:6px}
+h1{margin:0;font:400 clamp(44px,13vw,72px)/.95 var(--display);overflow-wrap:anywhere}
+[data-lang="hy"] h1{font-size:clamp(34px,10vw,56px);line-height:1.1}
+.tag{margin:10px 0 0;color:var(--brass);font-style:italic}
+.note{margin:8px 0 0;color:var(--muted);font-size:16px}
+.menu-bar{position:sticky;top:44px;z-index:5;margin-top:22px;background:var(--bg);border-bottom:1px solid var(--line)}
+nav{display:flex;gap:20px;overflow-x:auto;padding:12px var(--gut);white-space:nowrap;scrollbar-width:none;scroll-behavior:smooth}
+nav.fade-r{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 72px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 72px),transparent)}
+nav.fade-l{-webkit-mask-image:linear-gradient(90deg,transparent,#000 48px);mask-image:linear-gradient(90deg,transparent,#000 48px)}
+nav.fade-l.fade-r{-webkit-mask-image:linear-gradient(90deg,transparent,#000 48px,#000 calc(100% - 72px),transparent);mask-image:linear-gradient(90deg,transparent,#000 48px,#000 calc(100% - 72px),transparent)}
+.scroll-more{position:absolute;top:0;right:0;bottom:0;width:48px;border:0;background:linear-gradient(90deg,rgba(33,27,22,0),var(--bg) 55%);color:var(--brass);font:400 30px/1 var(--serif);cursor:pointer;padding:0 12px 4px 0;text-align:right}
+.scroll-more[hidden]{display:none}
+nav::-webkit-scrollbar{display:none}
+nav a{text-decoration:none;color:var(--muted)}
+h2{margin:44px 0 6px;font:400 34px/1.05 var(--display);text-align:center}
+[data-lang="hy"] h2{font-size:27px}
+.orn{display:block;width:40px;height:1px;margin:12px auto 14px;background:var(--brass)}
+.dish{display:grid;grid-template-columns:1fr auto;column-gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.dish:last-child{border-bottom:0}
+.dish-n{font-size:20px}
+.dish-p{color:var(--brass);white-space:nowrap}
+.dish-d{grid-column:1/-1;font-style:italic;color:var(--muted);font-size:16px}
+[data-lang="hy"] .tag,[data-lang="hy"] .dish-d,[data-lang="hy"] .per{font-style:normal}
+.per{margin:36px 0 0;color:var(--muted);font-size:16px;font-style:italic;text-align:center}
+.cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:32px 0 56px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;background:var(--brass);color:#211b16;text-decoration:none;border:1px solid var(--brass)}
+.btn.ghost{background:none;color:var(--paper);border-color:var(--line)}
+</style>
+</head>
+<body data-lang="hy">
+<div id="skiyar-bar" role="note"><span class="skb-t">Կայքի օրինակ SKIYAR-ից — այսպես կարող է լինել ձեր կայքը</span><a class="skb-a" target="_blank" rel="noopener" href="https://wa.me/37498337187">Գրել SKIYAR-ին</a></div>
+<header class="wrap">
+  <div class="langs" role="group" data-i-aria="langAria">
+    <button type="button" data-lang-btn="hy">Հայ</button>
+    <button type="button" data-lang-btn="ru">Рус</button>
+    <button type="button" data-lang-btn="en">Eng</button>
+  </div>
+  <h1 data-i="h1"></h1>
+  <p class="tag" data-i="menuTitle"></p>
+  <p class="note" data-i="menuNote"></p>
+</header>
+<div class="menu-bar">
+  <nav id="menuNav" data-i-aria="menuNavAria"></nav>
+  <button type="button" class="scroll-more" data-scroll-for="menuNav" data-i-aria="moreTabs" hidden>›</button>
+</div>
+<main class="wrap" id="courses"></main>
+<div class="wrap">
+  <p class="per" data-i="per"></p>
+  <div class="cta">
+    <a class="btn" id="toBook" href="index.html#book" data-i="backBook"></a>
+    <a class="btn ghost" id="toSite" href="index.html" data-i="backSite"></a>
+  </div>
+</div>
+<script src="../assets/demo.js"></script>
+<script src="i18n.js"></script>
+<script src="menu-data.js"></script>
+<script>
+(function () {
+  var D = window.DEMO, LI = { hy: 0, ru: 1, en: 2 };
+  function el(t, a, x) { var e = document.createElement(t); if (a) for (var k in a) e.setAttribute(k, a[k]); if (x != null) e.textContent = x; return e; }
+  window.I18N.hy._title = window.I18N.hy._titleMenu;
+  window.I18N.ru._title = window.I18N.ru._titleMenu;
+  window.I18N.en._title = window.I18N.en._titleMenu;
+  D.init(window.I18N, function () {
+    var l = LI[D.lang], nav = document.getElementById("menuNav"), box = document.getElementById("courses");
+    nav.textContent = ""; box.textContent = "";
+    window.MENU.forEach(function (c) {
+      nav.appendChild(el("a", { href: "#" + c.id }, c.name[l]));
+      box.appendChild(el("h2", { id: c.id }, c.name[l]));
+      box.appendChild(el("span", { "class": "orn", "aria-hidden": "true" }));
+      c.items.forEach(function (it) {
+        var r = el("div", { "class": "dish" }), p = D.price(it[3]);
+        r.appendChild(el("span", { "class": "dish-n" }, it[l]));
+        r.appendChild(el("span", { "class": "dish-p" }, it[4] ? D.t("from", { p: p }) : p));
+        if (it[5]) r.appendChild(el("span", { "class": "dish-d" }, it[5 + l]));
+        box.appendChild(r);
+      });
+    });
+    var q = location.search;
+    document.getElementById("toBook").href = "index.html" + q + "#book";
+    document.getElementById("toSite").href = "index.html" + q;
+    D.scrollHint(nav);
+  });
+})();
+</script>
+</body>
+</html>

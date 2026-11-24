@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="hy">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Ձեր փուռը</title>
+<meta name="description" content="Пример одностраничного сайта от SKIYAR (пакет Start): кто вы, часы, кнопки WhatsApp, звонок, карта.">
+<meta name="theme-color" content="#f3ece0">
+<style>
+@font-face {font-family:'Noto Serif Armenian';font-style:normal;font-weight:300;font-stretch:100%;font-display:swap;src:url(../assets/fonts/noto-serif-armenian-armenian-bfh8e2ew.woff2) format('woff2');unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
+@font-face {font-family:'Noto Serif Armenian';font-style:normal;font-weight:400;font-stretch:100%;font-display:swap;src:url(../assets/fonts/noto-serif-armenian-armenian-bfh8e2ew.woff2) format('woff2');unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
+@font-face {font-family:'Spectral';font-style:normal;font-weight:300;font-display:swap;src:url(../assets/fonts/spectral-cyrillic-3fafadwq.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face {font-family:'Spectral';font-style:normal;font-weight:300;font-display:swap;src:url(../assets/fonts/spectral-latin-ssg3bafy.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face {font-family:'Spectral';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/spectral-cyrillic-m9knj-sa.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face {font-family:'Spectral';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/spectral-latin-ma9m5kng.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face {font-family:'Geologica';font-style:normal;font-weight:300;font-display:swap;src:url(../assets/fonts/geologica-cyrillic-wf1lep2a.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face {font-family:'Geologica';font-style:normal;font-weight:300;font-display:swap;src:url(../assets/fonts/geologica-latin-ckuwe1le.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face {font-family:'Geologica';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/geologica-cyrillic-wf1lep2a.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face {font-family:'Geologica';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/geologica-latin-ckuwe1le.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face {font-family:'Geologica';font-style:normal;font-weight:500;font-display:swap;src:url(../assets/fonts/geologica-cyrillic-wf1lep2a.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face {font-family:'Geologica';font-style:normal;font-weight:500;font-display:swap;src:url(../assets/fonts/geologica-latin-ckuwe1le.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face {font-family:'Noto Sans Armenian';font-style:normal;font-weight:300;font-stretch:100%;font-display:swap;src:url(../assets/fonts/noto-sans-armenian-armenian-xzhvodur.woff2) format('woff2');unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
+@font-face {font-family:'Noto Sans Armenian';font-style:normal;font-weight:400;font-stretch:100%;font-display:swap;src:url(../assets/fonts/noto-sans-armenian-armenian-xzhvodur.woff2) format('woff2');unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
+@font-face {font-family:'Noto Sans Armenian';font-style:normal;font-weight:500;font-stretch:100%;font-display:swap;src:url(../assets/fonts/noto-sans-armenian-armenian-xzhvodur.woff2) format('woff2');unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
+:root{--bg:#f3ece0;--paper:#fbf7f0;--ink:#2a2118;--muted:#6d5f50;--line:#e0d4c2;--accent:#b4532a;--serif:"Spectral","Noto Serif Armenian",Georgia,serif;--sans:"Geologica","Noto Sans Armenian",system-ui,sans-serif;--gut:20px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--sans)}
+a{color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 var(--gut)}
+#skiyar-bar{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:6px var(--gut);background:var(--ink);color:#f3ece0;font:400 13px/1.35 var(--sans)}
+#skiyar-bar .skb-a{flex:none;color:#fbf7f0;white-space:nowrap}
+.top{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.top b{font:600 18px/1 var(--serif)}
+.langs{display:flex;gap:2px}
+.langs button{background:none;border:0;padding:8px 9px;border-radius:999px;font:400 14px/1 var(--sans);color:var(--muted);cursor:pointer}
+.langs button[aria-pressed="true"]{background:var(--line);color:var(--ink)}
+.hero{padding:28px 0 36px;border-bottom:1px solid var(--line)}
+.kind{margin:0 0 10px;color:var(--accent);font-weight:500;font-size:15px}
+h1{margin:0;font:300 clamp(48px,14vw,96px)/.98 var(--serif);letter-spacing:-.02em;overflow-wrap:anywhere}
+.lead{margin:18px 0 0;color:var(--muted);font-size:18px;max-width:30em}
+.rating{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:6px 12px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:14px}
+.rating b{color:var(--accent)}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:28px 0}
+.act{display:flex;flex-direction:column;gap:4px;min-height:84px;padding:16px;border-radius:16px;background:var(--paper);border:1px solid var(--line);text-decoration:none}
+.act b{font-weight:600;font-size:17px}
+.act small{color:var(--muted);font-size:13.5px}
+.act.main{grid-column:1/-1;background:var(--ink);color:#fbf7f0;border-color:var(--ink)}
+.act.main small{color:#d9cbb6}
+.sec{padding:26px 0;border-top:1px solid var(--line)}
+.sec h2{margin:0 0 12px;font:400 30px/1.1 var(--serif)}
+.list{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.list li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.list li span:last-child{white-space:nowrap;color:var(--muted)}
+.hours{width:100%;border-collapse:collapse}
+.hours td{padding:9px 0;border-bottom:1px solid var(--line)}
+.hours td+td{text-align:right}
+footer{padding:28px 0 48px;color:var(--muted);font-size:14px}
+@media (min-width:700px){.acts{grid-template-columns:repeat(4,1fr)}.act.main{grid-column:auto}}
+</style>
+</head>
+<body data-lang="hy">
+<div class="wrap">
+  <header class="top"><b data-i="brand"></b>
+    <div class="langs" role="group" data-i-aria="langAria"><button type="button" data-lang-btn="hy">Հայ</button><button type="button" data-lang-btn="ru">Рус</button><button type="button" data-lang-btn="en">Eng</button></div>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kind" id="kind"></p>
+      <h1 data-i="h1"></h1>
+      <p class="lead" data-i="lead"></p>
+      <p class="rating"><b>★ 4,8</b><span data-i="rating"></span></p>
+    </section>
+    <nav class="acts">
+      <a class="act main" id="aWa" target="_blank" rel="noopener"><b data-i="aWa"></b><small data-i="aWaS"></small></a>
+      <a class="act" href="tel:+37400000000"><b data-i="aCall"></b><small data-i="aCallS"></small></a>
+      <a class="act" href="https://maps.google.com/?q=Yerevan" target="_blank" rel="noopener"><b data-i="aMap"></b><small data-i="aMapS"></small></a>
+      <a class="act" href="https://www.instagram.com/" target="_blank" rel="noopener"><b>Instagram</b><small data-i="aIgS"></small></a>
+    </nav>
+    <section class="sec"><h2 data-i="prodT"></h2>
+      <ul class="list" id="prod"></ul>
+    </section>
+    <section class="sec"><h2 data-i="hoursT"></h2>
+      <table class="hours"><tr><td data-i="days"></td><td>08:00–21:00</td></tr><tr><td data-i="sun"></td><td>09:00–18:00</td></tr></table>
+      <p class="lead" id="addr" style="font-size:16px"></p>
+    </section>
+  </main>
+  <footer data-i="footer"></footer>
+</div>
+<script src="../assets/demo.js"></script>
+<script>
+(function () {
+  var D = window.DEMO;
+  var I = {
+    hy: { _title: "{name}", _noName: "Ձեր փուռը", brand: "{name}", h1: "{name}", langAria: "Կայքի լեզուն",
+      kind: "Փուռ և հրուշակեղեն", kindCity: "Փուռ և հրուշակեղեն, {city}",
+      lead: "Թարմ լավաշ, մատնաքաշ և գաթա ամեն առավոտ։ Պատվիրեք WhatsApp-ով՝ կպատրաստենք ձեր ժամին։",
+      rating: "Google-ում, 126 կարծիք · օրինակ",
+      aWa: "Պատվիրել WhatsApp-ով", aWaS: "Պատասխանում ենք 08:00–21:00", aCall: "Զանգել", aCallS: "Մեկ սեղմումով", aMap: "Երթուղի", aMapS: "Google Maps", aIgS: "Թարմ թխվածքի լուսանկարներ",
+      prodT: "Այսօր թխում ենք", hoursT: "Ժամեր և հասցե", days: "Երկուշաբթի – շաբաթ", sun: "Կիրակի",
+      addr: "Այստեղ կլինի ձեր հասցեն", addrCity: "{city}, այստեղ կլինի ձեր հասցեն",
+      waMsg: "Բարև ձեզ։ Ուզում եմ պատվիրել{inName}։", inName: " «{name}»-ից",
+      footer: "Սա մեկ էջանոց կայքի օրինակ է SKIYAR-ից (Start փաթեթ)։ Գները, գնահատականը և ժամերը՝ օրինակի համար։" },
+    ru: { _title: "{name}", _noName: "Ваша пекарня", brand: "{name}", h1: "{name}", langAria: "Язык сайта",
+      kind: "Пекарня и выпечка", kindCity: "Пекарня и выпечка, {city}",
+      lead: "Свежий лаваш, матнакаш и гата каждое утро. Закажите в WhatsApp — приготовим к вашему времени.",
+      rating: "в Google, 126 отзывов · пример",
+      aWa: "Заказать в WhatsApp", aWaS: "Отвечаем 08:00–21:00", aCall: "Позвонить", aCallS: "В одно касание", aMap: "Маршрут", aMapS: "Google Maps", aIgS: "Фото свежей выпечки",
+      prodT: "Сегодня печём", hoursT: "Часы и адрес", days: "Понедельник — суббота", sun: "Воскресенье",
+      addr: "Здесь будет ваш адрес", addrCity: "{city}, здесь будет ваш адрес",
+      waMsg: "Здравствуйте! Хочу сделать заказ{inName}.", inName: " в «{name}»",
+      footer: "Это пример одностраничного сайта от SKIYAR (пакет Start). Цены, оценка и часы — для примера." },
+    en: { _title: "{name}", _noName: "Your bakery", brand: "{name}", h1: "{name}", langAria: "Site language",
+      kind: "Bakery", kindCity: "Bakery, {city}",
+      lead: "Fresh lavash, matnakash and gata every morning. Order on WhatsApp and we’ll have it ready for your time.",
+      rating: "on Google, 126 reviews · example",
+      aWa: "Order on WhatsApp", aWaS: "We reply 08:00–21:00", aCall: "Call", aCallS: "One tap", aMap: "Directions", aMapS: "Google Maps", aIgS: "Photos of today’s bakes",
+      prodT: "Baking today", hoursT: "Hours and address", days: "Monday to Saturday", sun: "Sunday",
+      addr: "Your address goes here", addrCity: "{city}, your address goes here",
+      waMsg: "Hello! I’d like to place an order{inName}.", inName: " at “{name}”",
+      footer: "This is a one-page sample site by SKIYAR (Start package). Prices, rating and hours are examples." }
+  };
+  var P = [["Լավաշ", "Лаваш", "Lavash", 300], ["Մատնաքաշ", "Матнакаш", "Matnakash", 500], ["Գաթա", "Гата", "Gata", 1200], ["Փախլավա (կգ)", "Пахлава (кг)", "Pakhlava (kg)", 6000], ["Թխվածքաբլիթ (կգ)", "Печенье (кг)", "Cookies (kg)", 4500]];
+  var LI = { hy: 0, ru: 1, en: 2 };
+  D.init(I, function () {
+    document.getElementById("kind").textContent = D.city() ? D.t("kindCity") : D.t("kind");
+    document.getElementById("addr").textContent = D.city() ? D.t("addrCity") : D.t("addr");
+    document.getElementById("aWa").href = D.wa(D.t("waMsg", { inName: D.name ? D.t("inName") : "" }));
+    var ul = document.getElementById("prod"); ul.textContent = "";
+    P.forEach(function (p) { var li = document.createElement("li"), a = document.createElement("span"), b = document.createElement("span"); a.textContent = p[LI[D.lang]]; b.textContent = D.price(p[3]); li.appendChild(a); li.appendChild(b); ul.appendChild(li); });
+  });
+})();
+</script>
+</body>
+</html>

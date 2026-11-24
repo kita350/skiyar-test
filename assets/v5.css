@@ -1,0 +1,114 @@
+/* ───── v12 (24.11.2026): интерактив и зоны нажатия ───── */
+
+/* Переключатель ниши над живым телефоном */
+.lv-box{position:relative}
+.niche{display:flex;align-items:flex-end;gap:10px;margin:0 0 14px}
+.niche-gor{flex:none;width:32px;height:48px;transform-origin:50% 100%}
+.niche-gor.nod{animation:nod .5s var(--ease-out)}
+@keyframes nod{30%{transform:rotate(-8deg) translateY(-2px)}60%{transform:rotate(5deg)}100%{transform:none}}
+.niche-in{min-width:0;flex:1}
+.niche-l{display:block;margin:0 0 6px;color:var(--muted);font-size:13px}
+.niche-c{display:flex;flex-wrap:wrap;gap:6px}
+.niche-b{min-height:44px;padding:0 14px;border-radius:22px;border:1px solid var(--line-2);background:none;color:var(--white);font:600 14px/1 var(--font);cursor:pointer;transition:background-color .2s var(--ease-out),border-color .2s var(--ease-out),transform .12s var(--ease-out)}
+.niche-b:active{transform:scale(.97)}
+.niche-b[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:var(--night)}
+.niche-p{margin:8px 0 0;color:var(--sky);font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+/* блок .live во всю ширину колонки, телефон по центру своей рамки */
+.hero .live{width:100%;min-width:0;max-width:100%}
+.hero .wrap > *{min-width:0}
+.lv-box{width:min(300px,100%);margin:0 auto}
+@media (min-width:900px){ .lv-box{width:320px} .hero .live{justify-self:center;max-width:540px} .niche{justify-content:center} .niche-in{flex:0 1 auto} }
+@media (hover:hover){ .niche-b:hover:not([aria-pressed="true"]){border-color:var(--sky)} }
+/* на телефоне чипы в одну прокручиваемую строку, если не влезают */
+@media (max-width:899px){
+  .niche-c{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-right:-16px;padding-right:16px}
+  .niche-c::-webkit-scrollbar{display:none}
+  .niche-b{flex:none}
+  /* край ряда затухает — видно, что ряд листается вбок */
+  .niche-c{-webkit-mask-image:linear-gradient(90deg,var(--c-000) 82%,transparent);mask-image:linear-gradient(90deg,var(--c-000) 82%,transparent)}
+  /* над телефоном теперь ряд ниш — показываем телефон ниже, чтобы был виден ответ */
+  .hero .lv-phone{margin-bottom:-70px}
+}
+
+/* Гор в калькуляторе: подпрыгивает, когда ползунок отпущен */
+.ca-gor{width:42px;height:71px;margin-left:auto;align-self:flex-end;transform-origin:50% 100%;pointer-events:none}
+#caSum{display:flex;align-items:baseline;gap:8px}
+.ca-gor.hop{animation:hop .5s var(--ease-out)}
+@keyframes hop{35%{transform:translateY(-10px) scale(1.04)}70%{transform:translateY(0) scale(.98)}100%{transform:none}}
+
+/* Вопросы: ответ проявляется мягко */
+.faq details[open] > p{animation:faq-in .25s var(--ease-out)}
+@keyframes faq-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.faq summary::after{transition:transform .2s var(--ease-out)}
+
+/* Зоны нажатия на телефоне не меньше 44 px */
+@media (max-width:899px){
+  .nav-burger{width:44px;height:44px}
+  .logo{min-height:44px}
+  .st-rail button{height:44px}
+  .st-rail button::before{top:20px}
+  .pkt-a,.pl-demo{display:inline-flex;align-items:center;min-height:44px}
+  .foot a,.fin-grid a,.nav-panel a,.langs a{display:inline-flex;align-items:center;min-height:44px}
+  .langs a{min-width:44px;justify-content:center}
+  .foot-cols a{display:flex} /* в колонках подвала ссылки идут столбиком */
+}
+
+@media (prefers-reduced-motion:reduce){ .niche-gor.nod,.ca-gor.hop,.faq details[open] > p{animation:none} }
+
+/* v13: телефон — шапка полностью непрозрачная (сквозь неё не просвечивает прокрученный текст) */
+@media (max-width:899px){ .nav{background:var(--night)} }
+/* скриншот сайта в телефоне отраслей: привязан к левому верхнему углу — начало строк не обрезается */
+.in-phone .screen img{object-position:left top}
+
+/* ───── МАКЕТ «живой телефон» (ветка site-mock-tilt): наклон — .lv-phone, покачивание — .lv-box ───── */
+.tilt-on .lv-phone{position:relative;transition:transform .5s var(--ease-out);box-shadow:0 30px 60px -30px rgba(82,150,225,.55),0 0 0 1px rgba(127,178,236,.18) inset}
+.tilt-on .lv-box.tilting .lv-phone{transition:transform .1s linear}
+.lv-sheen{position:absolute;inset:-20%;z-index:3;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .4s var(--ease-out);
+  background:radial-gradient(40% 30% at 50% 30%,rgba(255,255,255,.2),rgba(255,255,255,0) 70%)}
+.lv-phone{overflow:hidden}
+.tilt-on .lv-box.idle .lv-sheen{opacity:1}
+@keyframes breathe{0%,100%{transform:translateY(0) rotate(-.6deg)}50%{transform:translateY(-6px) rotate(.6deg)}}
+.tilt-on .lv-box.idle:not(.tilting){animation:breathe 7s ease-in-out infinite}
+/* v13 ревью кода: рамка фокуса у кнопок ниш не обрезается; смена ниши без мелькания; текст только для диктора */
+@media (max-width:899px){ .niche-c{padding-top:4px;padding-bottom:4px;margin-top:-4px;margin-bottom:-4px} }
+.live.swap [data-step]{transition:none!important}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* v13 ревью визуала: колонка первого экрана не шире экрана на 360 px (дети .copy — тоже элементы сетки) */
+.hero .copy > *{min-width:0}
+.hero .pilot b{white-space:normal}
+/* таблицы «Все пакеты» на телефоне листаются вбок — край затухает, чтобы это было видно */
+@media (max-width:899px){ .tw{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)} }
+/* «История записи»: уходящая подпись гаснет быстро, новая появляется после — тексты не накладываются */
+.js .cap:not(.on){transition-duration:.12s}
+.js .cap.on{transition-delay:.12s}
+/* шаги ДЕМО на узком телефоне — столбиком, крупнее */
+@media (max-width:400px){ .ty-steps{grid-template-columns:1fr} .ty-steps li{font-size:14px} }
+/* цена в узкой плитке пакетов на телефоне — мельче, чтобы «120 000 ֏‑ից» умещалась целиком */
+@media (max-width:420px){ .pkt:not(.pkt-on) .pr,.pkt:not(.pkt-on) .pl-p{font-size:clamp(16px,5vw,22px)} }
+/* таблица пакетов на планшете (900–1199 px): «в месяц» под ценой, не обрезается; почта в контактах переносится */
+@media (min-width:900px) and (max-width:1199px){ .pk-tbl .pl-p small{display:block;margin-top:2px} }
+/* контраст (Lighthouse): подпись под гарантией и время в напоминании темнее */
+.t-guar .small{color:var(--c-0b1a33)}
+.rem .msg time{color:#2f6fae}
+
+/* v14: язык в верхней плашке на телефоне и планшете (на компьютере языки и так в шапке) */
+.lang-dd{display:none;position:relative;margin-left:auto}
+.lang-dd summary{list-style:none;display:flex;align-items:center;gap:6px;height:44px;padding:0 11px;border-radius:10px;border:1px solid var(--line-2);font-size:14px;font-weight:700;cursor:pointer;-webkit-user-select:none;user-select:none}
+.lang-dd summary::-webkit-details-marker{display:none}
+.lang-dd svg{width:16px;height:16px;color:var(--sky);flex:none}
+body[data-lang="hy"] .lang-cur::after{content:"Հայ"}
+body[data-lang="ru"] .lang-cur::after{content:"Рус"}
+body[data-lang="en"] .lang-cur::after{content:"Eng"}
+.lang-dd[open] summary{border-color:var(--sky)}
+.lang-menu{position:absolute;right:0;top:calc(100% + 6px);z-index:60;flex-direction:column;gap:2px;min-width:116px;padding:6px;background:var(--night);border:1px solid var(--line-2);border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+.lang-menu a{display:flex;align-items:center;min-height:44px;padding:0 12px;font-size:15px}
+@media (max-width:899px){
+  .lang-dd{display:block}
+  .nav .wrap{gap:8px}
+  .nav-panel .langs{display:none}
+}
+.nav-burger,.nav-demo,.lang-dd{flex:none}
+@media (max-width:350px){ .nav .wrap{gap:6px} .logo{letter-spacing:.06em} .lang-dd summary{padding:0 7px;gap:4px} .nav-demo{padding:0 11px} }
+.lang-menu a{color:var(--white)}
+.lang-menu a[aria-current="page"]{color:var(--sky)}

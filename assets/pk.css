@@ -1,0 +1,98 @@
+/* Пакеты и цены: таблица сравнения (на телефоне — одна выбранная колонка), гарантия, пилот, правила. */
+.pk{padding:80px 0;border-bottom:1px solid var(--line)}
+.pk h2{margin:0 0 12px;font-weight:800;font-size:clamp(30px,8vw,56px);line-height:1.04;letter-spacing:-.035em}
+[data-lang="hy"] .pk h2{font-size:clamp(27px,7.2vw,48px);line-height:1.1}
+.pk .lead{margin:0;color:var(--c-c3cad8);font-size:17px;max-width:30em}
+.pk-head{display:grid;gap:24px;margin-bottom:28px}
+
+.bill{display:inline-flex;justify-self:start;padding:4px;border-radius:12px;background:var(--card);border:1px solid var(--line-2)}
+.bill button{min-height:42px;padding:0 16px;border:0;border-radius:9px;background:none;color:var(--c-c3cad8);font:700 15px/1 var(--font);cursor:pointer;transition:background-color .2s,color .2s}
+.bill button[aria-checked="true"]{background:var(--white);color:var(--night)}
+.bill em{font-style:normal;color:var(--blue)}
+.bill button[aria-checked="true"] em{color:var(--c-1d3e74)}
+
+.pk-pick{display:grid;grid-template-columns:repeat(3,1fr);margin-bottom:12px;border-bottom:1px solid var(--line-2)}
+.pk-pick button{min-height:46px;border:0;border-bottom:3px solid transparent;margin-bottom:-1px;background:none;color:var(--c-a9b3c7);font:700 15px/1 var(--font);cursor:pointer}
+.pk-pick button[aria-pressed="true"]{color:var(--white);border-bottom-color:var(--blue)}
+
+.pk-tbl{border-radius:20px;background:var(--card);overflow:hidden}
+.pk table{width:100%;border-collapse:collapse;table-layout:fixed}
+.pk th,.pk td{padding:13px 16px;border-top:1px solid var(--line);text-align:left;vertical-align:middle;font-size:15px}
+.pk thead th,.pk thead td{border-top:0;vertical-align:top}
+.pk tbody th{font-weight:500;color:var(--c-c3cad8);line-height:1.4}
+.pk tbody td{color:var(--white);font-weight:600;font-size:14px}
+/* телефон: таблица превращается в список — шапка выбранного пакета, затем строки «название | значение» */
+@media (max-width:899px){
+  .pk table,.pk thead,.pk tbody,.pk thead tr{display:block;width:100%}
+  .pk thead td,.pk thead th{display:none}
+  .pk tbody tr{display:flex;align-items:center;border-top:1px solid var(--line)}
+  .pk tbody th,.pk tbody td{border-top:0}
+  .pk tbody th{flex:1 1 auto;display:block}
+  .pk tbody td{display:none;flex:0 0 34%;text-align:center}
+  .pk[data-sel="a"] .c-a,.pk[data-sel="b"] .c-b,.pk[data-sel="c"] .c-c{display:block}
+  }
+.pl{display:flex;flex-direction:column;gap:6px;padding:8px 4px 6px;height:100%}
+.pk thead th{padding-top:48px}
+.pl-n{font-size:20px;font-weight:800;letter-spacing:-.01em}
+.pl-t{color:var(--c-c3cad8);font-weight:500;font-size:14.5px;line-height:1.35;min-height:2.7em}
+.pl-p{margin:10px 0 0;white-space:nowrap;font-weight:800;font-size:34px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.pl-p small{font-size:14px;font-weight:500;letter-spacing:0;color:var(--c-c3cad8)}
+.pl-eq{margin:0;min-height:1.4em;color:var(--sky);font-weight:600;font-size:14px}
+.pl-s{margin:0;min-height:1.4em;color:var(--c-d3d9e5);font-weight:500;font-size:14px}
+.pl .btn{margin-top:auto;min-height:46px;width:100%;text-align:center;line-height:1.2}
+.pl-y{margin:0 0 14px;color:var(--c-d3d9e5);font-size:13.5px;line-height:1.4}
+.main{position:absolute;top:14px;left:20px;padding:3px 10px;border-radius:999px;background:var(--blue);color:var(--night);font-size:12.5px;font-weight:800}
+.soon{position:absolute;top:14px;left:20px}
+.soon,.soon-s{justify-self:start;display:inline-block;padding:3px 10px;border-radius:999px;border:1px solid var(--line-2);color:var(--sky);font-size:12.5px;font-weight:700}
+.soon-s{font-size:12px}
+.ck{display:inline-block;width:14px;height:8px;border-left:2.5px solid var(--blue);border-bottom:2.5px solid var(--blue);transform:rotate(-45deg) translate(2px,-2px)}
+.no{display:inline-block;width:12px;height:2px;background:var(--c-3a4664);vertical-align:middle}
+
+.pk-ai{margin:14px 0 0;color:var(--c-d3d9e5);font-size:14.5px}
+.pk-min{margin:6px 0 0;color:var(--c-a9b3c7);font-size:14.5px}
+.pk-min a{color:var(--white);text-underline-offset:3px}
+
+.pk-more{display:grid;gap:12px;margin-top:40px}
+.pk-more article{padding:24px 22px;border-radius:20px;background:var(--card)}
+.pk-more h3{margin:0 0 12px;font-weight:800;font-size:21px;letter-spacing:-.015em}
+.pk-more p{margin:0;color:var(--c-c3cad8);font-size:15px;line-height:1.5}
+.pk-more p.big{margin-bottom:12px;color:var(--white);font-size:20px;font-weight:700;line-height:1.35}
+.pk-more ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.pk-more li{position:relative;padding-left:20px;color:var(--c-c3cad8);font-size:15.5px;line-height:1.45}
+.pk-more li::before{content:"";position:absolute;left:2px;top:.55em;width:8px;height:8px;border-radius:2px;background:var(--blue)}
+.pk-g{background:var(--blue)!important}
+.pk-g h3,.pk-g p.big{color:var(--night)}
+.pk-g p{color:var(--c-0a1630);font-size:15px}
+.pk-p .left{display:flex;align-items:center;gap:12px;margin:0 0 16px;color:var(--white);font-size:17px}
+.seats{display:flex;gap:5px}
+.seats i{width:14px;height:14px;border-radius:4px;border:2px solid var(--blue)}
+.seats i.taken{background:var(--blue)}
+.pk-p .btn{width:100%;margin-top:20px}
+
+@media (min-width:600px){ .pk-p .btn{width:auto} }
+@media (min-width:900px){
+  .pk{padding:120px 0}
+  .pk-head{grid-template-columns:1fr auto;align-items:end;margin-bottom:36px}
+  .pk-pick{display:none}
+  .pk table{table-layout:fixed}
+  .pk thead td{width:31%}
+  .pk-help{padding:40px 22px 22px!important;vertical-align:bottom!important}
+  .pk-help b{display:block;margin-bottom:8px;font-size:17px}
+  .pk-help p{margin:0;color:var(--c-c3cad8);font-size:14.5px;line-height:1.5}
+  .pk .c-a,.pk .c-b,.pk .c-c{width:23%}
+  .pk th,.pk td{padding:15px 22px}
+  .pk tbody td{text-align:center}
+  .pk thead th{padding:40px 22px 22px;position:relative}
+  .pk thead .c-c .pl{padding-top:8px}
+  .pl-s{min-height:2.9em}
+  .pk thead .c-a .pl-s{display:block}
+  .soon,.main{left:26px;top:16px}
+  .pk .c-b{background:var(--c-121a2e)}
+  .pk thead .c-b{border-top:3px solid var(--blue)}
+  .pk thead th{height:1px}
+  .pk tbody tr:hover th,.pk tbody tr:hover td{background-color:var(--c-rgba-121-137-170-06)}
+  .pk-more{grid-template-columns:minmax(0,5fr) minmax(0,4fr) minmax(0,3fr);gap:16px}
+  .pk-more article{padding:32px}
+}
+.pl-demo{align-self:flex-start;color:var(--sky);font-size:13.5px;text-underline-offset:3px}
+.pk thead th{position:relative}

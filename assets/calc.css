@@ -1,0 +1,48 @@
+/* Посчитайте сами: одна поверхность, ползунки слева, результат справа. Главная цифра — визиты для окупаемости. */
+.calc{padding:80px 0;border-bottom:1px solid var(--line)}
+.calc h2{margin:0 0 12px;font-weight:800;font-size:clamp(30px,8vw,56px);line-height:1.04;letter-spacing:-.035em;max-width:14em}
+[data-lang="hy"] .calc h2{font-size:clamp(27px,7.2vw,48px);line-height:1.1}
+.calc .lead{margin:0 0 30px;color:var(--c-c3cad8);font-size:17px;max-width:32em}
+.ca-box{border-radius:20px;background:var(--card);overflow:hidden}
+
+.ca-in{padding:24px 22px;display:grid;gap:26px;align-content:start}
+.ca-f label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px;font-size:15px;color:var(--c-c3cad8)}
+.ca-f output{color:var(--white);font-weight:800;font-size:22px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.ca-f input{--p:50%;width:100%;height:28px;margin:0;background:none;-webkit-appearance:none;appearance:none;cursor:pointer}
+.ca-f input::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--blue) var(--p),var(--c-rgba-121-137-170-3) var(--p))}
+.ca-f input::-moz-range-track{height:6px;border-radius:3px;background:var(--c-rgba-121-137-170-3)}
+.ca-f input::-moz-range-progress{height:6px;border-radius:3px;background:var(--blue)}
+.ca-f input::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;margin-top:-10px;border-radius:50%;background:var(--white);border:0}
+.ca-f input::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:var(--white);border:0}
+.ca-f input:focus-visible{outline:none}
+.ca-f input:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px var(--c-rgba-142-178-223-5)}
+.ca-ends{display:flex;justify-content:space-between;margin-top:4px;font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+.ca-out{padding:26px 22px 28px;border-top:1px solid var(--line-2);background:var(--c-0a0f1c)}
+.ca-k{margin:0;color:var(--c-c3cad8);font-size:16px;line-height:1.45;max-width:30em}
+.ca-sum{margin:6px 0 0;font-weight:800;line-height:1;letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.ca-sum span{font-size:clamp(84px,26vw,150px);margin-left:-.05em}
+.ca-sum small{font-size:clamp(26px,7vw,40px);letter-spacing:-.02em;color:var(--white)}
+.ca-msg{margin:14px 0 0;font-size:16px;font-weight:700;line-height:1.45;max-width:32em}
+.ca-loss{margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.ca-loss p{margin:0}
+#caLoss{font-size:18px;font-weight:700;line-height:1.4}
+.ca-formula{margin-top:4px!important;color:var(--c-c3cad8);font-size:14.5px;font-variant-numeric:tabular-nums}
+.ca-bar{display:grid;gap:6px;margin:16px 0 8px}
+.ca-bar .t{display:block;height:10px;border-radius:3px;background:var(--c-rgba-121-137-170-22);overflow:hidden}
+.ca-bar i{display:block;height:100%;width:100%;transform-origin:0 50%;transition:transform .35s var(--ease-out)}
+#caBarL{background:var(--ice)}
+#caBarS{background:var(--blue)}
+.ca-pkg{display:flex;align-items:center;gap:8px;color:var(--c-c3cad8);font-size:14px}
+.ca-pkg i{width:10px;height:10px;border-radius:2px;background:var(--blue)}
+.ca-quiet .ca-loss{opacity:.75}
+.ca-note{margin:16px 0 0;color:var(--c-a9b3c7);font-size:14px;line-height:1.5;max-width:40em}
+.ca-out .btn{width:100%;margin-top:22px}
+
+@media (min-width:600px){ .ca-out .btn{width:auto} }
+@media (min-width:900px){
+  .calc{padding:120px 0}
+  .ca-box{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+  .ca-in{padding:44px 40px;gap:36px}
+  .ca-out{padding:44px 48px;border-top:0;border-left:1px solid var(--line-2)}
+}
