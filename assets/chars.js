@@ -27,11 +27,11 @@
     preload(img, Object.keys(c.w).map(function (k) { return c.w[k]; }));
   });
   // облачко над головой: эмоцию видно даже на маленьком персонаже (у Рузан глаза за очками)
-  var BUB = { angry: "!!", wow: "!", happy: "♥" };
+  var BUB = { angry: "!!", wow: "!", happy: "♥︎" };
   function show(c) {
     setSrc(c.img, c.w[c.mood]);
     if (!c.img.classList.contains("st-px")) return;
-    if (!c.bub) { c.bub = document.createElement("span"); c.bub.className = "emo-bub"; c.bub.setAttribute("aria-hidden", "true"); c.img.parentNode.appendChild(c.bub); }
+    if (!c.bub) { c.bub = document.createElement("i"); c.bub.className = "emo-bub"; c.bub.setAttribute("aria-hidden", "true"); c.img.parentNode.appendChild(c.bub); }
     var t = BUB[c.mood] || "";
     c.bub.textContent = t; c.bub.className = "emo-bub emo-" + c.mood + (t && c.img.classList.contains("on") ? " on" : "");
     c.bub.style.left = (c.img.offsetLeft + c.img.offsetWidth * 0.62) + "px"; c.bub.style.top = (c.img.offsetTop - 8) + "px";
@@ -50,10 +50,32 @@
   // моргание: только у тех, у кого видны глаза, и только в спокойном настроении
   if (!still) (function blinkLoop() {
     list.forEach(function (c) {
-      if (!c.vis || c.mood !== "base" || !c.w.blink || Math.random() < 0.45) return;
+      if (!c.vis || c.busy || c.mood !== "base" || !c.w.blink || Math.random() < 0.45) return;
       setSrc(c.img, c.w.blink); setTimeout(function () { if (c.mood === "base") show(c); }, 140);
     });
     setTimeout(blinkLoop, 2500 + Math.random() * 2500);
+  })();
+
+  // жесты: настоящие кадры движений (Гор машет, робот машет кистью, Рузан поднимает телефон, Лусине печатает)
+  var GEST = {
+    gor: ["emo-gor-wave1.png", "emo-gor-wave2.png", "emo-gor-wave1.png", "emo-gor-wave2.png", "emo-gor-wave1.png", "emo-gor-wave2.png"],
+    ski: ["emo-ski-wave1.png", "emo-ski-wave2.png", "emo-ski-wave1.png", "emo-ski-wave2.png", "emo-ski-wave1.png"],
+    ruzan: ["emo-ruzan-phone1.png", "emo-ruzan-phone2.png", "emo-ruzan-phone2.png", "emo-ruzan-phone2.png", "emo-ruzan-phone1.png"],
+    lusine: ["emo-lusine-type1.png", "emo-lusine-type2.png", "emo-lusine-type1.png", "emo-lusine-type2.png", "emo-lusine-type1.png", "emo-lusine-type2.png"]
+  };
+  list.forEach(function (c) { preload(c.img, GEST[c.img.dataset.who] || []); });
+  function gesture(c) {
+    var fr = GEST[c.img.dataset.who]; if (!fr || c.busy) return;
+    c.busy = true; var i = 0;
+    (function next() {
+      if (i < fr.length && c.vis) { setSrc(c.img, fr[i++]); setTimeout(next, 200); }
+      else { c.busy = false; show(c); }
+    })();
+  }
+  if (!still) (function gestLoop() {
+    var vis = list.filter(function (c) { return c.vis && !c.busy && (!c.img.classList.contains("st-px") || c.img.classList.contains("on")); });
+    if (vis.length) gesture(vis[Math.floor(Math.random() * vis.length)]);
+    setTimeout(gestLoop, 3200 + Math.random() * 2600);
   })();
 
   // робот иногда улыбается
@@ -82,8 +104,14 @@
   // калькулятор: Гор паникует, грустит или радуется в зависимости от потерь
   var ca = document.querySelector(".ca-gor");
   if (ca) {
-    preload(ca, ["gor-panic.png", "gor-neutral.png", "gor-joy.png"]);
-    var caMood = function (d) { var r = d.loss / Math.max(1, d.price); setSrc(ca, r >= 3 ? "gor-panic.png" : r >= 1 ? "gor-neutral.png" : "gor-joy.png"); };
+    // в калькуляторе тот же маленький Гор: потери большие — встревожен, средние — спокоен, маленькие — рад
+    preload(ca, ["emo-gor-worry.png", "hero-gor-1x.png", "emo-gor-happy.png"]);
+    var caBub = document.createElement("i"); caBub.className = "emo-bub ca-bub"; caBub.setAttribute("aria-hidden", "true"); ca.parentNode.appendChild(caBub);
+    var caMood = function (d) {
+      var r = d.loss / Math.max(1, d.price), m = r >= 3 ? "angry" : r >= 1 ? "base" : "happy";
+      setSrc(ca, m === "angry" ? "emo-gor-worry.png" : m === "happy" ? "emo-gor-happy.png" : "hero-gor-1x.png");
+      caBub.textContent = BUB[m] || ""; caBub.className = "emo-bub ca-bub emo-" + m + (BUB[m] ? " on" : "");
+    };
     document.addEventListener("calc:loss", function (e) { caMood(e.detail); });
     if (window.SKIYAR_LOSS) caMood(window.SKIYAR_LOSS); // калькулятор уже посчитал до нас
   }

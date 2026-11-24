@@ -1076,3 +1076,13 @@ body[data-lang="en"] .lang-cur::after{content:"Eng"}
 .emo-bub.on{opacity:1;scale:1}
 .emo-angry{color:#e5383b}
 .emo-happy{color:#e5383b}
+.ca-gor{width:48px;height:72px}
+.ca-sum{position:relative}
+.ca-bub{right:30px;top:-18px;left:auto}
+.gr-px{height:144px;width:96px}
+@media (min-width:900px){ .gr-px{height:216px;width:144px} }
+@keyframes px-breathe{0%,100%{translate:0 0}50%{translate:0 -1px}}
+.niche-gor,.st-px[src],.gr-px[src],.ca-gor{animation:px-breathe 2.4s steps(2) infinite}
+.niche-gor.nod{animation:nod .5s var(--ease-out)}
+.ca-gor.hop{animation:hop .5s var(--ease-out)}
+.emo-bub{font-style:normal;font-size:15px!important;line-height:26px!important;font-weight:800!important;letter-spacing:0}
