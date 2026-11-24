@@ -60,7 +60,6 @@
   // жесты: настоящие кадры движений (Гор машет, робот машет кистью, Рузан поднимает телефон, Лусине печатает)
   var GEST = {
     gor: ["emo-gor-wave1.png", "emo-gor-wave2.png", "emo-gor-wave1.png", "emo-gor-wave2.png", "emo-gor-wave1.png", "emo-gor-wave2.png"],
-    ski: ["emo-ski-wave1.png", "emo-ski-wave2.png", "emo-ski-wave1.png", "emo-ski-wave2.png", "emo-ski-wave1.png"],
     ruzan: ["emo-ruzan-phone1.png", "emo-ruzan-phone2.png", "emo-ruzan-phone1.png", "emo-ruzan-phone2.png", "emo-ruzan-phone1.png"],
     lusine: ["emo-lusine-wave1.png", "emo-lusine-wave2.png", "emo-lusine-wave1.png", "emo-lusine-wave2.png", "emo-lusine-wave1.png", "emo-lusine-wave2.png"],
     gorfree: ["emo-gor-free-wave1.png", "emo-gor-free-wave2.png", "emo-gor-free-wave1.png", "emo-gor-free-wave2.png", "emo-gor-free-wave1.png", "emo-gor-free-wave2.png"]
@@ -77,7 +76,7 @@
   }
   if (!still) (function gestLoop() {
     // в «Истории» жест только у персонажа без эмоции: эмоция шага важнее
-    var vis = list.filter(function (c) { return c.vis && !c.busy && (!c.img.classList.contains("st-px") || (c.img.classList.contains("on") && c.mood === "base")); });
+    var vis = list.filter(function (c) { return c.vis && !c.busy && (!c.img.classList.contains("st-px") || (c.img.classList.contains("on") && c.mood === "base")) && !!GEST[c.img.dataset.who]; });
     if (vis.length) gesture(vis[Math.floor(Math.random() * vis.length)]);
     setTimeout(gestLoop, 3200 + Math.random() * 2600);
   })();
