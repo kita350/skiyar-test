@@ -197,3 +197,62 @@ body[data-lang="en"] .lang-cur::after{content:"Eng"}
 .niche-gor.nod{animation:nod .5s var(--ease-out)}
 .ca-gor.hop{animation:hop .5s var(--ease-out)}
 .emo-bub{font-style:normal;font-size:15px!important;line-height:26px!important;font-weight:800!important;letter-spacing:0}
+
+/* ───── ТЗ 2026-11-25 «сайт на 95» ───── */
+/* 3. Отступы блоков на телефоне 56 px вместо 80 — страница плотнее и короче */
+@media (max-width:899px){
+  .bento,.try,.ind,.calc,.pk,.how,.faq,.gor{padding-top:56px;padding-bottom:56px}
+  .bento{padding-bottom:52px}
+  .st-note{padding:20px 0 44px}
+}
+/* заголовки блоков не прячутся под верхнюю плашку при переходе по якорю */
+section[id]{scroll-margin-top:calc(var(--nav) + 8px)}
+/* таблицы «Пакеты» на телефоне: подсказка, что листаются вбок */
+@media (max-width:899px){
+  .tw::before{content:"Листайте вбок →";display:block;position:sticky;left:0;margin:0 0 6px;font-size:13px;font-weight:700;color:var(--sky)}
+  html[lang="hy"] .tw::before{content:"Թերթեք կողքի վրա →"}
+  html[lang="en"] .tw::before{content:"Swipe sideways →"}
+}
+/* 4. карточка «Три языка» на компьютере — без пустоты сверху */
+@media (min-width:900px){ .t-lang{justify-content:flex-start;padding-top:28px} .t-lang .shots{margin:20px 0 26px} }
+/* 6. запасной шрифт с метриками Manrope — при подмене текст не прыгает */
+@font-face{font-family:"Manrope Fallback";src:local("Arial"),local("Helvetica"),local("Roboto");size-adjust:103.86%;ascent-override:102.66%;descent-override:28.88%;line-gap-override:0%}
+:root{--font:"Manrope","Manrope Fallback","Noto Sans Armenian",system-ui,-apple-system,"Segoe UI",sans-serif}
+/* 1. телефон на компьютере целиком в первом экране */
+@media (min-width:900px){ .ph3d .lv-box{width:460px} }
+/* место под телефон занято до загрузки скрипта и кадров — блок не меняет высоту */
+.ph3d .lv-phone{aspect-ratio:900/1350}
+.ph3d .lv-3d{position:absolute;left:0;top:0;width:100%;height:100%}
+/* ряд кнопок ниш строит скрипт — высота занята заранее, чтобы блок не прыгал */
+.niche-c{min-height:44px}
+@media (max-width:899px){ .niche-c{min-height:52px} }
+.niche-p:empty{min-height:1.45em}
+/* ТЗ п.3: главная на телефоне короче — плотнее блоки (только ≤899 px) */
+@media (max-width:899px){
+  .bento,.try,.ind,.calc,.pk,.how,.faq,.gor{padding-top:44px;padding-bottom:44px}
+  .tile{padding:18px}
+  .bn-cta{margin-top:20px}
+  .in-panel{gap:18px;padding:18px}
+  .in-phone{transform:scale(.86);transform-origin:50% 0;margin-bottom:-12%}
+}
+/* ревью по ТЗ: телефон целиком в первом экране (1440×900) и часы видны под нишами (390×844) */
+@media (min-width:900px){ .ph3d .hero .wrap{padding-top:64px} }
+@media (max-width:899px){ .ph3d .lv-phone,.ph3d .hero .lv-phone{margin-top:-15%} }
+/* зоны нажатия ≥44 px */
+@media (max-width:899px){
+  .nav-demo{height:44px}
+  .t-lang .words button{min-height:44px}
+  main p a,main li a,main small a,.pk-foot a,.crumbs a{padding:13px 0}
+  button[data-bill]{min-height:44px}
+  input[type="range"]{height:44px}
+  .pg-tog button,[role="tablist"] button{min-height:44px}
+}
+.ph3d .lv-lbl{font-size:11.5px}
+/* телефон на мобильном крупнее: кадр шире колонки (прозрачные поля уходят за край, .hero обрезает), экран ≈ 295 px — текст переписки ≈ 13 px */
+@media (max-width:899px){ .ph3d .lv-box{width:calc(100% + 2*var(--gut) + 40px);max-width:none;margin-left:calc(-1*var(--gut) - 20px);margin-right:calc(-1*var(--gut) - 20px)} }
+.ph3d .lv-lbl{font-size:12px}
+/* плашка «Напоминание» на мобильном — поверх пустого низа экрана телефона, без пустой полосы под телефоном */
+@media (max-width:899px){ .ph3d .lv-toast{position:absolute;order:0;left:18%;right:18%;top:auto;bottom:22%;margin:0;z-index:6} }
+.ph3d .niche{position:relative;z-index:7}
+/* третий круг ревью: на мобильном рамка телефона не перечёркивает строку цены ниши — телефон на 24 px ниже (часы на 390×844 видны) */
+@media (max-width:899px){ .ph3d .lv-phone,.ph3d .hero .lv-phone{margin-top:calc(-15% + 24px)} }

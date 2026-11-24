@@ -19,7 +19,14 @@ a{color:inherit}
 .logo{display:flex;align-items:center;gap:9px;margin-right:auto;text-decoration:none;font-weight:800;font-size:17px;letter-spacing:.14em;min-height:44px}
 .logo i{width:26px;height:26px;border-radius:7px;background:var(--card);border:1px solid var(--line-2);display:grid;place-items:center;color:var(--blue);font-style:normal;letter-spacing:0;font-size:15px}
 .langs a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 8px;border-radius:8px;font-size:14px;color:var(--muted);text-decoration:none}
-.langs a[aria-current]{color:var(--white);background:var(--card)}
+.langs a[aria-current]{color:var(--sky);background:var(--card)}
+/* кнопка языка как на сайте: глобус + текущий язык, по нажатию список */
+.lang-dd{position:relative}
+.lang-dd summary{list-style:none;display:flex;align-items:center;gap:6px;height:44px;padding:0 11px;border-radius:10px;border:1px solid var(--line-2);font-size:14px;font-weight:700;cursor:pointer}
+.lang-dd summary::-webkit-details-marker{display:none}
+.lang-dd svg{width:16px;height:16px;color:var(--sky)}
+.lang-dd .langs{position:absolute;right:0;top:calc(100% + 6px);z-index:5;display:flex;flex-direction:column;gap:2px;min-width:116px;padding:6px;background:var(--night);border:1px solid var(--line-2);border-radius:12px}
+.lang-dd .langs a{justify-content:flex-start;padding:0 12px;font-size:15px;color:var(--white)}
 main{flex:1;display:flex;align-items:center}
 .wrap{width:100%;max-width:760px;margin:0 auto;padding:32px 16px 48px}
 .big{font-weight:800;font-size:clamp(112px,30vw,200px);line-height:.82;letter-spacing:-.06em;color:#3f6fb8;font-variant-numeric:tabular-nums}
@@ -44,7 +51,8 @@ p{margin:0;color:#c3cad8;max-width:30em}
 <body>
 <header class="top">
   <a class="logo" href="/skiyar-test/" id="home1"><i>S</i>SKIYAR</a>
-  <nav class="langs"><a href="/skiyar-test/" data-l="hy">Հայ</a><a href="/skiyar-test/ru/" data-l="ru">Рус</a><a href="/skiyar-test/en/" data-l="en">Eng</a></nav>
+  <details class="lang-dd"><summary aria-label="Language"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg><span id="lcur">Հայ</span></summary>
+    <nav class="langs"><a href="/skiyar-test/" data-l="hy">Հայ</a><a href="/skiyar-test/ru/" data-l="ru">Рус</a><a href="/skiyar-test/en/" data-l="en">Eng</a></nav></details>
 </header>
 <main>
   <div class="wrap">
@@ -64,7 +72,7 @@ p{margin:0;color:#c3cad8;max-width:30em}
   var T = {
     hy: { h: "Այդպիսի էջ չկա։ Գրանցումը՝ կա։", p: "Հղումը հնացել է կամ սխալ է։ Տիկին Ռուզանն էլ սկզբում սխալ տեղ էր փնտրում։", q: "23:47։ Որտե՞ղ գրանցվեմ։",
           home: "Գլխավոր էջ", pk: "Փաթեթներ և գներ", wa: "Գրել ԴԵՄՈ", msg: "ԴԵՄՈ\nԲարև ձեզ։ Ուզում եմ կայքի օրինակ իմ բիզնեսի անունով։ Անունը՝ ", dir: "/" },
-    ru: { h: "Такой страницы нет. Запись — есть.", p: "Ссылка устарела или в ней опечатка. Тикин Рузан тоже сначала искала не там.", q: "23:47. Где тут записаться?",
+    ru: { h: "Такой страницы нет. Запись — есть.", p: "Ссылка устарела или в ней опечатка. Рузан тоже сначала искала не там.", q: "23:47. Где тут записаться?",
           home: "На главную", pk: "Пакеты и цены", wa: "Написать ДЕМО", msg: "ДЕМО\nЗдравствуйте! Хочу пример сайта с названием моего бизнеса. Название: ", dir: "/ru/" },
     en: { h: "This page doesn’t exist. Booking does.", p: "The link is outdated or has a typo. Mrs Ruzan looked in the wrong place at first too.", q: "23:47. Where do I book?",
           home: "Home page", pk: "Packages and prices", wa: "Send DEMO", msg: "DEMO\nHello! I'd like a sample site with my business name. Name: ", dir: "/en/" }
@@ -79,6 +87,8 @@ p{margin:0;color:#c3cad8;max-width:30em}
   $("wa").href = "https://wa.me/37498337187?text=" + encodeURIComponent(t.msg);
   var ls = document.querySelectorAll(".langs a");
   for (var i = 0; i < ls.length; i++) if (ls[i].getAttribute("data-l") === L) ls[i].setAttribute("aria-current", "page");
+  $("lcur").textContent = { hy: "Հայ", ru: "Рус", en: "Eng" }[L];
+  document.addEventListener("click", function (e) { var d = document.querySelector(".lang-dd[open]"); if (d && !d.contains(e.target)) d.open = false; });
 })();
 </script>
 </body>

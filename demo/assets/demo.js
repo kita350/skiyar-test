@@ -182,6 +182,7 @@
     el.querySelector(".skb-t").textContent = b[0];
     var a = el.querySelector(".skb-a");
     a.textContent = b[1];
+    a.style.display = "inline-flex"; a.style.alignItems = "center"; a.style.minHeight = "44px"; // зона нажатия ≥ 44 px
     // split/join вместо replace: имя из ссылки может содержать «$&» и т.п.
     var forName = D.name ? b[3].split("{name}").join(D.name) : "";
     var msg = b[2].split("{demo}").join(location.href.split("?")[0]).split("{forName}").join(forName);

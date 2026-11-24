@@ -5,18 +5,29 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — SKIYAR</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#02030A">
 <style>
-  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:#1d2433; background:#f7f8fb; line-height:1.65; }
-  .wrap { max-width:760px; margin:0 auto; padding:40px 20px 60px; }
-  h1 { font-size:30px; } h2 { font-size:20px; margin-top:28px; }
-  p, li { color:#3b4354; }
-  a { color:#2f6fed; }
-  hr { border:none; border-top:1px solid #e3e6ee; margin:40px 0; }
+  :root{--night:#02030A;--card:#0D1221;--blue:#5296E1;--sky:#8EB2DF;--muted:#7989AA;--line:rgba(121,137,170,.22);--line-2:rgba(121,137,170,.38)}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Manrope","Noto Sans Armenian",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#fff;background:var(--night);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .top{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:12px;height:60px;padding:0 16px;background:var(--night);border-bottom:1px solid var(--line)}
+  .logo{display:flex;align-items:center;gap:9px;margin-right:auto;min-height:44px;color:#fff;text-decoration:none;font-weight:800;font-size:17px;letter-spacing:.14em}
+  .logo i{width:26px;height:26px;border-radius:7px;background:var(--card);border:1px solid var(--line-2);display:grid;place-items:center;color:var(--blue);font-style:normal;letter-spacing:0;font-size:15px}
+  .jump{display:flex;gap:4px}
+  .jump a{display:inline-flex;align-items:center;justify-content:center;min-width:48px;min-height:48px;padding:0 10px;border-radius:8px;color:var(--sky);text-decoration:none;font-size:14px;font-weight:700}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 20px 72px}
+  h1{font-size:30px;line-height:1.2;scroll-margin-top:76px} h2{font-size:20px;margin-top:28px}
+  p,li{color:#c3cad8}
+  a{color:var(--sky)}
+  p a,li a{padding:12px 0}
+  hr{border:none;border-top:1px solid var(--line);margin:40px 0}
 </style>
+
 </head>
 <body>
-<div class="wrap">
-<p><a href="index.html">← Home</a></p>
+<header class="top"><a class="logo" href="index.html"><i>S</i>SKIYAR</a><nav class="jump" aria-label="Language"><a href="#hy" lang="hy">Հայ</a><a href="#ru" lang="ru">Рус</a><a href="#top" lang="en">Eng</a></nav></header>
+<div class="wrap" id="top">
 
 <h1>Privacy Policy</h1>
 <p><em>Last updated: 14 November 2026</em></p>

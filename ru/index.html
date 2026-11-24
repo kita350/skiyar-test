@@ -25,13 +25,10 @@
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Noto+Sans+Armenian:wght@400;700;800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Noto+Sans+Armenian:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Noto+Sans+Armenian:wght@400;700;800&display=swap"></noscript>
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../assets/img/fonts/manrope-latin.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../assets/img/fonts/manrope-cyrillic.woff2">
 <link rel="stylesheet" href="../assets/index.css">
-<script>window.PAGE_LANG="ru"</script>
+<script>window.PAGE_LANG="ru";document.documentElement.classList.add("ph3d")</script>
 <script src="../assets/index.js" defer></script>
 </head>
 <body data-lang="ru">
@@ -139,7 +136,7 @@
                   <div class="cal-h"><b data-t="pCal">Нарине</b><small data-t="pCalDay">Пятница, 27 ноября</small></div>
                   <div class="cal">
                     <div class="cr"><time>10:00</time><div><b data-t="pC1n">Марине</b><small data-t="pC1s">Педикюр</small></div></div>
-                    <div class="cr hot" data-from="6"><time>11:00</time><div><b data-t="pC2n">Тикин Рузан</b><small data-t="pC2s">Маникюр с гель-лаком</small><br><span class="tag t-new" data-t="pNew">Новая · с сайта, 23:48</span><span class="tag came t-came" data-t="pCame">Пришла</span></div></div>
+                    <div class="cr hot" data-from="6"><time>11:00</time><div><b data-t="pC2n">Рузан</b><small data-t="pC2s">Маникюр с гель-лаком</small><br><span class="tag t-new" data-t="pNew">Новая · с сайта, 23:48</span><span class="tag came t-came" data-t="pCame">Пришла</span></div></div>
                     <div class="cr free"><time>12:30</time><div><b data-t="pC3n">Свободно</b></div></div>
                     <div class="cr"><time>14:00</time><div><b data-t="pC4n">Мариам</b><small data-t="pC4s">Маникюр</small></div></div>
                     <div class="cr free"><time>15:30</time><div><b data-t="pC3n">Свободно</b></div></div>
@@ -150,7 +147,7 @@
                 <div class="scr" data-steps="5">
                   <div class="wa-h"><i class="av">L</i><div><b data-t="pWaFrom">Liora Beauty</b><small data-t="pWaLabel">Напоминание в WhatsApp</small></div></div>
                   <div class="wa-body">
-                    <div class="bub in" data-t="pWaRem">Здравствуйте, тикин Рузан! Напоминаем: завтра, в пятницу, в 11:00 маникюр у Нарине. Придёте?</div>
+                    <div class="bub in" data-t="pWaRem">Здравствуйте, Рузан! Напоминаем: завтра, в пятницу, в 11:00 маникюр у Нарине. Придёте?</div>
                     <div class="wa-btns"><span data-t="pWaYes">Да, приду</span><span data-t="pWaMove">Перенести</span></div>
                     <div class="bub mine" data-t="pReply">Да, приду</div>
                     <div class="compose"></div>
@@ -172,7 +169,7 @@
           </ol>
           <p class="st-tap" data-t="stTap">Нажмите на экран — следующий шаг</p>
           <div class="st-caps" aria-live="polite">
-            <div class="cap on" data-step="1"><p class="cap-t" data-t="st1t">Среда, 23:47</p><p class="cap-p" data-t="st1p">Тикин Рузан вспомнила про маникюр. Салон закрыт, все спят.</p></div>
+            <div class="cap on" data-step="1"><p class="cap-t" data-t="st1t">Среда, 23:47</p><p class="cap-p" data-t="st1p">Рузан вспомнила про маникюр. Салон закрыт, все спят.</p></div>
             <div class="cap" data-step="2"><p class="cap-t" data-t="st2t">В ту же минуту</p><p class="cap-p" data-t="st2p">Ей сразу приходит автоответ со ссылкой на запись. Никто не проснулся.</p></div>
             <div class="cap" data-step="3"><p class="cap-t" data-t="st3t">Через минуту</p><p class="cap-p" data-t="st3p">Мастера и время она выбирает сама: пятница, 11:00.</p></div>
             <div class="cap" data-step="4"><p class="cap-t" data-t="st4t">Четверг, 09:12</p><p class="cap-p" data-t="st4p">Утром Нарине открывает расписание — запись уже там.</p></div>
@@ -200,7 +197,7 @@
       <article class="gr-col gr-now">
         <span class="gr-k" data-t="grNowK">Стало: SKIYAR Online</span>
         <h3 data-t="grNowT">Клиенты записываются сами, напоминание уходит само</h3>
-        <div class="gr-scene"><img class="px gr-px" src="../assets/img/px/emo-gor-happy.png" width="48" height="72" alt="" data-t-alt="grAltNow" loading="lazy">
+        <div class="gr-scene"><img class="px gr-px" src="../assets/img/px/emo-gor-free-hi.png" width="48" height="72" alt="" data-t-alt="grAltNow" loading="lazy">
           <div class="gr-cal" aria-hidden="true"><b data-t="grCalT">Пятница, Нарине</b><div><span>11:00</span><em data-t="grC1">Рузан, с сайта</em></div><div class="hot"><span>15:00</span><em data-t="grC2">Анна, подтвердила</em></div><div><span>16:30</span><em data-t="grC3">Свободно</em></div></div></div>
       </article>
     </div>
@@ -279,7 +276,7 @@
         <span class="lbl2" id="tyKindL" data-t="tyKind">Тип бизнеса</span>
         <button type="button" role="radio" data-kind-btn="salon" data-t="tyKSalon">Салон</button>
         <button type="button" role="radio" data-kind-btn="restaurant" data-t="tyKRest">Ресторан</button>
-        <button type="button" role="radio" data-kind-btn="hotel" data-t="tyKHotel">Гостиница</button>
+        <button type="button" role="radio" data-kind-btn="hotel" data-t="tyKHotel">Гестхаус</button>
       </div>
       <div class="ty-btns">
         <a class="btn btn-main" id="tyWa" target="_blank" rel="noopener"><span data-t="tyWa">Пришлите мне такой сайт</span><small data-t="tyWaS">за 1 день</small></a>

@@ -31,7 +31,7 @@ body{margin:0;background:var(--night);color:#fff;font:400 17px/1.5 var(--sans)}
 .wrap{max-width:980px;margin:0 auto;padding:0 var(--gut)}
 .top{display:flex;justify-content:flex-end;padding:16px 0}
 .langs{display:flex;gap:2px}
-.langs button{background:none;border:0;padding:8px 9px;border-radius:8px;font:400 14px/1 var(--sans);color:var(--muted);cursor:pointer}
+.langs button{min-width:44px;min-height:44px;background:none;border:0;padding:8px 9px;border-radius:8px;font:400 14px/1 var(--sans);color:var(--muted);cursor:pointer}
 .langs button[aria-pressed="true"]{background:var(--card);color:#fff}
 .grid{display:grid;gap:36px;padding:8px 0 56px;align-items:center}
 h1{margin:0 0 14px;font-weight:700;font-size:clamp(32px,8.6vw,54px);line-height:1.08;letter-spacing:-.02em}
@@ -99,7 +99,7 @@ footer{padding:20px 0 40px;color:var(--muted);font-size:14px}
       h1: "Так клиент получает напоминание", lead: "Накануне, в 18:00, автоматически. Клиент подтверждает или переносит визит в одно касание, а вы видите ответ.",
       f1: "С названием вашего бизнеса", f2: "На армянском, русском или английском — на языке клиента", f3: "Входит в пакет Online",
       label: "Напоминание", today: "Сегодня", yes: "Да, приду", move: "Перенести",
-      msg: "Здравствуйте, тикин Рузан! Напоминаем: завтра в 11:00 маникюр в «{name}». Придёте?",
+      msg: "Здравствуйте, Рузан! Напоминаем: завтра в 11:00 маникюр в «{name}». Придёте?",
       footer: "Это пример напоминания от SKIYAR. Имена и время — для примера." },
     en: { _title: "WhatsApp reminder — {name}", _noName: "Your salon", brand: "{name}", langAria: "Site language", phoneAria: "Sample WhatsApp reminder",
       h1: "This is how a client gets the reminder", lead: "The day before, at 18:00, automatically. The client confirms or reschedules in one tap, and you see the reply.",
