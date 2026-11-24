@@ -108,6 +108,7 @@ document.documentElement.classList.add("js");
       el.classList.toggle("done", n < s);
     });
     var t = track.querySelector(".sb b"); if (t) t.textContent = SB[s - 1];
+    document.dispatchEvent(new CustomEvent("story:step", { detail: s }));
   }
 
   var MQ = window.matchMedia ? matchMedia("(max-width: 899px)") : { matches: false };
@@ -154,7 +155,7 @@ document.documentElement.classList.add("js");
 
   window.addEventListener("scroll", onScroll, { passive: true });
   // Телефон: шаги сменяются сами каждые 3,2 с, пока блок на экране; нажатие на полоску — к шагу.
-  var STEP = 3200, timer = 0, inView = false;
+  var STEP = 4500, timer = 0, inView = false;
   var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   function tick() { show(cur >= N ? 1 : cur + 1); }
   function stopAuto() { clearInterval(timer); timer = 0; }
@@ -325,7 +326,7 @@ document.documentElement.classList.add("js");
     })(t0);
   }
   // сумма потерь считается плавно (как число визитов), Гор подпрыгивает, когда ползунок отпущен
-  var lossShown = 0, lossRaf = 0;
+  var lossShown = 0, lossRaf = 0, lastK = "";
   function lossText(v) { $("#caLoss").textContent = window.SITE.t("caLoss").split("{x}").join(fmt(v) + " ֏"); }
   function tweenLoss(to) {
     cancelAnimationFrame(lossRaf);
@@ -339,7 +340,7 @@ document.documentElement.classList.add("js");
   }
   // итог для экранного диктора — один раз, после того как числа досчитались
   var sayEl = document.getElementById("caSay"), sayT = 0;
-  function say() { if (!sayEl) return; clearTimeout(sayT); sayT = setTimeout(function () { sayEl.textContent = $("#caK").textContent + " " + $("#caOut").textContent + " " + $("#caUnit").textContent + ". " + $("#caLoss").textContent; }, 300); }
+  function say() { if (!sayEl) return; clearTimeout(sayT); sayT = setTimeout(function () { sayEl.textContent = $("#caK").textContent + " " + lastK + " " + $("#caUnit").textContent + ". " + $("#caLoss").textContent; }, 300); }
   var gor = box.querySelector(".ca-gor");
   function hop() { if (!gor || still) return; gor.classList.remove("hop"); void gor.offsetWidth; gor.classList.add("hop"); }
   [b, n, c].forEach(function (el) { el.addEventListener("change", hop); });
@@ -349,9 +350,11 @@ document.documentElement.classList.add("js");
     var B = +b.value, N = +n.value, C = +c.value;
     $("#caBv").textContent = B; $("#caNv").textContent = N; $("#caCv").textContent = fmt(C) + " ֏";
     var loss = N * C * WEEKS, k = Math.ceil(PRICE / C), p = B ? Math.round(N / B * 100) : 0;
+    lastK = k; window.SKIYAR_LOSS = { loss: loss, price: PRICE };
     animate(k);
     $("#caUnit").textContent = unit(k, lang);
     tweenLoss(loss);
+    document.dispatchEvent(new CustomEvent("calc:loss", { detail: { loss: loss, price: PRICE } }));
     $("#caFormula").textContent = t("caFormula").split("{n}").join(N).split("{c}").join(fmt(C) + " ֏").split("{p}").join(p);
     var msg = !N ? t("caZero") : (N / B < 0.03 ? t("caLow").split("{p}").join(p) : "");
     $("#caMsg").textContent = msg; $("#caMsg").hidden = !msg;
@@ -533,83 +536,198 @@ document.documentElement.classList.add("js");
 })();
 
 ;
-/* ПРОБНЫЙ САЙТ (ветка site-mock-tilt, на основной не ставить без «ок» основателя): объёмный «живой» телефон первого экрана.
-   Объём: толщина корпуса — стопка жёстких теней в сторону, обратную наклону; мягкая тень под телефоном;
-   слои — плашка записи и Гор у ниш сдвигаются сильнее телефона (параллакс), блик скользит по стеклу.
-   Компьютер: наклон за мышью (до 16°). Телефон: телефон сам плавно поворачивается, пока на экране,
-   плюс наклон от прокрутки; касания не перехватываются.
-   Выключено только при «уменьшить движение». Вне экрана — пауза. */
+/* ПРОБНЫЙ САЙТ (ветка site-mock-tilt; на основной — только после «ок» основателя).
+   Телефон первого экрана «как у Apple»: корпус — кадры рендера Blender (assets/img/phone3d/fNN.webp),
+   при прокрутке телефон поворачивается (кадр выбирается по прокрутке первого экрана), при загрузке — плавно «встаёт» на место.
+   Живой экран с перепиской (HTML, ниши и языки работают) кладётся поверх: для каждого кадра известны 4 угла экрана
+   (corners.json из Blender), экран натягивается на них через matrix3d. Без JS и при «уменьшить движение» — первый кадр без анимации. */
 (function () {
   "use strict";
   var box = document.getElementById("live");
-  var wrap = box && box.querySelector(".lv-box"), ph = box && box.querySelector(".lv-phone");
-  if (!ph || !wrap || !window.matchMedia) return;
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var mouse = matchMedia("(hover: hover) and (pointer: fine)").matches;
-  document.documentElement.classList.add("tilt-on");
-  var sheen = document.createElement("i"); sheen.className = "lv-sheen"; sheen.setAttribute("aria-hidden", "true");
-  ph.appendChild(sheen);
-  var toast = wrap.querySelector(".lv-toast"), gor = document.querySelector(".niche-gor");
+  var wrap = box && box.querySelector(".lv-box"), ph = box && box.querySelector(".lv-phone"), scr = ph && ph.querySelector(".lv-screen");
+  if (!scr || !window.fetch) return;
+  var base = (document.querySelector('link[rel="stylesheet"][href*="assets/"]') || {}).getAttribute("href").replace(/assets\/.*$/, "") + "assets/img/phone3d/";
+  var still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var SW = 300, SH = 636; // размер живого экрана в CSS-пикселях (пропорции экрана модели)
 
-  var A = 16, DEPTH = 12;
-  var EDGE = ["#9db2d4", "#8aa0c4", "#7890b6", "#6982a8", "#5c7599", "#51698b", "#475e7e", "#3e5372", "#364966", "#2e3f5a", "#26354d", "#0b111d"];
-  var tx = 0, ty = 0, raf = 0, rect = null, seen = true;
-  function draw() {
-    raf = 0;
-    ph.style.transform = "perspective(1000px) rotateX(" + (-ty * A).toFixed(2) + "deg) rotateY(" + (tx * A).toFixed(2) + "deg)";
-    // толщина: слои корпуса уходят в сторону, противоположную наклону
-    // металлический торец: ближние слои светлее, дальние темнее
-    var sh = [], dx = -tx * 1.6, dy = ty * 1.6, i, c;
-    for (i = 1; i <= DEPTH; i++) { c = EDGE[i - 1]; sh.push((dx * i).toFixed(1) + "px " + (dy * i).toFixed(1) + "px 0 " + c); }
-    sh.push((dx * 22).toFixed(0) + "px " + (26 + dy * 16).toFixed(0) + "px 50px -16px rgba(0,0,0,.7)");
-    sh.push("0 0 0 1px rgba(127,178,236,.2) inset");
-    ph.style.boxShadow = sh.join(",");
-    sheen.style.transform = "translate(" + (tx * 30).toFixed(1) + "%," + (ty * 20).toFixed(1) + "%)";
-    if (toast) toast.style.translate = (tx * 26).toFixed(1) + "px " + (ty * 18).toFixed(1) + "px";
-    if (gor) gor.style.translate = (-tx * 8).toFixed(1) + "px 0";
-  }
-  function queue() { if (!raf) raf = requestAnimationFrame(draw); }
+  var DATA = {"w":900,"h":1350,"n":36,"corners":[[[160.84,106.17],[656.02,64.52],[717.4,1272.96],[234.04,1233.48]],[[162.25,105.96],[657.69,64.47],[716.33,1273.49],[232.3,1234.07]],[[163.45,105.62],[660.11,64.56],[715.56,1273.86],[229.99,1234.77]],[[164.41,105.15],[663.21,64.79],[715.11,1274.07],[227.17,1235.57]],[[165.15,104.54],[666.95,65.15],[714.96,1274.12],[223.87,1236.49]],[[165.68,103.81],[671.22,65.66],[715.11,1274.03],[220.16,1237.51]],[[166.02,102.96],[675.94,66.32],[715.53,1273.78],[216.12,1238.64]],[[166.21,102.0],[681.01,67.11],[716.19,1273.4],[211.83,1239.88]],[[166.28,100.94],[686.31,68.06],[717.06,1272.88],[207.37,1241.24]],[[166.29,99.77],[691.73,69.14],[718.08,1272.23],[202.84,1242.7]],[[166.27,98.52],[697.15,70.36],[719.2,1271.47],[198.33,1244.27]],[[166.26,97.19],[702.44,71.71],[720.37,1270.6],[193.95,1245.94]],[[166.33,95.79],[707.5,73.18],[721.54,1269.63],[189.79,1247.7]],[[166.5,94.34],[712.22,74.76],[722.67,1268.57],[185.95,1249.54]],[[166.82,92.84],[716.5,76.44],[723.7,1267.43],[182.5,1251.46]],[[167.32,91.31],[720.26,78.2],[724.6,1266.24],[179.54,1253.44]],[[168.01,89.77],[723.43,80.03],[725.34,1264.99],[177.12,1255.46]],[[168.92,88.22],[725.96,81.9],[725.9,1263.71],[175.29,1257.51]],[[170.03,86.68],[727.83,83.81],[726.26,1262.4],[174.1,1259.57]],[[171.36,85.18],[729.01,85.72],[726.42,1261.09],[173.55,1261.63]],[[172.87,83.71],[729.52,87.62],[726.4,1259.79],[173.64,1263.66]],[[174.54,82.3],[729.39,89.5],[726.2,1258.51],[174.35,1265.65]],[[176.33,80.95],[728.66,91.34],[725.86,1257.26],[175.65,1267.58]],[[178.2,79.69],[727.38,93.11],[725.41,1256.06],[177.47,1269.43]],[[180.1,78.53],[725.63,94.81],[724.88,1254.92],[179.76,1271.18]],[[181.98,77.46],[723.49,96.42],[724.32,1253.84],[182.42,1272.83]],[[183.77,76.51],[721.04,97.94],[723.78,1252.85],[185.36,1274.36]],[[185.42,75.68],[718.38,99.35],[723.3,1251.94],[188.5,1275.76]],[[186.89,74.98],[715.6,100.65],[722.92,1251.13],[191.71,1277.02]],[[188.11,74.42],[712.79,101.83],[722.7,1250.42],[194.9,1278.13]],[[189.05,73.99],[710.03,102.89],[722.65,1249.82],[197.97,1279.1]],[[189.68,73.72],[707.41,103.82],[722.83,1249.34],[200.83,1279.91]],[[189.96,73.6],[705.01,104.64],[723.23,1248.98],[203.38,1280.57]],[[189.9,73.63],[702.87,105.32],[723.89,1248.74],[205.54,1281.07]],[[189.47,73.81],[701.07,105.89],[724.8,1248.63],[207.26,1281.42]],[[188.71,74.16],[699.64,106.33],[725.95,1248.66],[208.48,1281.62]]]};
+  var T0 = Date.now();
+  start(DATA);
 
-  if (mouse) {
-    var area = document.querySelector(".hero") || box;
-    var measure = function () { rect = ph.getBoundingClientRect(); };
-    area.addEventListener("pointerenter", measure, { passive: true });
-    window.addEventListener("scroll", function () { rect = null; }, { passive: true });
-    area.addEventListener("pointermove", function (e) {
-      if (e.pointerType !== "mouse") return;
-      if (!rect) measure();
-      tx = Math.max(-1, Math.min(1, (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2 + 160)));
-      ty = Math.max(-1, Math.min(1, (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2 + 160)));
-      wrap.classList.add("tilting"); queue();
-    }, { passive: true });
-    area.addEventListener("pointerleave", function () { wrap.classList.remove("tilting"); tx = -0.5; ty = 0.2; queue(); }, { passive: true });
-    tx = -0.5; ty = 0.2; queue(); // в покое телефон стоит чуть повёрнутым — объём виден сразу
-  } else {
-    // телефон: медленный поворот туда-обратно + наклон от прокрутки первого экрана; ~30 кадров/с, только пока виден
-    var hero = document.querySelector(".hero"), hh = hero ? hero.offsetHeight : innerHeight, p = 0, odd = false, loop = 0;
-    window.addEventListener("scroll", function () { p = Math.min(1, scrollY / hh); }, { passive: true });
-    var step = function (t) {
-      loop = 0;
-      if (!seen || document.hidden) return;
-      odd = !odd;
-      if (odd) { tx = Math.sin(t / 1500) * 1.1; ty = Math.cos(t / 2300) * 0.3 - p * 0.8; draw(); }
-      loop = requestAnimationFrame(step);
-    };
-    var go = function () { if (!loop && seen && !document.hidden) loop = requestAnimationFrame(step); };
-    document.addEventListener("visibilitychange", go);
-    if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { seen = e[0].isIntersecting; go(); }).observe(ph);
-    go();
+  function start(J) {
+    var N = J.n, FW = J.w, FH = J.h, imgs = new Array(N), cur = -1, want = 0;
+    var cv = document.createElement("img"); cv.className = "lv-3d"; cv.alt = ""; cv.setAttribute("aria-hidden", "true");
+    cv.width = FW; cv.height = FH;
+    ph.insertBefore(cv, scr);
+    var k = 1;
+    document.documentElement.classList.add("ph3d");
+    // детали настоящего телефона поверх живого экрана: островок камеры, строка ввода, значки сети
+    scr.insertAdjacentHTML("beforeend", '<i class="lv-island" aria-hidden="true"></i><i class="lv-input" aria-hidden="true"></i><i class="lv-send" aria-hidden="true"></i>');
+    var dots = scr.querySelector(".lv-sb span[aria-hidden]");
+    if (dots) dots.innerHTML = '<svg width="54" height="12" viewBox="0 0 54 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y=".5" width="3" height="11.5" rx="1"/><path d="M28 3.2a9 9 0 0 1 6.4 2.6l1.3-1.3a10.8 10.8 0 0 0-15.4 0l1.3 1.3A9 9 0 0 1 28 3.2zm0 3.4a5.6 5.6 0 0 1 4 1.6l1.3-1.3a7.4 7.4 0 0 0-10.6 0L24 8.2a5.6 5.6 0 0 1 4-1.6zm0 3.3a2 2 0 0 0-1.5.6L28 12l1.5-1.5a2 2 0 0 0-1.5-.6z"/><rect x="39.5" y="1.5" width="12" height="9" rx="2.5" fill="none" stroke="currentColor" stroke-opacity=".45"/><rect x="41" y="3" width="8" height="6" rx="1.3"/></svg>';
+
+    function size() {
+      k = ph.clientWidth / FW;
+      cur = -1; paint();
+    }
+    // матрица, переводящая прямоугольник экрана в 4 угла кадра
+    function adj(m) { return [m[4]*m[8]-m[5]*m[7], m[2]*m[7]-m[1]*m[8], m[1]*m[5]-m[2]*m[4], m[5]*m[6]-m[3]*m[8], m[0]*m[8]-m[2]*m[6], m[2]*m[3]-m[0]*m[5], m[3]*m[7]-m[4]*m[6], m[1]*m[6]-m[0]*m[7], m[0]*m[4]-m[1]*m[3]]; }
+    function mm(a, b) { var c = [], i, j, s, t; for (i = 0; i < 3; i++) for (j = 0; j < 3; j++) { s = 0; for (t = 0; t < 3; t++) s += a[3*i+t] * b[3*t+j]; c[3*i+j] = s; } return c; }
+    function mv(m, v) { return [m[0]*v[0]+m[1]*v[1]+m[2]*v[2], m[3]*v[0]+m[4]*v[1]+m[5]*v[2], m[6]*v[0]+m[7]*v[1]+m[8]*v[2]]; }
+    function basis(p) { var m = [p[0][0], p[1][0], p[2][0], p[0][1], p[1][1], p[2][1], 1, 1, 1], v = mv(adj(m), [p[3][0], p[3][1], 1]); return mm(m, [v[0],0,0, 0,v[1],0, 0,0,v[2]]); }
+    var SRC = basis([[0, 0], [SW, 0], [SW, SH], [0, SH]]), SRCA = adj(SRC);
+    function fit(c) {
+      var d = basis(c.map(function (p) { return [p[0] * k, p[1] * k]; })), t = mm(d, SRCA), i;
+      for (i = 0; i < 9; i++) t[i] /= t[8];
+      scr.style.transform = "matrix3d(" + [t[0], t[3], 0, t[6], t[1], t[4], 0, t[7], 0, 0, 1, 0, t[2], t[5], 0, t[8]].map(function (x) { return +x.toFixed(6); }).join(",") + ")";
+    }
+    function paint() {
+      var f = want; while (f > 0 && !imgs[f]) f--; // нужный кадр ещё грузится — ближайший готовый
+      if (!imgs[f] || f === cur) return;
+      cur = f; cv.src = imgs[f].src; fit(J.corners[f]);
+    }
+    // кадр считается готовым только после распаковки (decode) — иначе браузер распаковывает его посреди прокрутки
+    function load(i, cb) {
+      var im = new Image(); im.decoding = "async"; im.src = base + "f" + (i < 10 ? "0" : "") + i + ".webp";
+      var done = function () { imgs[i] = im; if (cb) cb(); if (Math.abs(i - want) < 2) paint(); };
+      if (im.decode) im.decode().then(done, function () {}); else im.onload = done;
+    }
+
+    // прокрутка: 0 — телефон повёрнут влево, к концу первого экрана — развернулся вправо
+    var hero = document.querySelector(".hero"), raf = 0, intro = 0;
+    function fromScroll() {
+      var r = hero.getBoundingClientRect(), p = Math.max(0, Math.min(1, -r.top / Math.max(1, r.height * 0.75)));
+      return Math.round(p * (N - 1));
+    }
+    function onScroll() { if (!raf) raf = requestAnimationFrame(function () { raf = 0; if (intro) return; want = fromScroll(); paint(); }); }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", function () { size(); }, { passive: true });
+
+    var got = 1;
+    load(0, function () {
+      size();
+      for (var i = 1; i < N; i++) load(i, function () { if (++got === N) startIntro(); });
+    });
+    cv.src = base + "f00.webp"; size(); fit(J.corners[0]); cur = 0; // сразу первый кадр: место под телефон занято с первой отрисовки
+    window.addEventListener("load", function () { size(); }, { once: true });
+    function startIntro() {
+      if (still) return;
+      var r = ph.getBoundingClientRect();
+      if (Date.now() - T0 > 2500 || r.top > innerHeight * 0.55 || r.bottom < 0) { onScroll(); return; } // долго грузилось или телефон не на экране — без «появления»
+      {
+        // появление: телефон за 1,4 с разворачивается из середины поворота в исходное положение
+        intro = 1; var t0 = 0, from = Math.round(N * 0.6);
+        var go = function (t) {
+          if (!t0) t0 = t;
+          var p = Math.min(1, (t - t0) / 1400), e = 1 - Math.pow(1 - p, 3);
+          want = Math.round(from * (1 - e)); paint();
+          if (p < 1) requestAnimationFrame(go); else { intro = 0; onScroll(); }
+        };
+        if (window.scrollY > 40) { intro = 0; onScroll(); return; } // уже прокрутили — без появления
+        requestAnimationFrame(go);
+      }
+    }
   }
-  // блик — только пока телефон на экране
-  if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { seen = e[0].isIntersecting; wrap.classList.toggle("idle", seen); }).observe(ph);
 })();
-/* персонажи двигаются только когда видны на экране (иначе анимация на паузе — браузер не тратит силы) */
+
+;
+/* ПРОБНЫЙ САЙТ: у персонажей есть эмоции.
+   Моргание (Гор, Лусине, робот) — раз в 2,5–5 с. В «Истории записи» лица меняются по шагам:
+   Рузан злится (салон закрыт) → удивляется автоответу → радуется записи; Нарине (Лусине) удивляется, потом радуется;
+   Гор в конце доволен. В калькуляторе Гор паникует при больших потерях и радуется при маленьких.
+   Робот иногда улыбается. Анимации на паузе, когда персонажа не видно. */
 (function () {
-  if (!("IntersectionObserver" in window)) return;
-  var l = document.querySelectorAll(".niche-gor, .st-px, .ski, .gr-px, .ca-gor");
-  document.documentElement.classList.add("px-io");
-  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle("px-go", e.isIntersecting); }); });
-  for (var i = 0; i < l.length; i++) io.observe(l[i]);
+  "use strict";
+  var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function dir(img) { return img.getAttribute("src").replace(/[^\/]*$/, ""); }
+  var pre = {};
+  function preload(img, names) { names.forEach(function (n) { var k = dir(img) + n; if (!pre[k]) { pre[k] = new Image(); pre[k].src = k; } }); }
+  function setSrc(img, name) { var s = dir(img) + name; if (img.getAttribute("src") !== s) img.setAttribute("src", s); }
+
+  // кто есть кто: базовый кадр, моргание, радость
+  var who = {
+    gor: { base: "hero-gor-1x.png", blink: "emo-gor-blink.png", happy: "emo-gor-happy.png" },
+    lusine: { base: "hero-lusine-1x.png", blink: "emo-lusine-blink.png", happy: "emo-lusine-happy.png", wow: "emo-lusine-wow.png" },
+    ski: { base: "hero-ski-1x.png", blink: "emo-ski-blink.png", happy: "emo-ski-happy.png" },
+    ruzan: { base: "hero-ruzan-1x.png", angry: "emo-ruzan-angry.png", wow: "emo-ruzan-wow.png", happy: "emo-ruzan-happy.png" }
+  };
+  var list = [];
+  [].forEach.call(document.querySelectorAll("img.px"), function (img) {
+    var m = /hero-(gor|lusine|ski|ruzan)-1x\.png$/.exec(img.getAttribute("src"));
+    if (!m) return;
+    var c = { img: img, w: who[m[1]], mood: "base", vis: false };
+    img.dataset.who = m[1]; list.push(c);
+    preload(img, Object.keys(c.w).map(function (k) { return c.w[k]; }));
+  });
+  // облачко над головой: эмоцию видно даже на маленьком персонаже (у Рузан глаза за очками)
+  var BUB = { angry: "!!", wow: "!", happy: "♥" };
+  function show(c) {
+    setSrc(c.img, c.w[c.mood]);
+    if (!c.img.classList.contains("st-px")) return;
+    if (!c.bub) { c.bub = document.createElement("span"); c.bub.className = "emo-bub"; c.bub.setAttribute("aria-hidden", "true"); c.img.parentNode.appendChild(c.bub); }
+    var t = BUB[c.mood] || "";
+    c.bub.textContent = t; c.bub.className = "emo-bub emo-" + c.mood + (t && c.img.classList.contains("on") ? " on" : "");
+    c.bub.style.left = (c.img.offsetLeft + c.img.offsetWidth * 0.62) + "px"; c.bub.style.top = (c.img.offsetTop - 8) + "px";
+  }
+  function mood(c, m, ms) {
+    if (!c.w[m]) return;
+    c.mood = m; show(c); clearTimeout(c.t);
+    if (ms) c.t = setTimeout(function () { c.mood = "base"; show(c); }, ms);
+  }
+  // видимость
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { list.forEach(function (c) { if (c.img === e.target) c.vis = e.isIntersecting; }); }); });
+    list.forEach(function (c) { io.observe(c.img); });
+  } else list.forEach(function (c) { c.vis = true; });
+
+  // моргание: только у тех, у кого видны глаза, и только в спокойном настроении
+  if (!still) (function blinkLoop() {
+    list.forEach(function (c) {
+      if (!c.vis || c.mood !== "base" || !c.w.blink || Math.random() < 0.45) return;
+      setSrc(c.img, c.w.blink); setTimeout(function () { if (c.mood === "base") show(c); }, 140);
+    });
+    setTimeout(blinkLoop, 2500 + Math.random() * 2500);
+  })();
+
+  // робот иногда улыбается
+  if (!still) setInterval(function () { list.forEach(function (c) { if (c.vis && c.img.dataset.who === "ski" && c.mood === "base" && Math.random() < 0.5) mood(c, "happy", 1600); }); }, 5000);
+
+  // Гор у кнопок ниш радуется выбору
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest || !e.target.closest(".niche-b")) return;
+    list.forEach(function (c) { if (c.img.classList.contains("niche-gor")) mood(c, "happy", 1400); });
+  });
+
+  // «История записи»: эмоции по шагам
+  var STORY = { ruzan: { 1: "angry", 2: "wow", 3: "happy", 5: "happy" }, lusine: { 4: "wow" }, gor: { 6: "happy" } };
+  document.addEventListener("story:step", function (e) {
+    var s = e.detail;
+    list.forEach(function (c) {
+      if (!c.img.classList.contains("st-px")) return;
+      var m = (STORY[c.img.dataset.who] || {})[s] || "base";
+      mood(c, m);
+      if (c.img.dataset.who === "lusine" && s === 4) c.t = setTimeout(function () { mood(c, "happy"); }, 1200); // увидела запись — обрадовалась
+    });
+  });
+  // первый шаг уже на экране при загрузке
+  list.forEach(function (c) { if (c.img.classList.contains("st-px") && c.img.dataset.who === "ruzan") mood(c, "angry"); });
+
+  // калькулятор: Гор паникует, грустит или радуется в зависимости от потерь
+  var ca = document.querySelector(".ca-gor");
+  if (ca) {
+    preload(ca, ["gor-panic.png", "gor-neutral.png", "gor-joy.png"]);
+    var caMood = function (d) { var r = d.loss / Math.max(1, d.price); setSrc(ca, r >= 3 ? "gor-panic.png" : r >= 1 ? "gor-neutral.png" : "gor-joy.png"); };
+    document.addEventListener("calc:loss", function (e) { caMood(e.detail); });
+    if (window.SKIYAR_LOSS) caMood(window.SKIYAR_LOSS); // калькулятор уже посчитал до нас
+  }
+
+  // анимации движения — только когда персонаж виден
+  if ("IntersectionObserver" in window) {
+    var l = document.querySelectorAll(".niche-gor, .st-px, .ski, .gr-px, .ca-gor");
+    document.documentElement.classList.add("px-io");
+    var io2 = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle("px-go", e.isIntersecting); }); });
+    for (var i = 0; i < l.length; i++) io2.observe(l[i]);
+  }
 })();
 
 ;

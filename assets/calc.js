@@ -29,7 +29,7 @@
     })(t0);
   }
   // сумма потерь считается плавно (как число визитов), Гор подпрыгивает, когда ползунок отпущен
-  var lossShown = 0, lossRaf = 0;
+  var lossShown = 0, lossRaf = 0, lastK = "";
   function lossText(v) { $("#caLoss").textContent = window.SITE.t("caLoss").split("{x}").join(fmt(v) + " ֏"); }
   function tweenLoss(to) {
     cancelAnimationFrame(lossRaf);
@@ -43,7 +43,7 @@
   }
   // итог для экранного диктора — один раз, после того как числа досчитались
   var sayEl = document.getElementById("caSay"), sayT = 0;
-  function say() { if (!sayEl) return; clearTimeout(sayT); sayT = setTimeout(function () { sayEl.textContent = $("#caK").textContent + " " + $("#caOut").textContent + " " + $("#caUnit").textContent + ". " + $("#caLoss").textContent; }, 300); }
+  function say() { if (!sayEl) return; clearTimeout(sayT); sayT = setTimeout(function () { sayEl.textContent = $("#caK").textContent + " " + lastK + " " + $("#caUnit").textContent + ". " + $("#caLoss").textContent; }, 300); }
   var gor = box.querySelector(".ca-gor");
   function hop() { if (!gor || still) return; gor.classList.remove("hop"); void gor.offsetWidth; gor.classList.add("hop"); }
   [b, n, c].forEach(function (el) { el.addEventListener("change", hop); });
@@ -53,9 +53,11 @@
     var B = +b.value, N = +n.value, C = +c.value;
     $("#caBv").textContent = B; $("#caNv").textContent = N; $("#caCv").textContent = fmt(C) + " ֏";
     var loss = N * C * WEEKS, k = Math.ceil(PRICE / C), p = B ? Math.round(N / B * 100) : 0;
+    lastK = k; window.SKIYAR_LOSS = { loss: loss, price: PRICE };
     animate(k);
     $("#caUnit").textContent = unit(k, lang);
     tweenLoss(loss);
+    document.dispatchEvent(new CustomEvent("calc:loss", { detail: { loss: loss, price: PRICE } }));
     $("#caFormula").textContent = t("caFormula").split("{n}").join(N).split("{c}").join(fmt(C) + " ֏").split("{p}").join(p);
     var msg = !N ? t("caZero") : (N / B < 0.03 ? t("caLow").split("{p}").join(p) : "");
     $("#caMsg").textContent = msg; $("#caMsg").hidden = !msg;
