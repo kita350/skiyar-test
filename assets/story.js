@@ -79,6 +79,14 @@
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(function (e) { inView = e[0].isIntersecting; restart(); }, { threshold: 0.4 }).observe(stage);
   }
+  // Телефон: касание по телефону или подписи — следующий шаг, по левой трети — предыдущий; таймер начинается заново.
+  each(".st-phone, .st-caps", function (el) {
+    el.addEventListener("click", function (e) {
+      if (!MQ.matches) return;
+      var r = el.getBoundingClientRect(), back = e.clientX < r.left + r.width / 3;
+      show(back ? (cur <= 1 ? N : cur - 1) : (cur >= N ? 1 : cur + 1)); restart();
+    });
+  });
   document.addEventListener("visibilitychange", restart);
 
   var rz = 0, lastW = innerWidth;

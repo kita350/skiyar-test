@@ -662,3 +662,34 @@ body[data-lang="en"] .lang-cur::after{content:"Eng"}
 @media (max-width:350px){ .nav .wrap{gap:6px} .logo{letter-spacing:.06em} .lang-dd summary{padding:0 7px;gap:4px} .nav-demo{padding:0 11px} }
 .lang-menu a{color:var(--white)}
 .lang-menu a[aria-current="page"]{color:var(--sky)}
+.tilt-on .lv-phone{will-change:transform}
+@media (hover:none),(pointer:coarse){ .tilt-on .lv-phone{transition:none} .tilt-on .lv-box.idle:not(.tilting){animation:none} }
+.tilt-on .lv-toast{transition-property:opacity,transform,translate}
+@keyframes px-check{0%,62%,100%{translate:0 0;rotate:0deg}66%{translate:0 -3px}70%{translate:0 0}76%{rotate:-5deg}82%{rotate:5deg}88%{rotate:0deg}}
+@keyframes px-tap{0%,100%{translate:0 0}50%{translate:0 -2px}}
+@keyframes px-sway{0%,100%{rotate:-2deg}50%{rotate:2deg}}
+@keyframes px-type{0%,100%{translate:0 0}25%{translate:0 -1px}75%{translate:0 1px}}
+@keyframes px-wave{0%,55%,100%{rotate:0deg;translate:0 0}62%{rotate:-6deg;translate:0 -3px}70%{rotate:6deg}78%{rotate:-6deg}86%{rotate:0deg;translate:0 0}}
+@keyframes px-float{0%,100%{translate:0 0}50%{translate:0 -7px}}
+@keyframes px-shake{0%,70%,100%{translate:0 0}74%{translate:-3px 0}78%{translate:3px 0}82%{translate:-3px 0}86%{translate:3px 0}90%{translate:0 0}}
+@keyframes px-jump{0%,60%,100%{translate:0 0;scale:1}66%{translate:0 0;scale:1.06 .92}74%{translate:0 -14px;scale:.96 1.05}84%{translate:0 0;scale:1.04 .96}90%{scale:1}}
+.niche-gor{transform-origin:50% 100%;animation:px-check 4.5s steps(18) infinite}
+.st-px{transform-origin:50% 100%}
+.st-px[src*="ruzan"]{animation:px-tap .7s steps(2) infinite,px-sway 2.6s steps(6) infinite}
+.st-px[src*="lusine"]{animation:px-type .45s steps(4) infinite}
+.st-px[src*="gor"]{animation:px-wave 3s steps(16) infinite}
+.ski{animation:px-float 2.8s steps(8) infinite}
+.gr-px{transform-origin:50% 100%}
+.gr-px[src*="panic"]{animation:px-shake 2.2s steps(22) infinite}
+.gr-px[src*="joy"]{animation:px-jump 2.6s steps(20) infinite}
+.ca-gor{animation:px-jump 3.4s steps(20) infinite}
+.niche-gor.nod{animation:nod .5s var(--ease-out)}
+.ca-gor.hop{animation:hop .5s var(--ease-out)}
+.st-tap{display:none}
+@media (max-width:899px){
+.st-phone,.st-caps{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.st-tap{display:flex;align-items:center;gap:6px;margin:10px 0 0;font-size:13px;color:var(--sky)}
+.st-tap::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--sky);animation:px-tap 1s steps(2) infinite}
+}
+.px-io .niche-gor:not(.px-go),.px-io .st-px:not(.px-go),.px-io .ski:not(.px-go),.px-io .gr-px:not(.px-go),.px-io .ca-gor:not(.px-go){animation-play-state:paused}
+.px-io .st-px:not(.on){animation-play-state:paused}

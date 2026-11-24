@@ -5,7 +5,7 @@
   var S = {
     hy: {
       stTitle: "Մեկ գրանցում՝ սկզբից մինչև վերջ",
-      stAria: "Պատմության քայլերը",
+      stAria: "Պատմության քայլերը", stTap: "Սեղմեք էկրանին՝ հաջորդ քայլը",
       st1t: "Չորեքշաբթի, 23:47", st1p: "Տիկին Ռուզանը հիշեց մատնահարդարման մասին։ Սրահը փակ է, բոլորը քնած են։",
       st2t: "Նույն րոպեին", st2p: "Նա անմիջապես ստանում է ավտոպատասխան՝ գրանցման հղումով։ Ոչ ոք չարթնացավ։",
       st3t: "Մեկ րոպե անց", st3p: "Վարպետին և ժամը նա ընտրում է ինքը՝ ուրբաթ, 11:00։",
@@ -33,7 +33,7 @@
     },
     ru: {
       stTitle: "Одна запись от начала до конца",
-      stAria: "Шаги истории",
+      stAria: "Шаги истории", stTap: "Нажмите на экран — следующий шаг",
       st1t: "Среда, 23:47", st1p: "Тикин Рузан вспомнила про маникюр. Салон закрыт, все спят.",
       st2t: "В ту же минуту", st2p: "Ей сразу приходит автоответ со ссылкой на запись. Никто не проснулся.",
       st3t: "Через минуту", st3p: "Мастера и время она выбирает сама: пятница, 11:00.",
@@ -60,7 +60,7 @@
     },
     en: {
       stTitle: "One booking, start to finish",
-      stAria: "Story steps",
+      stAria: "Story steps", stTap: "Tap the screen for the next step",
       st1t: "Wednesday, 23:47", st1p: "Mrs Ruzan remembers she needs a manicure. The salon is closed, everyone’s asleep.",
       st2t: "The same minute", st2p: "An auto-reply with the booking link arrives right away. Nobody woke up.",
       st3t: "A minute later", st3p: "She picks the master and the time herself: Friday, 11:00.",
