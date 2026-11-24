@@ -592,7 +592,7 @@ document.documentElement.classList.add("js");
       loop = 0;
       if (!seen || document.hidden) return;
       odd = !odd;
-      if (odd) { tx = Math.sin(t / 1400) * 0.7; ty = Math.cos(t / 2300) * 0.25 - p * 0.8; draw(); }
+      if (odd) { tx = Math.sin(t / 1500) * 1.1; ty = Math.cos(t / 2300) * 0.3 - p * 0.8; draw(); }
       loop = requestAnimationFrame(step);
     };
     var go = function () { if (!loop && seen && !document.hidden) loop = requestAnimationFrame(step); };
