@@ -630,3 +630,8 @@ p,li,.cap-p,small{text-wrap:pretty}
 @media (max-width:340px){ .pkt .soon{font-size:11px!important} }
 /* подвал: ссылка реагирует только на свой текст, а не на всю ширину колонки */
 .foot-cols a,.fin-c a{width:fit-content;max-width:100%}
+/* «признаки ИИ»: слово ДЕМО не повторяется — префикс в поле убран (ДЕМО уже в заголовке формы и в подписи поля) */
+.ty-pre{display:none!important}
+.ty-claim .ty-input{padding-left:16px}
+/* «Что вы получаете» на телефоне: низ блока как верх следующего */
+@media (max-width:899px){ .bento{padding-bottom:44px!important} main > section.bento::after{display:none!important} }
