@@ -26,6 +26,9 @@
     document.documentElement.classList.add("ph3d");
     // детали настоящего телефона поверх живого экрана: островок камеры, строка ввода, значки сети
     scr.insertAdjacentHTML("beforeend", '<i class="lv-island" aria-hidden="true"></i><i class="lv-input" aria-hidden="true"></i><i class="lv-send" aria-hidden="true"></i>');
+    // «Напоминание отправлено» — пуш-уведомление на самом экране телефона (поворачивается вместе с ним)
+    var toast = box.querySelector(".lv-toast");
+    if (toast) { scr.appendChild(toast); toast.insertAdjacentHTML("afterbegin", '<i class="lv-wa" aria-hidden="true"></i>'); }
     var dots = scr.querySelector(".lv-sb span[aria-hidden]");
     if (dots) dots.innerHTML = '<svg width="54" height="12" viewBox="0 0 54 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y=".5" width="3" height="11.5" rx="1"/><path d="M28 3.2a9 9 0 0 1 6.4 2.6l1.3-1.3a10.8 10.8 0 0 0-15.4 0l1.3 1.3A9 9 0 0 1 28 3.2zm0 3.4a5.6 5.6 0 0 1 4 1.6l1.3-1.3a7.4 7.4 0 0 0-10.6 0L24 8.2a5.6 5.6 0 0 1 4-1.6zm0 3.3a2 2 0 0 0-1.5.6L28 12l1.5-1.5a2 2 0 0 0-1.5-.6z"/><rect x="39.5" y="1.5" width="12" height="9" rx="2.5" fill="none" stroke="currentColor" stroke-opacity=".45"/><rect x="41" y="3" width="8" height="6" rx="1.3"/></svg>';
 
@@ -45,7 +48,7 @@
       scr.style.transform = "matrix3d(" + [t[0], t[3], 0, t[6], t[1], t[4], 0, t[7], 0, 0, 1, 0, t[2], t[5], 0, t[8]].map(function (x) { return +x.toFixed(6); }).join(",") + ")";
     }
     function paint() {
-      var f = want; while (f > 0 && !imgs[f]) f--; // нужный кадр ещё грузится — ближайший готовый
+      var f = want, g = want; while (f > 0 && !imgs[f]) f--; while (g < N - 1 && !imgs[g]) g++; if (!imgs[f] || (imgs[g] && g - want < want - f)) f = g; // нужный кадр ещё грузится — ближайший готовый
       if (!imgs[f] || f === cur) return;
       cur = f; cv.src = imgs[f].src; fit(J.corners[f]);
     }
@@ -58,30 +61,42 @@
 
     // прокрутка: 0 — телефон повёрнут влево, к концу первого экрана — развернулся вправо
     var hero = document.querySelector(".hero"), raf = 0, intro = 0;
+    // исходное положение — прямо (кадр ST ≈ 0°); телефон (касание): прокрутка поворачивает вправо до +22°
+    var ST = Math.round(N * 0.56);
     function fromScroll() {
       var r = hero.getBoundingClientRect(), p = Math.max(0, Math.min(1, -r.top / Math.max(1, r.height * 0.75)));
-      return p * (N - 1);
+      return ST + p * (N - 1 - ST);
     }
+    // компьютер (мышь): телефон следует за курсором по горизонтали, ±21 кадр ≈ ±15°; прокрутка не поворачивает
+    var MOUSE = matchMedia("(hover: hover) and (pointer: fine) and (min-width: 900px)");
     // плавность: показанный кадр догоняет нужный с замедлением (как инерция), а не прыгает за пальцем
-    var pos = 0, target = 0;
+    var pos = ST, target = ST;
     function glide() {
       raf = 0; if (intro) return;
-      pos += (target - pos) * 0.16;
+      pos += (target - pos) * (MOUSE.matches ? 0.12 : 0.16);
       if (Math.abs(target - pos) < 0.05) pos = target;
       want = Math.round(pos); paint();
       if (pos !== target) raf = requestAnimationFrame(glide);
     }
-    function onScroll() { if (still) return; // «уменьшить движение»: телефон стоит в первом кадре
-      target = fromScroll(); if (!raf) raf = requestAnimationFrame(glide); }
+    function go2(t) { target = t; if (!raf) raf = requestAnimationFrame(glide); }
+    function onScroll() { if (still) return; // «уменьшить движение»: телефон стоит прямо
+      go2(MOUSE.matches ? target : fromScroll()); }
     window.addEventListener("scroll", onScroll, { passive: true });
+    document.addEventListener("mousemove", function (e) {
+      if (still || !MOUSE.matches) return;
+      go2(Math.max(0, Math.min(N - 1, ST + (e.clientX / innerWidth - 0.5) * 2 * 21)));
+    }, { passive: true });
+    document.documentElement.addEventListener("mouseleave", function () { if (!still && MOUSE.matches) go2(ST); });
+    if (MOUSE.addEventListener) MOUSE.addEventListener("change", function () { if (!still) go2(MOUSE.matches ? ST : fromScroll()); });
     window.addEventListener("resize", function () { size(); }, { passive: true });
 
     var got = 1;
-    load(0, function () {
+    want = ST;
+    load(ST, function () {
       size();
-      for (var i = 1; i < N; i++) load(i, function () { if (++got === N) startIntro(); });
+      for (var i = 0; i < N; i++) if (i !== ST) load(i, function () { if (++got === N) startIntro(); });
     });
-    cv.src = base + "f00.webp"; size(); fit(J.corners[0]); cur = 0; // сразу первый кадр: место под телефон занято с первой отрисовки
+    cv.src = base + "f" + ST + ".webp"; size(); fit(J.corners[ST]); cur = ST; // сразу первый кадр: место под телефон занято с первой отрисовки
     window.addEventListener("load", function () { size(); }, { once: true });
     function startIntro() {
       if (still) return;
@@ -89,11 +104,11 @@
       if (Date.now() - T0 > 2500 || r.top > innerHeight * 0.55 || r.bottom < 0) { onScroll(); return; } // долго грузилось или телефон не на экране — без «появления»
       {
         // появление: телефон за 1,4 с разворачивается из середины поворота в исходное положение
-        intro = 1; var t0 = 0, from = Math.round(N * 0.6);
+        intro = 1; var t0 = 0, from = 24;
         var go = function (t) {
           if (!t0) t0 = t;
-          var p = Math.min(1, (t - t0) / 1400), e = 1 - Math.pow(1 - p, 3);
-          want = Math.round(from * (1 - e)); paint();
+          var p = Math.min(1, (t - t0) / 1200), e = 1 - Math.pow(1 - p, 3);
+          want = Math.round(from + (ST - from) * e); paint();
           if (p < 1) requestAnimationFrame(go); else { intro = 0; pos = want; onScroll(); }
         };
         if (window.scrollY > 40) { intro = 0; onScroll(); return; } // уже прокрутили — без появления

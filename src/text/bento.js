@@ -5,7 +5,7 @@
     hy: {
       bnTitle: "Ինչ եք ստանում",
       bnLangT: "Երեք լեզու",
-      bnLangP: "Սեղմեք ցանկացած տողի վրա՝ այս կայքը կփոխի լեզուն։ Հայերենը՝ հիմնական։ Ռուսերենն ու անգլերենը՝ զբոսաշրջիկների և նոր բնակիչների համար։",
+      bnLangP: "Սեղմեք ցանկացած տողի վրա՝ նկարի կայքը կփոխի լեզուն։ Հայերենը՝ հիմնական։ Ռուսերենն ու անգլերենը՝ զբոսաշրջիկների և նոր բնակիչների համար։",
       bnDayT: "Գրանցում՝ 24 ժամ",
       bnDayP: "Սրահը բաց է 10:00–21:00։ Կայքը գրանցումներ է ընդունում նաև գիշերը։",
       bnDaySalon: "Սրահ", bnDayBook: "Գրանցում",
@@ -26,7 +26,7 @@
     ru: {
       bnTitle: "Что вы получаете",
       bnLangT: "Три языка",
-      bnLangP: "Нажмите на любую строку — этот сайт сменит язык. Армянский — основной. Русский и английский — для туристов и тех, кто недавно переехал.",
+      bnLangP: "Нажмите на любую строку — сайт на картинке сменит язык. Армянский — основной. Русский и английский — для туристов и тех, кто недавно переехал.",
       bnDayT: "Запись 24 часа",
       bnDayP: "Салон открыт 10:00–21:00. Сайт принимает записи и ночью.",
       bnDaySalon: "Салон", bnDayBook: "Запись",
@@ -47,7 +47,7 @@
     en: {
       bnTitle: "What you get",
       bnLangT: "Three languages",
-      bnLangP: "Tap any line and this site switches language. Armenian first. Russian and English for tourists and people who have just moved here.",
+      bnLangP: "Tap any line and the site in the picture switches language. Armenian first. Russian and English for tourists and people who have just moved here.",
       bnDayT: "Booking around the clock",
       bnDayP: "The salon is open 10:00–21:00. The site takes bookings at night too.",
       bnDaySalon: "Salon", bnDayBook: "Booking",

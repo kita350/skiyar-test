@@ -290,3 +290,24 @@ html[lang="hy"] .t-lang .shots img:nth-child(1),html[lang="ru"] .t-lang .shots i
 @media (max-width:899px){ .p3{flex:none} .in-phone{justify-content:center;overflow:visible} .p3{margin-left:0} }
 @media (max-width:899px){ .in-phone .p3{margin-left:calc(50% - 180px);margin-right:calc(50% - 180px)} }
 @media (max-width:899px){ .in-panel{grid-template-columns:minmax(0,1fr)} .in-phone{min-width:0} }
+/* часть 3 ТЗ: «Напоминание отправлено» — баннер-уведомление вверху экрана телефона, как на iPhone */
+.ph3d .lv-screen .lv-toast{position:absolute;z-index:6;top:44px;left:8px;right:8px;bottom:auto;width:auto;margin:0;order:0;display:grid;grid-template-columns:28px 1fr;column-gap:10px;align-items:center;padding:10px 12px;border-radius:18px;background:rgba(252,250,246,.97);border:1px solid rgba(0,0,0,.06);box-shadow:0 10px 24px -10px rgba(0,0,0,.45);color:#14181f}
+.ph3d .lv-screen .lv-toast .lv-wa{grid-row:1/3;width:28px;height:28px;border-radius:50%;background:#25d366 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M12 4a8 8 0 0 0-6.9 12l-1 3.8 3.9-1A8 8 0 1 0 12 4zm0 1.6a6.4 6.4 0 1 1-3.3 11.9l-.3-.1-2.2.6.6-2.1-.2-.3A6.4 6.4 0 0 1 12 5.6z'/%3E%3C/svg%3E") center/18px no-repeat}
+.ph3d .lv-screen .lv-toast b{font-size:13px;line-height:1.25;color:#14181f}
+.ph3d .lv-screen .lv-toast small{font-size:12px;line-height:1.3;color:#4a5260}
+/* облачко Гора в калькуляторе — над его головой (координаты ставит chars.js) */
+.ph3d .ca-bub{right:auto}
+/* «История» на компьютере: клик по телефону — следующий шаг */
+@media (min-width:900px){ .st-phone,.st-caps{cursor:pointer} }
+/* часть 3 ТЗ, п. 6: «Три языка» — выбранный в карточке язык */
+.t-lang .shots[data-show] img{display:none!important;animation:fadein .2s var(--ease-out)}
+.t-lang .shots[data-show="hy"] img:nth-child(1),.t-lang .shots[data-show="ru"] img:nth-child(2),.t-lang .shots[data-show="en"] img:nth-child(3){display:block!important}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+/* часть 3 ТЗ, п. 7: «История» — неподвижный 3D-корпус (кадр «прямо»), экран поверх через matrix3d */
+.st-ph-box .phone.p3s{background:none;border:0;box-shadow:none;overflow:visible}
+.st-ph-box .phone.p3s .notch{display:none}
+.st-ph-box .phone.p3s .st-3d{position:absolute;z-index:0;max-width:none;pointer-events:none}
+.st-ph-box .phone.p3s .screen{z-index:1;border-radius:32px;backface-visibility:hidden}
+.st-island{top:9px;width:76px;height:23px;margin-left:-38px;border-radius:12px}
+/* живые персонажи: без прыжков — Гор в калькуляторе не подпрыгивает при движении ползунка, у него свои действия */
+.ca-gor.hop{animation:px-breathe 2.4s steps(2) infinite}

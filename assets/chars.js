@@ -19,7 +19,7 @@
     ruzan: { base: "hero-ruzan-1x.png", angry: "emo-ruzan-angry.png", wow: "emo-ruzan-wow.png", happy: "emo-ruzan-happy.png" }
   };
   var list = [];
-  [].forEach.call(document.querySelectorAll("img.px"), function (img) {
+  [].forEach.call(document.querySelectorAll("img.px:not(.ca-gor)"), function (img) {
     var m = /hero-(gor|lusine|ski|ruzan)-1x\.png$/.exec(img.getAttribute("src"));
     if (!m) return;
     var c = { img: img, w: who[m[1]], mood: "base", vis: false };
@@ -57,28 +57,45 @@
     setTimeout(blinkLoop, 2500 + Math.random() * 2500);
   })();
 
-  // жесты: настоящие кадры движений (Гор машет, робот машет кистью, Рузан поднимает телефон, Лусине печатает)
+  // действия: настоящие кадры движений. Машут только Гор и робот; у остальных своё дело:
+  // Рузан смотрит в телефон или из сумки выглядывает собачка, Лусине говорит в гарнитуру и печатает на планшете,
+  // встревоженный Гор — по щеке стекает капля пота. В «Истории» действие идёт с лицом текущей эмоции.
+  function rep(a, b, n) { var r = []; for (var i = 0; i < n; i++) r.push(i % 2 ? b : a); return r; }
   var GEST = {
-    gor: ["emo-gor-wave1.png", "emo-gor-wave2.png", "emo-gor-wave1.png", "emo-gor-wave2.png", "emo-gor-wave1.png", "emo-gor-wave2.png"],
-    ruzan: ["emo-ruzan-phone1.png", "emo-ruzan-phone2.png", "emo-ruzan-phone1.png", "emo-ruzan-phone2.png", "emo-ruzan-phone1.png"],
-    lusine: ["emo-lusine-wave1.png", "emo-lusine-wave2.png", "emo-lusine-wave1.png", "emo-lusine-wave2.png", "emo-lusine-wave1.png", "emo-lusine-wave2.png"],
-    gorfree: ["emo-gor-free-wave1.png", "emo-gor-free-wave2.png", "emo-gor-free-wave1.png", "emo-gor-free-wave2.png", "emo-gor-free-wave1.png", "emo-gor-free-wave2.png"]
+    gor: function (m) { return m === "base" ? [rep("emo-gor-wave1.png", "emo-gor-wave2.png", 6)] : null; },
+    ski: function (m) { return m === "base" ? [rep("emo-ski-wave1.png", "emo-ski-wave2.png", 6)] : null; },
+    gorfree: function () { return [rep("emo-gor-free-wave1.png", "emo-gor-free-wave2.png", 6)]; },
+    gorworry: function () { return [["emo-gor-sweat1.png", "emo-gor-sweat2.png", "emo-gor-sweat3.png", "emo-gor-sweat4.png", "emo-gor-sweat4.png", "emo-gor-worry.png"]]; },
+    ruzan: function (m) {
+      var p = m === "base" ? "emo-ruzan-" : "emo-ruzan-" + m + "-";
+      var dog = [p + "dog1.png", p + "dog2.png", p + "dog2.png", p + "dog3.png", p + "dog2.png", p + "dog1.png"];
+      return m === "base" ? [dog, rep("emo-ruzan-phone1.png", "emo-ruzan-phone2.png", 5)] : [dog];
+    },
+    lusine: function (m) {
+      if (m === "base") return [["emo-lusine-type1.png", "emo-lusine-talk2.png", "emo-lusine-talk1.png", "emo-lusine-type2.png", "emo-lusine-talk1.png", "emo-lusine-type2.png", "emo-lusine-type1.png"]];
+      if (m === "happy") return [rep("emo-lusine-happy-type1.png", "emo-lusine-happy-type2.png", 6)];
+      return null;
+    }
   };
-  list.forEach(function (c) { preload(c.img, GEST[c.img.dataset.who] || []); });
+  function seqs(c) { var g = GEST[c.img.dataset.who]; return g ? g(c.mood) : null; }
+  list.forEach(function (c) {
+    ["base", "angry", "wow", "happy"].forEach(function (m) { (GEST[c.img.dataset.who] ? GEST[c.img.dataset.who](m) || [] : []).forEach(function (q) { preload(c.img, q); }); });
+  });
   function gesture(c) {
-    var fr = GEST[c.img.dataset.who]; if (!fr || c.busy) return;
+    var all = seqs(c); if (!all || c.busy) return;
     if (Date.now() - (c.blinkAt || 0) < 600) return; // не сразу после моргания
-    c.busy = true; c.gestAt = Date.now(); var i = 0;
+    var fr = all[Math.floor(Math.random() * all.length)];
+    c.busy = true; c.gestAt = Date.now(); var i = 0, m0 = c.mood;
     (function next() {
-      if (i < fr.length && c.vis) { setSrc(c.img, fr[i++]); setTimeout(next, 200); }
+      if (i < fr.length && c.vis && c.mood === m0) { setSrc(c.img, fr[i++]); setTimeout(next, 200); }
       else { c.busy = false; show(c); }
     })();
   }
   if (!still) (function gestLoop() {
-    // в «Истории» жест только у персонажа без эмоции: эмоция шага важнее
-    var vis = list.filter(function (c) { return c.vis && !c.busy && (!c.img.classList.contains("st-px") || (c.img.classList.contains("on") && c.mood === "base")) && !!GEST[c.img.dataset.who]; });
+    // в «Истории» — только у персонажа текущего шага
+    var vis = list.filter(function (c) { return c.vis && !c.busy && (!c.img.classList.contains("st-px") || c.img.classList.contains("on")) && !!seqs(c); });
     if (vis.length) gesture(vis[Math.floor(Math.random() * vis.length)]);
-    setTimeout(gestLoop, 3200 + Math.random() * 2600);
+    setTimeout(gestLoop, 2600 + Math.random() * 2400);
   })();
 
   // робот иногда улыбается
@@ -112,9 +129,14 @@
     img.parentNode.style.position = "relative"; img.parentNode.appendChild(b);
     b.style.left = (img.offsetLeft + img.offsetWidth * 0.62) + "px"; b.style.top = Math.max(0, img.offsetTop - 22) + "px";
     window.addEventListener("resize", function () { b.style.left = (img.offsetLeft + img.offsetWidth * 0.62) + "px"; b.style.top = Math.max(0, img.offsetTop - 22) + "px"; });
+    if (!free) {
+      var cw = { img: img, w: { base: "emo-gor-worry.png" }, mood: "base", vis: false };
+      img.dataset.who = "gorworry"; list.push(cw); GEST.gorworry().forEach(function (q) { preload(img, q); });
+      if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { cw.vis = e[0].isIntersecting; }).observe(img); else cw.vis = true;
+    }
     if (free) {
       var c = { img: img, w: { base: "emo-gor-free-hi.png" }, mood: "base", vis: false };
-      img.dataset.who = "gorfree"; list.push(c); preload(img, GEST.gorfree.concat(["emo-gor-free-hi.png"]));
+      img.dataset.who = "gorfree"; list.push(c); preload(img, GEST.gorfree()[0].concat(["emo-gor-free-hi.png"]));
       if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { c.vis = e[0].isIntersecting; }).observe(img); else c.vis = true;
     }
   });
@@ -125,11 +147,32 @@
     // в калькуляторе тот же маленький Гор: потери большие — встревожен, средние — спокоен, маленькие — рад
     preload(ca, ["emo-gor-worry.png", "hero-gor-1x.png", "emo-gor-happy.png"]);
     var caBub = document.createElement("i"); caBub.className = "emo-bub ca-bub"; caBub.setAttribute("aria-hidden", "true"); ca.parentNode.appendChild(caBub);
+    // калькулятор: свой Гор. Встревожен — стекает пот, спокоен — иногда машет, рад — просто рад
+    var caM = "base", caBusy = false, caVis = false;
+    var caFace = function () { if (!caBusy) setSrc(ca, caM === "angry" ? "emo-gor-worry.png" : caM === "happy" ? "emo-gor-happy.png" : "hero-gor-1x.png"); };
+    preload(ca, GEST.gorworry()[0].concat(GEST.gor("base")[0]));
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { caVis = e[0].isIntersecting; }).observe(ca); else caVis = true;
+    if (!still) (function caLoop() {
+      var fr = caM === "angry" ? GEST.gorworry()[0] : caM === "base" ? GEST.gor("base")[0] : null;
+      if (fr && caVis && !caBusy) {
+        caBusy = true; var i = 0, m0 = caM;
+        (function next() { if (i < fr.length && caM === m0 && caVis) { setSrc(ca, fr[i++]); setTimeout(next, 200); } else { caBusy = false; caFace(); } })();
+      }
+      setTimeout(caLoop, 3000 + Math.random() * 2500);
+    })();
     var caMood = function (d) {
       var r = d.loss / Math.max(1, d.price), m = r >= 3 ? "angry" : r >= 1 ? "base" : "happy";
-      setSrc(ca, m === "angry" ? "emo-gor-worry.png" : m === "happy" ? "emo-gor-happy.png" : "hero-gor-1x.png");
+      caM = m; caFace();
       caBub.textContent = BUB[m] || ""; caBub.className = "emo-bub ca-bub emo-" + m + (BUB[m] ? " on" : "");
+      caPos();
     };
+    // облачко прямо над головой Гора, а не в углу карточки
+    var caPos = function () {
+      var p = ca.offsetParent; if (!p) return;
+      if (p !== ca.parentNode && getComputedStyle(ca.parentNode).position === "static") ca.parentNode.style.position = "relative";
+      caBub.style.left = (ca.offsetLeft + ca.offsetWidth * 0.5 - 6) + "px"; caBub.style.top = (ca.offsetTop - 30) + "px";
+    };
+    window.addEventListener("resize", caPos);
     document.addEventListener("calc:loss", function (e) { caMood(e.detail); });
     if (window.SKIYAR_LOSS) caMood(window.SKIYAR_LOSS); // калькулятор уже посчитал до нас
   }
