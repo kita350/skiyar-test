@@ -1054,3 +1054,4 @@ p,li,.cap-p,small{text-wrap:pretty}
 .ty-btns .btn:has(small){padding-right:20px}
 @media (max-width:899px){ .gor{padding-bottom:28px!important} }
 @media (max-width:340px){ .pkt .soon{font-size:11px!important} }
+.foot-cols a,.fin-c a{width:fit-content;max-width:100%}
