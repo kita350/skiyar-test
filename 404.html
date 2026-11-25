@@ -7,8 +7,7 @@
 <title>404 — SKIYAR</title>
 <meta name="theme-color" content="#02030A">
 <link rel="icon" href="/skiyar-test/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Noto+Sans+Armenian:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="/skiyar-test/assets/fonts.css">
 <!-- Своя страница «не найдено». Пути абсолютные: GitHub Pages показывает её по любому адресу. Армянский — на проверку Ани. -->
 <style>
 :root{--night:#02030A;--card:#0D1221;--deep:#1D3E74;--blue:#5296E1;--sky:#8EB2DF;--white:#fff;--muted:#7989AA;--line:rgba(121,137,170,.22);--line-2:rgba(121,137,170,.38);--font:"Manrope","Noto Sans Armenian",system-ui,sans-serif}
@@ -34,7 +33,7 @@ h1{margin:20px 0 10px;font-weight:800;font-size:clamp(28px,7.6vw,48px);line-heig
 [lang="hy"] h1{font-size:clamp(25px,6.6vw,40px);line-height:1.15}
 p{margin:0;color:#c3cad8;max-width:30em}
 .scene{display:flex;align-items:flex-end;gap:12px;margin:24px 0 20px}
-.scene img{width:72px;height:108px;image-rendering:pixelated}
+.scene img{width:96px;height:144px;image-rendering:pixelated}
 .bubble{padding:10px 12px;border-radius:14px 14px 14px 4px;background:var(--card);border:1px solid var(--line-2);font-size:15px;line-height:1.35}
 .links{display:grid;gap:8px}
 .b{position:relative;overflow:hidden;isolation:isolate;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:0 20px;border-radius:14px;font-weight:800;font-size:16px;text-decoration:none;border:1px solid var(--line-2);transition:transform .12s cubic-bezier(.3,.7,.4,1),border-color .2s}
@@ -46,6 +45,12 @@ p{margin:0;color:#c3cad8;max-width:30em}
 .b small{font-weight:600;font-size:13px;opacity:.7}
 @media (min-width:700px){.links{grid-template-columns:repeat(3,1fr)}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.top{padding:0 max(16px,calc((100% - 1160px) / 2))}
+.b{white-space:nowrap}
+.b:first-child small{display:none}
+.b{justify-content:center}
+.scene{align-items:flex-start}
+.scene > :not(img){margin-top:14px}
 </style>
 </head>
 <body>

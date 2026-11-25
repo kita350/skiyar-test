@@ -118,7 +118,7 @@ document.documentElement.classList.add("js");
       // телефон: без прилипания; размер от ширины и высоты экрана устройства, чтобы не прыгал,
       // когда браузер прячет/показывает свою панель
       var sh = Math.min(screen.height || innerHeight, innerHeight + 140);
-      k = Math.min(1.1, w / 264, (sh * 0.56) / 546);
+      k = Math.min(1.1, w / 264, (sh * (sh < 780 ? 0.5 : 0.56)) / 546); // низкий экран — подпись шага помещается под телефоном
     } else {
       // масштаб телефона под свободную высоту
       k = Math.min(1.2, track.querySelector(".st-phone").clientHeight / 546, w / 264);
@@ -166,6 +166,7 @@ document.documentElement.classList.add("js");
   // Телефон: касание по телефону или подписи — следующий шаг, по левой трети — предыдущий; таймер начинается заново.
   each(".st-phone, .st-caps", function (el) {
     el.addEventListener("click", function (e) {
+      if (el.classList.contains("st-phone") && !(e.target.closest && e.target.closest(".st-ph-box .phone"))) return; // касание по персонажу рядом — ничего
       var r = (el.querySelector('.st-ph-box .phone') || el).getBoundingClientRect(), back = e.clientX < r.left + r.width / 3;
       var n = back ? (cur <= 1 ? N : cur - 1) : (cur >= N ? 1 : cur + 1);
       if (!MQ.matches) { // компьютер: докручиваем страницу к шагу — прокрутка и клик не спорят
@@ -526,6 +527,9 @@ document.documentElement.classList.add("js");
     cur = i;
     var bs = wrap.querySelectorAll(".niche-b");
     for (var j = 0; j < bs.length; j++) bs[j].setAttribute("aria-pressed", j === i ? "true" : "false");
+    // выбранная ниша целиком видна: ряд листается так, чтобы она стала по центру
+    var row = bs[i].parentNode;
+    if (row.scrollWidth > row.clientWidth + 2) { var rr = row.getBoundingClientRect(), br = bs[i].getBoundingClientRect(); row.scrollTo({ left: Math.max(0, row.scrollLeft + (br.left - rr.left) - (rr.width - br.width) / 2), behavior: "smooth" }); }
     // сначала мгновенно прячем старые пузыри, потом подменяем текст — новые реплики не мелькают в старых
     box.classList.add("swap");
     if (box.restartLive) box.restartLive();
@@ -564,6 +568,10 @@ document.documentElement.classList.add("js");
     var cv = document.createElement("img"); cv.className = "lv-3d"; cv.alt = ""; cv.setAttribute("aria-hidden", "true");
     cv.width = FW; cv.height = FH;
     ph.insertBefore(cv, scr);
+    // второй слой: соседний кадр поверх с прозрачностью = доля между кадрами → поворот плавный на каждом кадре экрана, без «ступенек»
+    var cv2 = document.createElement("img"); cv2.className = "lv-3d lv-3d2"; cv2.alt = ""; cv2.setAttribute("aria-hidden", "true");
+    cv2.width = FW; cv2.height = FH; cv2.style.opacity = "0"; ph.insertBefore(cv2, scr);
+    var curF = -1, cur2 = -1;
     var k = 1;
     document.documentElement.classList.add("ph3d");
     // детали настоящего телефона поверх живого экрана: островок камеры, строка ввода, значки сети
@@ -576,7 +584,7 @@ document.documentElement.classList.add("js");
 
     function size() {
       k = ph.clientWidth / FW;
-      cur = -1; paint();
+      cur = -1; cur2 = -1; curF = -1; paintF(pos);
     }
     // матрица, переводящая прямоугольник экрана в 4 угла кадра
     function adj(m) { return [m[4]*m[8]-m[5]*m[7], m[2]*m[7]-m[1]*m[8], m[1]*m[5]-m[2]*m[4], m[5]*m[6]-m[3]*m[8], m[0]*m[8]-m[2]*m[6], m[2]*m[3]-m[0]*m[5], m[3]*m[7]-m[4]*m[6], m[1]*m[6]-m[0]*m[7], m[0]*m[4]-m[1]*m[3]]; }
@@ -589,7 +597,18 @@ document.documentElement.classList.add("js");
       for (i = 0; i < 9; i++) t[i] /= t[8];
       scr.style.transform = "matrix3d(" + [t[0], t[3], 0, t[6], t[1], t[4], 0, t[7], 0, 0, 1, 0, t[2], t[5], 0, t[8]].map(function (x) { return +x.toFixed(6); }).join(",") + ")";
     }
+    function paintF(x) {
+      var f0 = Math.floor(x), f1 = Math.min(N - 1, f0 + 1), a = x - f0;
+      if (!imgs[f0] || !imgs[f1]) { want = Math.round(x); paint(); return; }
+      if (Math.abs(x - curF) < 0.004) return; curF = x;
+      if (cur !== f0) { cur = f0; cv.src = imgs[f0].src; }
+      if (cur2 !== f1) { cur2 = f1; cv2.src = imgs[f1].src; }
+      cv2.style.opacity = a < 0.01 ? "0" : a.toFixed(3);
+      var c0 = J.corners[f0], c1 = J.corners[f1];
+      fit(c0.map(function (p, i) { return [p[0] + (c1[i][0] - p[0]) * a, p[1] + (c1[i][1] - p[1]) * a]; }));
+    }
     function paint() {
+      cv2.style.opacity = "0"; curF = -1;
       var f = want, g = want; while (f > 0 && !imgs[f]) f--; while (g < N - 1 && !imgs[g]) g++; if (!imgs[f] || (imgs[g] && g - want < want - f)) f = g; // нужный кадр ещё грузится — ближайший готовый
       if (!imgs[f] || f === cur) return;
       cur = f; cv.src = imgs[f].src; fit(J.corners[f]);
@@ -607,7 +626,7 @@ document.documentElement.classList.add("js");
     var ST = Math.round(N * 0.56);
     function fromScroll() {
       var r = hero.getBoundingClientRect(), p = Math.max(0, Math.min(1, -r.top / Math.max(1, r.height * 0.75)));
-      return ST + p * (N - 1 - ST);
+      return ST + p * (MOUSE.matches ? N - 1 - ST : 10); // телефон (касание): прокрутка лишь чуть сдвигает центр покачивания
     }
     // компьютер (мышь): телефон следует за курсором по горизонтали, ±21 кадр ≈ ±15°; прокрутка не поворачивает
     var MOUSE = matchMedia("(hover: hover) and (pointer: fine) and (min-width: 900px)");
@@ -615,20 +634,24 @@ document.documentElement.classList.add("js");
     var pos = ST, target = ST;
     function glide() {
       raf = 0; if (intro) return;
-      pos += (target - pos) * (MOUSE.matches ? 0.12 : 0.16);
-      if (Math.abs(target - pos) < 0.05) pos = target;
-      want = Math.round(pos); paint();
-      if (pos !== target) raf = requestAnimationFrame(glide);
+      // сглаживание от прошедшего времени, а не от частоты экрана: одинаково на 60 и 144 Гц
+      var now = performance.now(), dt = Math.min(64, now - (glide.t || now - 16.7)); glide.t = now;
+      pos += (target - pos) * (1 - Math.pow(MOUSE.matches ? 0.88 : 0.84, dt / 16.7));
+      if (Math.abs(target - pos) < 0.01) pos = target;
+      // телефон (касание): во время прокрутки пальцем перерисовываем не чаще 30 раз в секунду — меньше нагрузки в Safari
+      if (MOUSE.matches || pos === target || now - scrollAt > 160 || now - (glide.p || 0) >= 32) { glide.p = now; paintF(pos); }
+      if (pos !== target) raf = requestAnimationFrame(glide); else glide.t = 0;
     }
     function go2(t) { target = t; if (!raf) raf = requestAnimationFrame(glide); }
     // телефон (касание): мягкое покачивание влево-вправо ±9 кадров (≈ ±6°) за 6 с, пока первый экран виден, — телефон «живой»
     var swayOn = false, heroVis = true;
-    function sway() { return swayOn ? 9 * Math.sin(performance.now() / 6000 * 2 * Math.PI) : 0; }
+    function sway() { return swayOn ? 12 * Math.sin(performance.now() / 5000 * 2 * Math.PI) : 0; }
     function aim() { return Math.max(0, Math.min(N - 1, fromScroll() + sway())); }
     function swayTick() { if (!swayOn) return; if (!intro) go2(aim()); requestAnimationFrame(swayTick); }
     function swayCheck() { var on = !still && !MOUSE.matches && heroVis; if (on && !swayOn) { swayOn = true; requestAnimationFrame(swayTick); } else if (!on) swayOn = false; }
     if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { heroVis = e[0].isIntersecting; swayCheck(); }).observe(ph);
-    function onScroll() { if (still) return; // «уменьшить движение»: телефон стоит прямо
+    var scrollAt = 0;
+    function onScroll() { scrollAt = performance.now(); if (still) return; // «уменьшить движение»: телефон стоит прямо
       go2(MOUSE.matches ? target : aim()); }
     window.addEventListener("scroll", onScroll, { passive: true });
     document.addEventListener("mousemove", function (e) {
@@ -657,8 +680,8 @@ document.documentElement.classList.add("js");
         var go = function (t) {
           if (!t0) t0 = t;
           var p = Math.min(1, (t - t0) / 1200), e = 1 - Math.pow(1 - p, 3);
-          want = Math.round(from + (ST - from) * e); paint();
-          if (p < 1) requestAnimationFrame(go); else { intro = 0; pos = want; onScroll(); }
+          paintF(from + (ST - from) * e);
+          if (p < 1) requestAnimationFrame(go); else { intro = 0; pos = ST; onScroll(); }
         };
         if (window.scrollY > 40) { intro = 0; onScroll(); return; } // уже прокрутили — без появления
         requestAnimationFrame(go);
@@ -692,17 +715,23 @@ document.documentElement.classList.add("js");
     var img = document.createElement("img"); img.className = "lv-3d"; img.alt = ""; img.setAttribute("aria-hidden", "true"); img.width = J.w; img.height = J.h; img.src = base + "f00.webp";
     screen.classList.add("p3-screen");
     screen.insertAdjacentHTML("beforeend", '<i class="lv-island" aria-hidden="true"></i>');
-    box.appendChild(img); box.appendChild(screen); wrap.replaceChild(box, old);
-    items.push({ wrap: wrap, box: box, img: img, scr: screen, pos: -1, target: 0, cur: -1 });
+    // второй слой — соседний кадр с прозрачностью = доля между кадрами: поворот плавный, без «ступенек»
+    var img2 = document.createElement("img"); img2.className = "lv-3d lv-3d2"; img2.alt = ""; img2.setAttribute("aria-hidden", "true"); img2.width = J.w; img2.height = J.h; img2.style.opacity = "0";
+    box.appendChild(img); box.appendChild(img2); box.appendChild(screen); wrap.replaceChild(box, old);
+    items.push({ wrap: wrap, box: box, img: img, img2: img2, scr: screen, pos: -1, target: 0, cur: -1, f0: -1, f1: -1 });
   });
   var cache = {};
   function src(f) { return base + "f" + (f < 10 ? "0" : "") + f + ".webp"; }
   function pre(f) { if (!cache[f]) { cache[f] = new Image(); cache[f].src = src(f); } }
-  function draw(it, f) {
-    if (f === it.cur) return; it.cur = f;
-    it.img.src = src(f);
-    var k = it.box.clientWidth / J.w;
-    var d = basis(J.corners[f].map(function (p) { return [p[0] * k, p[1] * k]; })), t = mm(d, SRCA), i;
+  function draw(it, x) {
+    if (Math.abs(x - it.cur) < 0.004) return; it.cur = x;
+    var f0 = Math.floor(x), f1 = Math.min(N - 1, f0 + 1), a = x - f0;
+    if (!(cache[f1] && cache[f1].complete)) a = 0; // соседний кадр ещё не загружен — без смешивания
+    if (it.f0 !== f0) { it.f0 = f0; it.img.src = src(f0); }
+    if (a > 0.01 && it.f1 !== f1) { it.f1 = f1; it.img2.src = src(f1); }
+    it.img2.style.opacity = a > 0.01 ? a.toFixed(3) : "0";
+    var k = it.box.clientWidth / J.w, c0 = J.corners[f0], c1 = J.corners[f1];
+    var d = basis(c0.map(function (p, j) { return [(p[0] + (c1[j][0] - p[0]) * a) * k, (p[1] + (c1[j][1] - p[1]) * a) * k]; })), t = mm(d, SRCA), i;
     for (i = 0; i < 9; i++) t[i] /= t[8];
     it.scr.style.transform = "matrix3d(" + [t[0], t[3], 0, t[6], t[1], t[4], 0, t[7], 0, 0, 1, 0, t[2], t[5], 0, t[8]].map(function (x) { return +x.toFixed(6); }).join(",") + ")";
   }
@@ -720,8 +749,8 @@ document.documentElement.classList.add("js");
       it.target = targetOf(it);
       if (it.pos < 0 || still) it.pos = it.target;
       it.pos += (it.target - it.pos) * 0.16;
-      if (Math.abs(it.target - it.pos) < 0.05) it.pos = it.target; else again = true;
-      draw(it, Math.round(it.pos));
+      if (Math.abs(it.target - it.pos) < 0.01) it.pos = it.target; else again = true;
+      draw(it, it.pos);
     });
     if (again) raf = requestAnimationFrame(tick);
   }
@@ -729,7 +758,7 @@ document.documentElement.classList.add("js");
   window.addEventListener("scroll", kick, { passive: true });
   window.addEventListener("resize", function () { items.forEach(function (it) { it.cur = -1; }); kick(); }, { passive: true });
   // смена вкладки: новый телефон сразу в нужном кадре
-  document.addEventListener("click", function (e) { if (e.target.closest && e.target.closest('[role="tab"]')) setTimeout(function () { items.forEach(function (it) { it.pos = -1; it.cur = -1; }); kick(); }, 0); });
+  document.addEventListener("click", function (e) { if (e.target.closest && e.target.closest('[role="tab"]')) setTimeout(function () { items.forEach(function (it) { it.pos = -1; it.cur = -1; it.f0 = -1; it.f1 = -1; }); kick(); }, 0); });
   // кадры подгружаются, когда блок близко
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { for (var f = 0; f < N; f++) pre(f); io.disconnect(); } }, { rootMargin: "600px" });
@@ -746,6 +775,9 @@ document.documentElement.classList.add("js");
   "use strict";
   // «Три языка»: скриншот меняется на месте (ловим клик раньше общего переключателя языка в site.js)
   var shots = document.querySelector(".t-lang .shots");
+  // при загрузке подсвечена строка языка страницы
+  if (shots) { var pl = document.documentElement.lang || "hy"; shots.setAttribute("data-show", pl);
+    [].forEach.call(document.querySelectorAll(".t-lang [data-lang-btn]"), function (x) { x.setAttribute("aria-pressed", String(x.getAttribute("data-lang-btn") === pl)); }); }
   if (shots) document.addEventListener("click", function (e) {
     var b = e.target.closest && e.target.closest(".t-lang [data-lang-btn]");
     if (!b) return;
@@ -803,6 +835,7 @@ document.documentElement.classList.add("js");
     var m = /hero-(gor|lusine|ski|ruzan)-1x\.png$/.exec(img.getAttribute("src"));
     if (!m) return;
     var c = { img: img, w: who[m[1]], mood: "base", vis: false };
+    if (m[1] === "gor" && img.classList.contains("st-px")) { c.w = { base: "emo-gor-free.png", happy: "emo-gor-free-hi.png" }; m[1] = "gorfree"; }
     img.dataset.who = m[1]; list.push(c);
     preload(img, Object.keys(c.w).map(function (k) { return c.w[k]; }));
   });
@@ -888,7 +921,7 @@ document.documentElement.classList.add("js");
   });
 
   // «История записи»: эмоции по шагам
-  var STORY = { ruzan: { 1: "angry", 2: "wow", 3: "happy", 5: "happy" }, lusine: { 4: "wow" }, gor: { 6: "happy" } };
+  var STORY = { ruzan: { 1: "angry", 2: "wow", 3: "happy", 5: "happy" }, lusine: { 4: "wow" }, gor: { 6: "happy" }, gorfree: { 6: "happy" } };
   document.addEventListener("story:step", function (e) {
     var s = e.detail;
     list.forEach(function (c) {

@@ -5,6 +5,9 @@
   "use strict";
   // «Три языка»: скриншот меняется на месте (ловим клик раньше общего переключателя языка в site.js)
   var shots = document.querySelector(".t-lang .shots");
+  // при загрузке подсвечена строка языка страницы
+  if (shots) { var pl = document.documentElement.lang || "hy"; shots.setAttribute("data-show", pl);
+    [].forEach.call(document.querySelectorAll(".t-lang [data-lang-btn]"), function (x) { x.setAttribute("aria-pressed", String(x.getAttribute("data-lang-btn") === pl)); }); }
   if (shots) document.addEventListener("click", function (e) {
     var b = e.target.closest && e.target.closest(".t-lang [data-lang-btn]");
     if (!b) return;

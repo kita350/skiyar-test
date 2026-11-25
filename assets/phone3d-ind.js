@@ -22,17 +22,23 @@
     var img = document.createElement("img"); img.className = "lv-3d"; img.alt = ""; img.setAttribute("aria-hidden", "true"); img.width = J.w; img.height = J.h; img.src = base + "f00.webp";
     screen.classList.add("p3-screen");
     screen.insertAdjacentHTML("beforeend", '<i class="lv-island" aria-hidden="true"></i>');
-    box.appendChild(img); box.appendChild(screen); wrap.replaceChild(box, old);
-    items.push({ wrap: wrap, box: box, img: img, scr: screen, pos: -1, target: 0, cur: -1 });
+    // второй слой — соседний кадр с прозрачностью = доля между кадрами: поворот плавный, без «ступенек»
+    var img2 = document.createElement("img"); img2.className = "lv-3d lv-3d2"; img2.alt = ""; img2.setAttribute("aria-hidden", "true"); img2.width = J.w; img2.height = J.h; img2.style.opacity = "0";
+    box.appendChild(img); box.appendChild(img2); box.appendChild(screen); wrap.replaceChild(box, old);
+    items.push({ wrap: wrap, box: box, img: img, img2: img2, scr: screen, pos: -1, target: 0, cur: -1, f0: -1, f1: -1 });
   });
   var cache = {};
   function src(f) { return base + "f" + (f < 10 ? "0" : "") + f + ".webp"; }
   function pre(f) { if (!cache[f]) { cache[f] = new Image(); cache[f].src = src(f); } }
-  function draw(it, f) {
-    if (f === it.cur) return; it.cur = f;
-    it.img.src = src(f);
-    var k = it.box.clientWidth / J.w;
-    var d = basis(J.corners[f].map(function (p) { return [p[0] * k, p[1] * k]; })), t = mm(d, SRCA), i;
+  function draw(it, x) {
+    if (Math.abs(x - it.cur) < 0.004) return; it.cur = x;
+    var f0 = Math.floor(x), f1 = Math.min(N - 1, f0 + 1), a = x - f0;
+    if (!(cache[f1] && cache[f1].complete)) a = 0; // соседний кадр ещё не загружен — без смешивания
+    if (it.f0 !== f0) { it.f0 = f0; it.img.src = src(f0); }
+    if (a > 0.01 && it.f1 !== f1) { it.f1 = f1; it.img2.src = src(f1); }
+    it.img2.style.opacity = a > 0.01 ? a.toFixed(3) : "0";
+    var k = it.box.clientWidth / J.w, c0 = J.corners[f0], c1 = J.corners[f1];
+    var d = basis(c0.map(function (p, j) { return [(p[0] + (c1[j][0] - p[0]) * a) * k, (p[1] + (c1[j][1] - p[1]) * a) * k]; })), t = mm(d, SRCA), i;
     for (i = 0; i < 9; i++) t[i] /= t[8];
     it.scr.style.transform = "matrix3d(" + [t[0], t[3], 0, t[6], t[1], t[4], 0, t[7], 0, 0, 1, 0, t[2], t[5], 0, t[8]].map(function (x) { return +x.toFixed(6); }).join(",") + ")";
   }
@@ -50,8 +56,8 @@
       it.target = targetOf(it);
       if (it.pos < 0 || still) it.pos = it.target;
       it.pos += (it.target - it.pos) * 0.16;
-      if (Math.abs(it.target - it.pos) < 0.05) it.pos = it.target; else again = true;
-      draw(it, Math.round(it.pos));
+      if (Math.abs(it.target - it.pos) < 0.01) it.pos = it.target; else again = true;
+      draw(it, it.pos);
     });
     if (again) raf = requestAnimationFrame(tick);
   }
@@ -59,7 +65,7 @@
   window.addEventListener("scroll", kick, { passive: true });
   window.addEventListener("resize", function () { items.forEach(function (it) { it.cur = -1; }); kick(); }, { passive: true });
   // смена вкладки: новый телефон сразу в нужном кадре
-  document.addEventListener("click", function (e) { if (e.target.closest && e.target.closest('[role="tab"]')) setTimeout(function () { items.forEach(function (it) { it.pos = -1; it.cur = -1; }); kick(); }, 0); });
+  document.addEventListener("click", function (e) { if (e.target.closest && e.target.closest('[role="tab"]')) setTimeout(function () { items.forEach(function (it) { it.pos = -1; it.cur = -1; it.f0 = -1; it.f1 = -1; }); kick(); }, 0); });
   // кадры подгружаются, когда блок близко
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { for (var f = 0; f < N; f++) pre(f); io.disconnect(); } }, { rootMargin: "600px" });

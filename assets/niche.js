@@ -34,6 +34,9 @@
     cur = i;
     var bs = wrap.querySelectorAll(".niche-b");
     for (var j = 0; j < bs.length; j++) bs[j].setAttribute("aria-pressed", j === i ? "true" : "false");
+    // выбранная ниша целиком видна: ряд листается так, чтобы она стала по центру
+    var row = bs[i].parentNode;
+    if (row.scrollWidth > row.clientWidth + 2) { var rr = row.getBoundingClientRect(), br = bs[i].getBoundingClientRect(); row.scrollTo({ left: Math.max(0, row.scrollLeft + (br.left - rr.left) - (rr.width - br.width) / 2), behavior: "smooth" }); }
     // сначала мгновенно прячем старые пузыри, потом подменяем текст — новые реплики не мелькают в старых
     box.classList.add("swap");
     if (box.restartLive) box.restartLive();

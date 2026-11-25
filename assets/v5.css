@@ -317,3 +317,125 @@ html[lang="hy"] .t-lang .shots img:nth-child(1),html[lang="ru"] .t-lang .shots i
 .st-ph-box .phone.p3s .wa-body{padding-top:8px;min-height:0}
 /* «Три языка»: армянский текст длиннее — скриншот чуть выше, а низ мягко растворяется, без строки, обрезанной пополам */
 .t-lang .shots img{aspect-ratio:375/300!important;-webkit-mask-image:linear-gradient(#000 62%,transparent 90%);mask-image:linear-gradient(#000 62%,transparent 90%)}
+/* встроенные браузеры (низкий экран): кнопка WhatsApp не ложится на кнопки первого экрана —
+   «Написать ДЕМО» на всю ширину оставляет справа место под неё, ряд ниш растворяется у правого края (листается как раньше) */
+@media (max-width:899px){
+  .hero .cta .btn-main{max-width:calc(100% - 68px)}
+  .ph3d .niche-c{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 84px),transparent calc(100% - 20px));mask-image:linear-gradient(90deg,#000 calc(100% - 84px),transparent calc(100% - 20px));padding-right:72px}
+}
+/* ===== ТЗ ч.4 (визуал 100/100) ===== */
+/* A1: пиксельные персонажи — только целые кратные 48×72 */
+.niche-gor{width:48px;height:72px}
+.ca-gor{width:48px;height:72px}
+@media (min-width:900px){ .ca-gor{width:96px;height:144px} }
+/* A2: телефон первого экрана целиком в окне и на 1280×800 */
+@media (min-width:900px){ .ph3d .lv-box{width:min(460px,calc((100vh - 170px) / 1.5));width:min(460px,calc((100svh - 170px) / 1.5))} }
+/* A3: переписка прижата к низу над строкой ввода, как в мессенджере */
+.ph3d .lv-screen{display:flex;flex-direction:column}
+.ph3d .lv-body{flex:1 1 auto;justify-content:flex-end;padding-bottom:72px;min-height:0}
+/* A4: «Три языка» на компьютере — скриншот во всю карточку, под ним 24 px */
+@media (min-width:900px){ .t-lang .shots img{max-width:none!important;width:100%} .t-lang .shots{margin:20px 0 24px!important} }
+/* A2 точнее: телефон с нишами сверху — низ корпуса в окне и на 1280×800 */
+@media (min-width:900px){ .ph3d .lv-box{width:min(460px,calc((100vh - 250px) / 1.45));width:min(460px,calc((100svh - 250px) / 1.45))} }
+/* A6: «Что вы получаете» — карточки заполнены ровно */
+@media (min-width:900px){
+  .t-day,.t-rem{display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+  .t-rep,.t-dom{align-items:center}
+  .t-lang .shots{flex:1 1 auto;min-height:220px;display:flex;margin:20px 0 24px!important}
+  .t-lang .shots[data-show] img{height:100%!important;aspect-ratio:auto!important;object-fit:cover;object-position:top center}
+  .t-guar .ski{position:static;width:96px;height:144px;margin:0 0 18px -6px}
+  .t-guar h3{margin-top:0}
+  .bn-cta{display:flex;justify-content:center}
+}
+@media (min-width:900px){
+  .t-lang .shots{flex:1 1 0;min-height:200px;position:relative;overflow:hidden;border-radius:12px}
+  .t-lang .shots[data-show] img{position:absolute;inset:0;width:100%!important;height:100%!important}
+}
+@media (min-width:900px){
+  .t-day,.t-rem{justify-content:flex-start;gap:0}
+  .t-day h3,.t-rem h3{margin-top:auto;padding-top:24px}
+}
+/* A5: «История» на компьютере — колонка шагов по левому краю сайта, телефон справа; сноска без пустого хвоста */
+@media (min-width:900px){
+  .st-grid{justify-content:space-between;grid-template-columns:minmax(0,480px) auto}
+  .st-phone{padding-right:clamp(0px,4vw,64px)}
+  .st-note{padding:24px 0 8px}
+}
+/* A7: ритм заголовков — h2 → подзаголовок 14 px, подзаголовок → содержимое 40 px (на телефоне 28 px) */
+h2:has(+ .lead){margin-bottom:0!important}
+h2 + .lead{margin-top:14px!important}
+.calc .lead,.how .lead,.ind .lead,.try .lead,.fin p.lead{margin-bottom:28px!important}
+.gor .lead{margin-bottom:10px!important}
+.gr-who{margin-bottom:28px!important}
+@media (min-width:900px){
+  .calc .lead,.how .lead,.ind .lead,.try .lead,.fin p.lead{margin-bottom:40px!important}
+  .gr-who{margin-bottom:40px!important}
+}
+.hero .h-price{margin-top:16px}
+/* A8: «Пришлём сайт» — кнопки одной ширины, шаги 14 px */
+@media (min-width:600px){ .ty-btns{display:grid!important;grid-template-columns:1fr 1fr} .ty-btns .btn{width:100%!important} }
+.ty-steps,.ty-steps li{font-size:14px!important}
+/* A9: выбранное — один стиль: синяя заливка, как у ниш на первом экране */
+.in-tabs button[aria-selected="true"],.ty-kinds button[aria-checked="true"]{background:var(--blue);border-color:var(--blue);color:var(--night);box-shadow:none}
+.in-tabs button[aria-selected="true"] small{color:var(--night);opacity:.75}
+/* A10: «Пакеты» — цены на одной высоте, кнопка ИИ в одну строку, первая колонка шире, карточки по содержимому */
+.pl-t{min-height:2.7em}
+.pl .btn{white-space:nowrap;padding-left:14px;padding-right:14px}
+.pg-t th:first-child,.pg-t td:first-child{min-width:200px}
+@media (min-width:900px){ .pk-more{align-items:start} }
+/* A3: макеты «Заявки» и «Группы» на 3D-экране — текст крупнее (экран уменьшен ×0,87), без пустоты */
+.p3-screen .mk{font-size:16px;gap:14px;padding-left:18px;padding-right:18px}
+.p3-screen .mk h4{font-size:21px;line-height:1.2;margin:4px 0 2px}
+.p3-screen .mk small{font-size:14px}
+.p3-screen .mk-tag{font-size:13px}
+.p3-screen .mk-sum b{font-size:24px}
+.p3-screen .mk-btn{font-size:15px;min-height:50px}
+.p3-screen .mk-row{grid-template-columns:56px 1fr;padding:12px 0}
+/* ===== ТЗ ч.4, телефон ===== */
+@media (max-width:899px){
+  /* подпись шага «Истории» не уходит под кнопку WhatsApp */
+  .st-caps{padding-right:56px}
+  .st-note{padding:16px 0 40px}
+  .fin{padding-bottom:40px}
+  /* строка вкладок формы ДЕМО — справа место под кнопку WhatsApp */
+  .ty-kinds{padding-right:60px}
+}
+/* шаги 1–2–3 в форме ДЕМО: цифра в кружке слева, текст рядом */
+.ty-steps li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:center;padding:10px 12px}
+.ty-steps li::before{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--blue);color:var(--night);margin:0;font-size:14px}
+@media (max-width:599px){ .ty-steps{grid-template-columns:1fr!important} }
+/* места «5 из 5»: кружки, свободные — светлые, занятые — синие */
+.seats i{width:12px;height:12px;border-radius:50%;border:0;background:rgba(82,150,225,.28)}
+.seats i.taken{background:var(--blue)}
+@media (max-width:899px){ .hero .cta .btn{max-width:calc(100% - 68px)} }
+@media (max-width:899px){ .inapp .hero .cta{padding-right:60px} }
+.in-tabs button[aria-selected="true"] *,.ty-kinds button[aria-checked="true"] *{color:var(--night)}
+/* ===== ТЗ ч.4, круг 2 ===== */
+/* форма ДЕМО: кнопки друг под другом на всю колонку, подпись справа в одну строку; шаги столбиком */
+@media (min-width:600px){ .ty-btns{grid-template-columns:1fr!important} }
+.ty-btns .btn{display:flex;align-items:center;justify-content:space-between;gap:12px;white-space:nowrap}
+.ty-btns .btn:not(:has(small)){justify-content:center}
+.ty-steps{grid-template-columns:1fr!important}
+.ty-steps li{line-height:1.4}
+.ty-kw{margin-top:40px!important}
+.ty-form label[for="tyName"]{display:block;margin-top:16px}
+/* «Три языка»: пропорция картинки 375:300, растворение ниже подзаголовка */
+@media (min-width:900px){
+  .t-lang .shots{flex:none!important;aspect-ratio:375/300;min-height:0!important;margin:20px 0 24px!important}
+  .t-lang .shots img{-webkit-mask-image:linear-gradient(#000 72%,transparent 96%);mask-image:linear-gradient(#000 72%,transparent 96%)}
+}
+/* «Пакеты»: армянская кнопка Online AI переносится аккуратно, по центру */
+html[lang="hy"] .pl .btn{white-space:normal;text-align:center;line-height:1.2;font-size:14px}
+/* «5 из 5»: свободные места заметны */
+.seats i{background:rgba(156,195,240,.5)}
+.seats i.taken{background:var(--blue)}
+/* ===== ТЗ ч.4, мобильный круг 2 ===== */
+/* «Тип бизнеса»: без отступа справа (сжимал кнопки), текст помещается на 360 */
+.ty-kinds{padding-right:0!important}
+.ty-kinds button{padding:0 4px;font-size:14px;white-space:nowrap}
+@media (max-width:380px){ .ty-kinds button{font-size:13px} }
+/* «Под вашу отрасль»: кнопки карточки — текст по центру, с воздухом */
+.in-btns .btn{text-align:center;justify-content:center;padding-top:10px;padding-bottom:10px;line-height:1.25}
+/* «Пакеты» на телефоне: первая колонка таблицы — 40% */
+@media (max-width:899px){ .pg-t th:first-child,.pg-t td:first-child{min-width:0;width:40%} }
+@media (max-width:340px){ .ty-btns .btn:has(small){flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;white-space:normal;padding-top:10px;padding-bottom:10px} }

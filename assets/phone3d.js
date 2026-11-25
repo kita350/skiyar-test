@@ -22,6 +22,10 @@
     var cv = document.createElement("img"); cv.className = "lv-3d"; cv.alt = ""; cv.setAttribute("aria-hidden", "true");
     cv.width = FW; cv.height = FH;
     ph.insertBefore(cv, scr);
+    // второй слой: соседний кадр поверх с прозрачностью = доля между кадрами → поворот плавный на каждом кадре экрана, без «ступенек»
+    var cv2 = document.createElement("img"); cv2.className = "lv-3d lv-3d2"; cv2.alt = ""; cv2.setAttribute("aria-hidden", "true");
+    cv2.width = FW; cv2.height = FH; cv2.style.opacity = "0"; ph.insertBefore(cv2, scr);
+    var curF = -1, cur2 = -1;
     var k = 1;
     document.documentElement.classList.add("ph3d");
     // детали настоящего телефона поверх живого экрана: островок камеры, строка ввода, значки сети
@@ -34,7 +38,7 @@
 
     function size() {
       k = ph.clientWidth / FW;
-      cur = -1; paint();
+      cur = -1; cur2 = -1; curF = -1; paintF(pos);
     }
     // матрица, переводящая прямоугольник экрана в 4 угла кадра
     function adj(m) { return [m[4]*m[8]-m[5]*m[7], m[2]*m[7]-m[1]*m[8], m[1]*m[5]-m[2]*m[4], m[5]*m[6]-m[3]*m[8], m[0]*m[8]-m[2]*m[6], m[2]*m[3]-m[0]*m[5], m[3]*m[7]-m[4]*m[6], m[1]*m[6]-m[0]*m[7], m[0]*m[4]-m[1]*m[3]]; }
@@ -47,7 +51,18 @@
       for (i = 0; i < 9; i++) t[i] /= t[8];
       scr.style.transform = "matrix3d(" + [t[0], t[3], 0, t[6], t[1], t[4], 0, t[7], 0, 0, 1, 0, t[2], t[5], 0, t[8]].map(function (x) { return +x.toFixed(6); }).join(",") + ")";
     }
+    function paintF(x) {
+      var f0 = Math.floor(x), f1 = Math.min(N - 1, f0 + 1), a = x - f0;
+      if (!imgs[f0] || !imgs[f1]) { want = Math.round(x); paint(); return; }
+      if (Math.abs(x - curF) < 0.004) return; curF = x;
+      if (cur !== f0) { cur = f0; cv.src = imgs[f0].src; }
+      if (cur2 !== f1) { cur2 = f1; cv2.src = imgs[f1].src; }
+      cv2.style.opacity = a < 0.01 ? "0" : a.toFixed(3);
+      var c0 = J.corners[f0], c1 = J.corners[f1];
+      fit(c0.map(function (p, i) { return [p[0] + (c1[i][0] - p[0]) * a, p[1] + (c1[i][1] - p[1]) * a]; }));
+    }
     function paint() {
+      cv2.style.opacity = "0"; curF = -1;
       var f = want, g = want; while (f > 0 && !imgs[f]) f--; while (g < N - 1 && !imgs[g]) g++; if (!imgs[f] || (imgs[g] && g - want < want - f)) f = g; // нужный кадр ещё грузится — ближайший готовый
       if (!imgs[f] || f === cur) return;
       cur = f; cv.src = imgs[f].src; fit(J.corners[f]);
@@ -65,7 +80,7 @@
     var ST = Math.round(N * 0.56);
     function fromScroll() {
       var r = hero.getBoundingClientRect(), p = Math.max(0, Math.min(1, -r.top / Math.max(1, r.height * 0.75)));
-      return ST + p * (N - 1 - ST);
+      return ST + p * (MOUSE.matches ? N - 1 - ST : 10); // телефон (касание): прокрутка лишь чуть сдвигает центр покачивания
     }
     // компьютер (мышь): телефон следует за курсором по горизонтали, ±21 кадр ≈ ±15°; прокрутка не поворачивает
     var MOUSE = matchMedia("(hover: hover) and (pointer: fine) and (min-width: 900px)");
@@ -73,20 +88,24 @@
     var pos = ST, target = ST;
     function glide() {
       raf = 0; if (intro) return;
-      pos += (target - pos) * (MOUSE.matches ? 0.12 : 0.16);
-      if (Math.abs(target - pos) < 0.05) pos = target;
-      want = Math.round(pos); paint();
-      if (pos !== target) raf = requestAnimationFrame(glide);
+      // сглаживание от прошедшего времени, а не от частоты экрана: одинаково на 60 и 144 Гц
+      var now = performance.now(), dt = Math.min(64, now - (glide.t || now - 16.7)); glide.t = now;
+      pos += (target - pos) * (1 - Math.pow(MOUSE.matches ? 0.88 : 0.84, dt / 16.7));
+      if (Math.abs(target - pos) < 0.01) pos = target;
+      // телефон (касание): во время прокрутки пальцем перерисовываем не чаще 30 раз в секунду — меньше нагрузки в Safari
+      if (MOUSE.matches || pos === target || now - scrollAt > 160 || now - (glide.p || 0) >= 32) { glide.p = now; paintF(pos); }
+      if (pos !== target) raf = requestAnimationFrame(glide); else glide.t = 0;
     }
     function go2(t) { target = t; if (!raf) raf = requestAnimationFrame(glide); }
     // телефон (касание): мягкое покачивание влево-вправо ±9 кадров (≈ ±6°) за 6 с, пока первый экран виден, — телефон «живой»
     var swayOn = false, heroVis = true;
-    function sway() { return swayOn ? 9 * Math.sin(performance.now() / 6000 * 2 * Math.PI) : 0; }
+    function sway() { return swayOn ? 12 * Math.sin(performance.now() / 5000 * 2 * Math.PI) : 0; }
     function aim() { return Math.max(0, Math.min(N - 1, fromScroll() + sway())); }
     function swayTick() { if (!swayOn) return; if (!intro) go2(aim()); requestAnimationFrame(swayTick); }
     function swayCheck() { var on = !still && !MOUSE.matches && heroVis; if (on && !swayOn) { swayOn = true; requestAnimationFrame(swayTick); } else if (!on) swayOn = false; }
     if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { heroVis = e[0].isIntersecting; swayCheck(); }).observe(ph);
-    function onScroll() { if (still) return; // «уменьшить движение»: телефон стоит прямо
+    var scrollAt = 0;
+    function onScroll() { scrollAt = performance.now(); if (still) return; // «уменьшить движение»: телефон стоит прямо
       go2(MOUSE.matches ? target : aim()); }
     window.addEventListener("scroll", onScroll, { passive: true });
     document.addEventListener("mousemove", function (e) {
@@ -115,8 +134,8 @@
         var go = function (t) {
           if (!t0) t0 = t;
           var p = Math.min(1, (t - t0) / 1200), e = 1 - Math.pow(1 - p, 3);
-          want = Math.round(from + (ST - from) * e); paint();
-          if (p < 1) requestAnimationFrame(go); else { intro = 0; pos = want; onScroll(); }
+          paintF(from + (ST - from) * e);
+          if (p < 1) requestAnimationFrame(go); else { intro = 0; pos = ST; onScroll(); }
         };
         if (window.scrollY > 40) { intro = 0; onScroll(); return; } // уже прокрутили — без появления
         requestAnimationFrame(go);

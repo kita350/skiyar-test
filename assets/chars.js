@@ -23,6 +23,7 @@
     var m = /hero-(gor|lusine|ski|ruzan)-1x\.png$/.exec(img.getAttribute("src"));
     if (!m) return;
     var c = { img: img, w: who[m[1]], mood: "base", vis: false };
+    if (m[1] === "gor" && img.classList.contains("st-px")) { c.w = { base: "emo-gor-free.png", happy: "emo-gor-free-hi.png" }; m[1] = "gorfree"; }
     img.dataset.who = m[1]; list.push(c);
     preload(img, Object.keys(c.w).map(function (k) { return c.w[k]; }));
   });
@@ -108,7 +109,7 @@
   });
 
   // «История записи»: эмоции по шагам
-  var STORY = { ruzan: { 1: "angry", 2: "wow", 3: "happy", 5: "happy" }, lusine: { 4: "wow" }, gor: { 6: "happy" } };
+  var STORY = { ruzan: { 1: "angry", 2: "wow", 3: "happy", 5: "happy" }, lusine: { 4: "wow" }, gor: { 6: "happy" }, gorfree: { 6: "happy" } };
   document.addEventListener("story:step", function (e) {
     var s = e.detail;
     list.forEach(function (c) {

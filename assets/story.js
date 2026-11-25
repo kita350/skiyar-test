@@ -35,7 +35,7 @@
       // телефон: без прилипания; размер от ширины и высоты экрана устройства, чтобы не прыгал,
       // когда браузер прячет/показывает свою панель
       var sh = Math.min(screen.height || innerHeight, innerHeight + 140);
-      k = Math.min(1.1, w / 264, (sh * 0.56) / 546);
+      k = Math.min(1.1, w / 264, (sh * (sh < 780 ? 0.5 : 0.56)) / 546); // низкий экран — подпись шага помещается под телефоном
     } else {
       // масштаб телефона под свободную высоту
       k = Math.min(1.2, track.querySelector(".st-phone").clientHeight / 546, w / 264);
@@ -83,6 +83,7 @@
   // Телефон: касание по телефону или подписи — следующий шаг, по левой трети — предыдущий; таймер начинается заново.
   each(".st-phone, .st-caps", function (el) {
     el.addEventListener("click", function (e) {
+      if (el.classList.contains("st-phone") && !(e.target.closest && e.target.closest(".st-ph-box .phone"))) return; // касание по персонажу рядом — ничего
       var r = (el.querySelector('.st-ph-box .phone') || el).getBoundingClientRect(), back = e.clientX < r.left + r.width / 3;
       var n = back ? (cur <= 1 ? N : cur - 1) : (cur >= N ? 1 : cur + 1);
       if (!MQ.matches) { // компьютер: докручиваем страницу к шагу — прокрутка и клик не спорят
