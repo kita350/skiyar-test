@@ -1411,3 +1411,6 @@ p,li,.cap-p,small{text-wrap:pretty}
 .ty-pre{display:none!important}
 .ty-claim .ty-input{padding-left:16px}
 @media (max-width:899px){ .bento{padding-bottom:44px!important} main > section.bento::after{display:none!important} }
+.pv-text{container-type:inline-size}
+.pv-name{overflow-wrap:normal!important;word-break:normal!important;hyphens:none;font-size:clamp(19px,11.5cqi,64px)!important;line-height:1.05}
+@media (max-width:340px){ .pv[data-kind="restaurant"] .pv-name{letter-spacing:0;font-size:17px!important} }
