@@ -311,3 +311,9 @@ html[lang="hy"] .t-lang .shots img:nth-child(1),html[lang="ru"] .t-lang .shots i
 .st-island{top:9px;width:76px;height:23px;margin-left:-38px;border-radius:12px}
 /* живые персонажи: без прыжков — Гор в калькуляторе не подпрыгивает при движении ползунка, у него свои действия */
 .ca-gor.hop{animation:px-breathe 2.4s steps(2) infinite}
+/* Safari растягивал .phone по содержимому (aspect-ratio не держал высоту) — экран вылезал за корпус. Жёсткая высота. */
+.st-ph-box .phone.p3s{height:546px;aspect-ratio:auto}
+.st-ph-box .phone.p3s .screen{height:526px;min-height:0;overflow:hidden}
+.st-ph-box .phone.p3s .wa-body{padding-top:8px;min-height:0}
+/* «Три языка»: армянский текст длиннее — скриншот чуть выше, а низ мягко растворяется, без строки, обрезанной пополам */
+.t-lang .shots img{aspect-ratio:375/300!important;-webkit-mask-image:linear-gradient(#000 62%,transparent 90%);mask-image:linear-gradient(#000 62%,transparent 90%)}

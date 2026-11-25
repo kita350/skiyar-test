@@ -621,15 +621,22 @@ document.documentElement.classList.add("js");
       if (pos !== target) raf = requestAnimationFrame(glide);
     }
     function go2(t) { target = t; if (!raf) raf = requestAnimationFrame(glide); }
+    // телефон (касание): мягкое покачивание влево-вправо ±9 кадров (≈ ±6°) за 6 с, пока первый экран виден, — телефон «живой»
+    var swayOn = false, heroVis = true;
+    function sway() { return swayOn ? 9 * Math.sin(performance.now() / 6000 * 2 * Math.PI) : 0; }
+    function aim() { return Math.max(0, Math.min(N - 1, fromScroll() + sway())); }
+    function swayTick() { if (!swayOn) return; if (!intro) go2(aim()); requestAnimationFrame(swayTick); }
+    function swayCheck() { var on = !still && !MOUSE.matches && heroVis; if (on && !swayOn) { swayOn = true; requestAnimationFrame(swayTick); } else if (!on) swayOn = false; }
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { heroVis = e[0].isIntersecting; swayCheck(); }).observe(ph);
     function onScroll() { if (still) return; // «уменьшить движение»: телефон стоит прямо
-      go2(MOUSE.matches ? target : fromScroll()); }
+      go2(MOUSE.matches ? target : aim()); }
     window.addEventListener("scroll", onScroll, { passive: true });
     document.addEventListener("mousemove", function (e) {
       if (still || !MOUSE.matches) return;
       go2(Math.max(0, Math.min(N - 1, ST + (e.clientX / innerWidth - 0.5) * 2 * 21)));
     }, { passive: true });
     document.documentElement.addEventListener("mouseleave", function () { if (!still && MOUSE.matches) go2(ST); });
-    if (MOUSE.addEventListener) MOUSE.addEventListener("change", function () { if (!still) go2(MOUSE.matches ? ST : fromScroll()); });
+    if (MOUSE.addEventListener) MOUSE.addEventListener("change", function () { swayCheck(); if (!still) go2(MOUSE.matches ? ST : aim()); });
     window.addEventListener("resize", function () { size(); }, { passive: true });
 
     var got = 1;
