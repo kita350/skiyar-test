@@ -50,9 +50,11 @@
     top0 = track.getBoundingClientRect().top + window.scrollY;
     total = track.offsetHeight - stage.offsetHeight;
   }
+  var lockUntil = 0, lockTimer = 0;
   function update() {
     ticking = false;
     if (MQ.matches) return; // на телефоне шаги идут сами (autoplay ниже)
+    if (Date.now() < lockUntil) return; // идёт докрутка после клика — шаг уже выставлен, промежуточные не мелькают
     var p = total > 0 ? Math.min(1, Math.max(0, (window.scrollY - top0) / total)) : 0;
     show(Math.min(N, Math.floor(p * N) + 1));
   }
@@ -85,11 +87,17 @@
     el.addEventListener("click", function (e) {
       if (el.classList.contains("st-phone") && !(e.target.closest && e.target.closest(".st-ph-box .phone"))) return; // касание по персонажу рядом — ничего
       var ph = el.querySelector('.st-ph-box .phone'), r = ph && ph.getBoundingClientRect(), back = !!ph && e.clientX < r.left + r.width / 3; // подпись — всегда вперёд
-      var n = back ? (cur <= 1 ? N : cur - 1) : (cur >= N ? 1 : cur + 1);
-      if (!MQ.matches) { // компьютер: докручиваем страницу к шагу — прокрутка и клик не спорят
-        var tot = track.offsetHeight - stage.offsetHeight, y = track.getBoundingClientRect().top + window.scrollY + tot * ((n - 0.5) / N);
+      if (!MQ.matches) {
+        // компьютер: шаг меняется сразу, страница спокойно докручивается к нему; пока едет — прокрутка шаг не трогает.
+        // Без перескока с последнего шага на первый (это уводило страницу вверх).
+        var m = back ? Math.max(1, cur - 1) : Math.min(N, cur + 1);
+        if (m === cur) return;
+        show(m);
+        var tot = track.offsetHeight - stage.offsetHeight, y = track.getBoundingClientRect().top + window.scrollY + tot * ((m - 0.5) / N);
+        lockUntil = Date.now() + 1200; clearTimeout(lockTimer); lockTimer = setTimeout(function () { lockUntil = 0; }, 1250);
         window.scrollTo({ top: y, behavior: still ? "auto" : "smooth" }); return;
       }
+      var n = back ? (cur <= 1 ? N : cur - 1) : (cur >= N ? 1 : cur + 1);
       show(n); restart();
     });
   });
