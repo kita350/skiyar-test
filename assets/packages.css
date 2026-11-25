@@ -949,3 +949,13 @@ html[lang="hy"] .pl .btn{white-space:nowrap;font-size:13px;padding-left:10px;pad
 @media (max-width:899px){ .pg-head::after{display:none} }
 @media (max-width:899px){ main > section.pg-head::after{display:none!important} }
 @media (max-width:899px){ .pg-head + .pk{padding-top:40px!important} }
+@media (min-width:900px){
+.pv{align-self:start!important}
+.pv-body{flex:none!important;min-height:0!important;height:520px}
+.pv-text{display:flex;flex-direction:column;justify-content:flex-end;padding:40px 0}
+}
+@media (min-width:900px){ .pv{position:sticky;top:calc(var(--nav,64px) + 32px)} }
+.ty-grid{row-gap:0!important}
+.ty-head .lead,.ty-head p:last-child{margin-bottom:0!important}
+.ty-form{margin-top:40px!important}
+@media (max-width:899px){ .ty-form{margin-top:0!important} .ty-grid{row-gap:0!important} }
