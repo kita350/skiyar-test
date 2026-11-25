@@ -30,6 +30,13 @@
     document.documentElement.classList.add("ph3d");
     // детали настоящего телефона поверх живого экрана: островок камеры, строка ввода, значки сети
     scr.insertAdjacentHTML("beforeend", '<i class="lv-island" aria-hidden="true"></i><i class="lv-input" aria-hidden="true"></i><i class="lv-send" aria-hidden="true"></i>');
+    // вверху переписки — карточка профиля, как в Instagram при новом чате: экран не пустой; имя и буква меняются с нишей
+    var body = scr.querySelector(".lv-body"), hdN = scr.querySelector(".lv-hd b"), hdA = scr.querySelector(".lv-av"), hdS = scr.querySelector(".lv-hd small");
+    if (body && hdN) {
+      body.insertAdjacentHTML("afterbegin", '<div class="lv-prof" aria-hidden="true"><i class="lv-prof-av"></i><b></b><small></small></div>');
+      var pf = body.firstChild, syncP = function () { pf.querySelector("b").textContent = hdN.textContent; pf.querySelector("i").textContent = hdA ? hdA.textContent : ""; pf.querySelector("small").textContent = hdS ? hdS.textContent : ""; };
+      syncP(); if (window.MutationObserver) new MutationObserver(syncP).observe(scr.querySelector(".lv-hd"), { subtree: true, childList: true, characterData: true });
+    }
     // «Напоминание отправлено» — пуш-уведомление на самом экране телефона (поворачивается вместе с ним)
     var toast = box.querySelector(".lv-toast");
     if (toast) { scr.appendChild(toast); toast.insertAdjacentHTML("afterbegin", '<i class="lv-wa" aria-hidden="true"></i>'); }

@@ -84,7 +84,7 @@
   each(".st-phone, .st-caps", function (el) {
     el.addEventListener("click", function (e) {
       if (el.classList.contains("st-phone") && !(e.target.closest && e.target.closest(".st-ph-box .phone"))) return; // касание по персонажу рядом — ничего
-      var r = (el.querySelector('.st-ph-box .phone') || el).getBoundingClientRect(), back = e.clientX < r.left + r.width / 3;
+      var ph = el.querySelector('.st-ph-box .phone'), r = ph && ph.getBoundingClientRect(), back = !!ph && e.clientX < r.left + r.width / 3; // подпись — всегда вперёд
       var n = back ? (cur <= 1 ? N : cur - 1) : (cur >= N ? 1 : cur + 1);
       if (!MQ.matches) { // компьютер: докручиваем страницу к шагу — прокрутка и клик не спорят
         var tot = track.offsetHeight - stage.offsetHeight, y = track.getBoundingClientRect().top + window.scrollY + tot * ((n - 0.5) / N);

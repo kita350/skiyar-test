@@ -483,3 +483,126 @@ html[lang="hy"] .pl .btn{white-space:nowrap;font-size:13px;padding-left:10px;pad
 .ty-head .lead,.ty-head p:last-child{margin-bottom:0!important}
 .ty-form{margin-top:40px!important}
 @media (max-width:899px){ .ty-form{margin-top:0!important} .ty-grid{row-gap:0!important} }
+/* ===== ТЗ ч.5: мобильное ревью 92 ===== */
+/* 2. политика на 320 — заголовки не шире экрана */
+/* 3. форма ДЕМО: превью отделено от ссылки */
+@media (max-width:899px){ .pv{margin-top:24px} }
+/* 5. «История», шапка чата: подзаголовок в одну строку */
+.st-ph-box .ch-h small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* 7. перед последним блоком — тот же ритм, что у остальных */
+@media (max-width:899px){ .fin{padding-top:44px} }
+/* 8. цены в карточках пакетов на одной высоте */
+.pkt .pr{margin-top:auto}
+/* 11. «первым 5 — бесплатно» на одной линии */
+.in-free{margin-left:0!important}
+/* 12. «Посмотреть пакеты» по линии колонки */
+@media (max-width:899px){ .hero .cta .btn-line{padding-left:0;padding-right:0} }
+/* 13. места «5 из 5»: свободные — кольца, занятые — синие */
+.seats i{background:transparent!important;box-shadow:inset 0 0 0 2px #9cc3f0}
+.seats i.taken{background:var(--blue)!important;box-shadow:none}
+/* 14. строка ИП в подвале без лишнего межстрочья */
+.foot-legal a{display:inline!important;padding-block:12px}
+/* 17. «Три языка»: растворение в фон карточки, без серой подложки */
+.t-lang .shots,.t-lang .shots img{background:none!important;box-shadow:none!important}
+/* 18. длинная армянская кнопка «первые пять» переносится аккуратно */
+[data-t="pCta"]{white-space:normal!important;text-align:center;line-height:1.25;padding-top:10px;padding-bottom:10px}
+/* 10. «Пакеты» на телефоне: «Online по отраслям» — карточка на отрасль */
+@media (max-width:899px){
+  #variants .tw::before,#variants .tw::after{display:none!important}
+  #variants .tw{overflow:visible;-webkit-mask-image:none;mask-image:none}
+  .pg-cards,.pg-cards tbody{display:block;width:100%}
+  .pg-cards thead{display:none}
+  .pg-cards tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 12px;padding:16px;margin:0 0 10px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+  .pg-cards th,.pg-cards td{display:block;padding:0!important;border:0!important;min-width:0!important;width:auto!important;text-align:left!important;background:none!important}
+  .pg-cards th{grid-column:1/-1;font-size:18px;font-weight:800}
+  .pg-cards td:nth-child(2){grid-column:1/-1;color:var(--c-c3cad8);font-size:14.5px;margin-bottom:8px}
+  .pg-cards td.n{font-weight:800;font-size:15px}
+  .pg-cards td.n::before{content:attr(data-l);display:block;font-weight:500;font-size:12px;color:var(--muted);margin-bottom:2px}
+}
+@media (max-width:899px){ .pg-cards{min-width:0!important;width:100%!important;table-layout:auto} .pg-cards tr{width:auto;max-width:100%} }
+/* ===== ТЗ ч.5: компьютерное ревью 92 ===== */
+/* D10: переносы — заголовки сбалансированы, абзацы без одиноких слов */
+h1,h2,h3,.cap-t{text-wrap:balance}
+p,li,.cap-p,small{text-wrap:pretty}
+/* D1: кнопки в шапке таблицы «Пакетов» на 1024–1100 */
+@media (min-width:900px) and (max-width:1100px){ .pl .btn{white-space:normal!important;font-size:13.5px!important;padding:8px 10px!important;text-align:center;line-height:1.2} }
+/* D2: сноска «Истории» не прилипает к линии секции */
+@media (min-width:900px){ #story .st-note{padding-bottom:96px!important} }
+/* D9: «История» на компьютере — первый шаг ближе к заголовку */
+@media (min-width:900px){ .st-stage{display:flex;align-items:flex-start} .st-grid{height:auto;width:100%;padding-top:40px;align-items:center} }
+/* D5: Гор на первом экране — справа у низа телефона, внутри колонки */
+@media (min-width:900px){ .ph3d .niche-gor{left:calc(50% + min(460px,calc((100svh - 250px) / 1.45)) * .33 + 10px)!important;right:auto} }
+/* D8: 404 — третья кнопка помещается */
+/* D11: «Что вы получаете» — виджеты на всю ширину плитки, растворение скриншота короче */
+@media (min-width:900px){
+  .t-rem .wa-card,.t-rem > div:first-child{width:100%;max-width:none}
+  .t-lang .shots img{-webkit-mask-image:linear-gradient(#000 80%,transparent 99%)!important;mask-image:linear-gradient(#000 80%,transparent 99%)!important}
+}
+/* D12: калькулятор без пустоты под ползунками; кнопка главной карточки пакетов прижата к низу */
+@media (min-width:900px){ .ca-in{align-content:space-evenly} .pkt-on .btn,.pkt-on > a:last-child{margin-top:auto} }
+/* D13: «Пакеты» — «Какой выбрать» сверху ячейки, карточки гарантии 1:1:1, числа вправо */
+@media (min-width:900px){ .pk-help{vertical-align:top!important;padding-top:24px!important} .pk-more{grid-template-columns:repeat(3,minmax(0,1fr))!important} }
+.pg-t td.n{text-align:right;font-variant-numeric:tabular-nums}
+/* D14: ритм на «Пакетах» — заголовок → содержимое 40 px */
+@media (min-width:900px){ .pg-sec h2{margin-bottom:14px} .pg-sec .lead{margin-bottom:40px!important} .pg-sec h2:not(:has(+ .lead)){margin-bottom:40px} }
+/* D16: ховер только у того, что нажимается */
+.tile:hover,.rv.rv-in.tile:hover{transform:none!important}
+@media (hover:hover){ .faq summary:hover{color:var(--sky)} }
+.st-px{cursor:default}
+/* D17: основная кнопка не выглядит тоньше соседней */
+.btn-main{font-weight:800}
+/* D20: кнопка WhatsApp видна всегда — и на компьютере */
+@media (min-width:900px){ .fab{display:grid!important} }
+/* «История»: значки связи в строке состояния */
+.sb-ic{margin-left:auto;margin-right:6px;display:inline-flex;color:var(--c-10131a)}
+.sb-ic svg{width:40px;height:9px}
+/* первый телефон: карточка профиля вверху переписки */
+.lv-prof{margin:0 auto auto;padding:28px 0 0;display:grid;justify-items:center;gap:4px;text-align:center}
+.lv-prof-av{display:grid;place-items:center;width:72px;height:72px;border-radius:50%;background:#e9dccb;color:#7a5c3a;font:400 30px/1 Georgia,serif;font-style:normal;margin-bottom:6px}
+.lv-prof b{font-size:16px}
+.lv-prof small{font-size:12.5px;color:#7b7f88}
+/* ===== ТЗ ч.5, круг 2 ===== */
+/* 1. «История»: строка состояния — значки правее островка, без второй батареи; подпись шапки обрезается многоточием */
+.st-ph-box .sb:has(.sb-ic) > i{display:none}
+.st-ph-box .sb-ic{margin-right:-6px}
+.st-ph-box .sb-ic svg{width:46px;height:10px}
+.st-ph-box .ch-h > div{min-width:0;flex:1}
+/* 2. «История»: липкий блок снова по центру окна, заголовок ближе к нему */
+@media (min-width:900px){
+  .st-stage{display:block!important}
+  .st-grid{height:100%!important;padding-top:24px!important;align-items:center!important}
+  .st-head{padding-bottom:0!important}
+  .st-track{margin-top:-56px}
+}
+/* 4. таблицы «Пакетов»: заголовки числовых колонок — вправо, как числа */
+.pg-t thead th{text-align:right!important}
+.pg-t thead th:first-child,#variants .pg-t thead th:nth-child(2){text-align:left!important}
+.pg-t td.n{text-align:right!important}
+/* 5. маленькие карточки пакетов на главной: ссылка над ценой, цена прижата к низу */
+.pkt .pkt-a{order:3}
+.pkt:not(.pkt-on):not(.pkt-seats):not(:has(.pkt-a))::after{content:"";order:3;height:21px}
+.pkt .pr{order:2;margin-top:auto!important}
+.pkt:not(.pkt-on) .pl-p{order:2;margin-top:auto!important}
+.pkt:not(.pkt-on) .pr,.pkt:not(.pkt-on) .pl-p{min-height:58px}
+/* ===== ТЗ ч.5, мобильный круг 2 ===== */
+/* 1. строка цен первого экрана — в две строки на телефоне, телефон с часами виден в первом экране */
+@media (max-width:430px){ .hero .h-price{font-size:14.5px;letter-spacing:-.015em;line-height:1.35} }
+/* 2. карточки «Online по отраслям» — цены по левому краю */
+@media (max-width:899px){ .pg-cards td.n{text-align:left!important} }
+/* 6. «Три языка» на телефоне — растворение короче, без серой полосы */
+@media (max-width:899px){ .t-lang .shots img{-webkit-mask-image:linear-gradient(#000 80%,transparent 100%)!important;mask-image:linear-gradient(#000 80%,transparent 100%)!important} }
+/* ===== ТЗ ч.5, компьютерный круг 3 ===== */
+/* 1. «Что вы получаете»: скриншот «Три языка» ниже → плитки справа без пустоты */
+@media (min-width:900px){ .t-lang .shots{aspect-ratio:375/250!important} }
+/* 2. плавающая кнопка на компьютере — подпись при наведении */
+@media (hover:hover) and (min-width:900px){
+  .fab span{right:60px;left:auto;top:50%;width:auto;height:auto;clip:auto;overflow:visible;transform:translateY(-50%);padding:6px 10px;border-radius:8px;background:#0f1a33;color:#fff;font:700 13px/1 var(--font);opacity:0;pointer-events:none;transition:opacity .15s}
+  .fab:hover span{opacity:1}
+}
+@media (max-width:430px){ .hero .h-price{font-size:15px;letter-spacing:-.02em} }
+@media (max-width:375px){ .ph3d .hero .niche{margin-top:-10px} }
+/* карточки пакетов на телефоне: строка под ценой одной высоты (ссылка может быть в две строки) */
+@media (max-width:899px){
+  .pkt .pkt-a{display:block;min-height:40px}
+  .pkt:not(.pkt-on):not(.pkt-seats):not(:has(.pkt-a))::after{height:40px}
+}

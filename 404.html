@@ -27,8 +27,9 @@ a{color:inherit}
 .lang-dd .langs{position:absolute;right:0;top:calc(100% + 6px);z-index:5;display:flex;flex-direction:column;gap:2px;min-width:116px;padding:6px;background:var(--night);border:1px solid var(--line-2);border-radius:12px}
 .lang-dd .langs a{justify-content:flex-start;padding:0 12px;font-size:15px;color:var(--white)}
 main{flex:1;display:flex;align-items:center}
-.wrap{width:100%;max-width:760px;margin:0 auto;padding:32px 16px 48px}
-.big{font-weight:800;font-size:clamp(112px,30vw,200px);line-height:.82;letter-spacing:-.06em;color:#3f6fb8;font-variant-numeric:tabular-nums}
+.wrap{width:100%;max-width:1192px;margin:0 auto;padding:32px 16px 48px}
+.wrap > *{max-width:730px}
+.big{font-weight:800;font-size:clamp(112px,30vw,200px);line-height:.82;letter-spacing:-.06em;color:#5296e1;font-variant-numeric:tabular-nums}
 h1{margin:20px 0 10px;font-weight:800;font-size:clamp(28px,7.6vw,48px);line-height:1.08;letter-spacing:-.03em}
 [lang="hy"] h1{font-size:clamp(25px,6.6vw,40px);line-height:1.15}
 p{margin:0;color:#c3cad8;max-width:30em}
@@ -48,9 +49,12 @@ p{margin:0;color:#c3cad8;max-width:30em}
 .top{padding:0 max(16px,calc((100% - 1160px) / 2))}
 .b{white-space:nowrap}
 .b:first-child small{display:none}
-.b{justify-content:center}
+.b{justify-content:center;gap:8px;padding:0 16px}
 .scene{align-items:flex-start}
 .scene > :not(img){margin-top:14px}
+.fab{position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;display:grid;place-items:center;width:50px;height:50px;border-radius:50%;background:#25d366;box-shadow:0 2px 8px rgba(0,0,0,.45)}.fab i{position:relative;width:22px;height:18px;border-radius:6px;background:#04210f}.fab i::after{content:"";position:absolute;left:3px;bottom:-5px;border:5px solid transparent;border-top-color:#04210f;border-bottom:0;border-left-width:0}.fab span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+h1,h2{text-wrap:balance}
+#h{white-space:pre-line}
 </style>
 </head>
 <body>
@@ -77,7 +81,7 @@ p{margin:0;color:#c3cad8;max-width:30em}
   var T = {
     hy: { h: "Այդպիսի էջ չկա։ Գրանցումը՝ կա։", p: "Հղումը հնացել է կամ սխալ է։ Տիկին Ռուզանն էլ սկզբում սխալ տեղ էր փնտրում։", q: "23:47։ Որտե՞ղ գրանցվեմ։",
           home: "Գլխավոր էջ", pk: "Փաթեթներ և գներ", wa: "Գրել ԴԵՄՈ", msg: "ԴԵՄՈ\nԲարև ձեզ։ Ուզում եմ կայքի օրինակ իմ բիզնեսի անունով։ Անունը՝ ", dir: "/" },
-    ru: { h: "Такой страницы нет. Запись — есть.", p: "Ссылка устарела или в ней опечатка. Рузан тоже сначала искала не там.", q: "23:47. Где тут записаться?",
+    ru: { h: "Такой страницы нет.\nЗапись — есть.", p: "Ссылка устарела или в ней опечатка. Рузан тоже сначала искала не там.", q: "23:47. Где тут записаться?",
           home: "На главную", pk: "Пакеты и цены", wa: "Написать ДЕМО", msg: "ДЕМО\nЗдравствуйте! Хочу пример сайта с названием моего бизнеса. Название: ", dir: "/ru/" },
     en: { h: "This page doesn’t exist. Booking does.", p: "The link is outdated or has a typo. Mrs Ruzan looked in the wrong place at first too.", q: "23:47. Where do I book?",
           home: "Home page", pk: "Packages and prices", wa: "Send DEMO", msg: "DEMO\nHello! I'd like a sample site with my business name. Name: ", dir: "/en/" }
@@ -96,5 +100,6 @@ p{margin:0;color:#c3cad8;max-width:30em}
   document.addEventListener("click", function (e) { var d = document.querySelector(".lang-dd[open]"); if (d && !d.contains(e.target)) d.open = false; });
 })();
 </script>
+<a class="fab" href="https://wa.me/37498337187" target="_blank" rel="noopener"><i aria-hidden="true"></i><span>WhatsApp</span></a>
 </body>
 </html>
