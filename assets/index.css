@@ -1279,3 +1279,26 @@ html[lang="hy"] .pl .btn{white-space:normal;text-align:center;line-height:1.2;fo
 .in-btns .btn{text-align:center;justify-content:center;padding-top:10px;padding-bottom:10px;line-height:1.25}
 @media (max-width:899px){ .pg-t th:first-child,.pg-t td:first-child{min-width:0;width:40%} }
 @media (max-width:340px){ .ty-btns .btn:has(small){flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;white-space:normal;padding-top:10px;padding-bottom:10px} }
+@media (min-width:900px){ .pk-more{align-items:stretch!important} }
+@media (max-width:899px){ .pg-head{padding-bottom:0} .pg-head + .pk{padding-top:24px!important} .pg-head + .pk .pk-head{margin-bottom:16px} }
+@media (min-width:900px){ .ty-grid{grid-template-rows:auto auto;align-content:start} .ty-form{align-self:start;margin-top:0!important} .ty-kw{margin-top:0!important} }
+.ph3d .lv-body [data-step]:not(.on):not(.lv-typing){display:none}
+.ph3d .lv-body [data-step].on{animation:lvIn .3s var(--ease-out)}
+@keyframes lvIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (min-width:1400px){ .st-grid{justify-content:start;column-gap:clamp(96px,9vw,180px)} }
+@media (min-width:900px){
+.ph3d .hero .live{position:relative}
+.ph3d .niche{position:static}
+.ph3d .niche-in{position:relative;z-index:7}
+.ph3d .niche-gor{position:absolute;z-index:8;left:calc(50% - min(230px,calc((100svh - 250px) / 2.9)) - 18px);bottom:9%}
+}
+.in-btns .btn{min-height:62px}
+@media (min-width:900px){ .ty-grid{grid-template-rows:auto 1fr!important} .ty-head{align-self:start} }
+html[lang="hy"] .pl .btn{white-space:nowrap;font-size:13px;padding-left:10px;padding-right:10px}
+@media (min-width:900px){ .ph3d .niche-gor{bottom:-2.5%} }
+@media (min-width:1400px) and (max-width:1599px){ .st-grid{justify-content:space-between} }
+@media (max-width:899px){ .pg-head + .pk{padding-top:16px!important} .pg-head + .pk .pk-head{gap:0;margin-bottom:16px} }
+@media (max-width:340px){ .ty-btns .btn:has(small){align-items:center;text-align:center} }
+@media (max-width:899px){ .pg-head::after{display:none} }
+@media (max-width:899px){ main > section.pg-head::after{display:none!important} }
+@media (max-width:899px){ .pg-head + .pk{padding-top:40px!important} }
