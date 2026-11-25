@@ -606,3 +606,25 @@ p,li,.cap-p,small{text-wrap:pretty}
   .pkt .pkt-a{display:block;min-height:40px}
   .pkt:not(.pkt-on):not(.pkt-seats):not(:has(.pkt-a))::after{height:40px}
 }
+/* ===== финальное мобильное ревью ===== */
+/* блокер: подписи колонок в карточках «Online по отраслям» переносятся, не обрезаются */
+@media (max-width:899px){ .pg-cards td,.pg-cards th,.pg-cards td.n::before{white-space:normal!important;overflow-wrap:anywhere} }
+/* ссылки под ценами — зона нажатия 44 px */
+@media (max-width:899px){ .pkt .pkt-a{min-height:44px;display:flex;align-items:center} .pkt:not(.pkt-on):not(.pkt-seats):not(:has(.pkt-a))::after{height:44px} }
+/* 320 px: карточки пакетов без тесноты */
+@media (max-width:340px){
+  .pkt{padding:12px}
+  .pkt p,.pkt .pkt-a{font-size:13px}
+  .pkt .soon{font-size:10px;white-space:nowrap;letter-spacing:-.01em}
+  .pkt-on .pl-p small{display:block}
+}
+@media (max-width:340px){ .pkt .soon{position:static!important;align-self:flex-start;white-space:normal;max-width:100%;margin-bottom:4px} }
+/* ===== финальное мобильное ревью, круг 2 ===== */
+/* цены в карточках отраслей на одной линии, даже если подпись в 2–3 строки */
+@media (max-width:899px){ .pg-cards tr{align-items:end} .pg-cards th,.pg-cards td:nth-child(2){align-self:start} .pg-cards td.n{display:flex;flex-direction:column;justify-content:flex-end;height:100%} }
+/* встроенный браузер: подпись под кнопками первого экрана не под кнопкой WhatsApp */
+@media (max-width:899px){ .inapp .hero .dm-hint{padding-right:60px} }
+/* кнопка формы ДЕМО: пометка не у самого края */
+.ty-btns .btn:has(small){padding-right:20px}
+@media (max-width:899px){ .gor{padding-bottom:28px!important} }
+@media (max-width:340px){ .pkt .soon{font-size:11px!important} }

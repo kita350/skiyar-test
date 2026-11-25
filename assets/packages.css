@@ -1040,3 +1040,17 @@ p,li,.cap-p,small{text-wrap:pretty}
 .pkt .pkt-a{display:block;min-height:40px}
 .pkt:not(.pkt-on):not(.pkt-seats):not(:has(.pkt-a))::after{height:40px}
 }
+@media (max-width:899px){ .pg-cards td,.pg-cards th,.pg-cards td.n::before{white-space:normal!important;overflow-wrap:anywhere} }
+@media (max-width:899px){ .pkt .pkt-a{min-height:44px;display:flex;align-items:center} .pkt:not(.pkt-on):not(.pkt-seats):not(:has(.pkt-a))::after{height:44px} }
+@media (max-width:340px){
+.pkt{padding:12px}
+.pkt p,.pkt .pkt-a{font-size:13px}
+.pkt .soon{font-size:10px;white-space:nowrap;letter-spacing:-.01em}
+.pkt-on .pl-p small{display:block}
+}
+@media (max-width:340px){ .pkt .soon{position:static!important;align-self:flex-start;white-space:normal;max-width:100%;margin-bottom:4px} }
+@media (max-width:899px){ .pg-cards tr{align-items:end} .pg-cards th,.pg-cards td:nth-child(2){align-self:start} .pg-cards td.n{display:flex;flex-direction:column;justify-content:flex-end;height:100%} }
+@media (max-width:899px){ .inapp .hero .dm-hint{padding-right:60px} }
+.ty-btns .btn:has(small){padding-right:20px}
+@media (max-width:899px){ .gor{padding-bottom:28px!important} }
+@media (max-width:340px){ .pkt .soon{font-size:11px!important} }
