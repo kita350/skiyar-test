@@ -1204,3 +1204,6 @@ background:linear-gradient(180deg,rgba(10,14,22,.15) 0%,rgba(10,14,22,.78) 72%),
 @media (max-width:899px){ .pkb-grid .pkt-wide{grid-column:1/-1} }
 .nz-pr-side .nz-calc{color:var(--ink-2)!important;font-weight:400!important;font-size:15px!important}
 .nz-pr-side .nz-lite b,.nz-pr-side .nz-ai b{color:var(--white)}
+@media (min-width:900px){ .pkb-grid .pkt-salon{grid-column:1/2!important;grid-row:3} .pkb-grid .pkt-ao{grid-column:2/3;grid-row:3} }
+@media (max-width:899px){ .pkb-grid .pkt-ao{grid-column:1/-1} }
+.pg-ao{margin-bottom:16px}
