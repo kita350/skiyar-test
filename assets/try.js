@@ -28,7 +28,8 @@
     pv.querySelector(".pv-kind").textContent = t(k[0]);
     pv.querySelector(".pv-btn").textContent = t(k[1]);
     pv.querySelector(".pv-url b").textContent = slug(name) || "yourname";
-    pv.querySelector(".pv-img").src = base + kind + "/img/hero-800.webp";
+    // новые ниши — снимок экрана телефона (375 px) их демо, а не обрезка широкой картинки
+    pv.querySelector(".pv-img").src = /^(auto|clinic|courses|realty|repair)$/.test(kind) ? "../assets/img/shot-" + kind + "-" + window.SITE.lang() + ".webp" : base + kind + "/img/hero-800.webp";
     var q = new URLSearchParams();
     if (name) q.set("name", name);
     q.set("lang", window.SITE.lang());

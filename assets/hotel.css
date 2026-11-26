@@ -1145,3 +1145,17 @@ background:linear-gradient(180deg,rgba(10,14,22,.15) 0%,rgba(10,14,22,.78) 72%),
 @media (min-width:900px){ .pkt-salon{grid-row:3} .pkb-grid .pkt-seats{grid-column:3/5!important;grid-row:3;flex-direction:column!important;align-items:flex-start!important;justify-content:space-between} }
 .ty-kinds{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 @media (max-width:340px){ .nz-hero h1{font-size:29px!important} }
+.sbi{display:inline-flex;align-items:center;gap:5px;line-height:0}
+.sbi svg{display:block;fill:currentColor}
+.p3-sb{position:absolute;top:0;left:0;right:0;z-index:3;height:40px;display:flex;align-items:center;justify-content:space-between;padding:2px 22px 0 28px;font:700 13px/1 var(--font);font-variant-numeric:tabular-nums;color:#10131a;pointer-events:none}
+.in-phone .p3-screen:has(img[data-shot="rest"]) .p3-sb{color:#f6efe6}
+.lv-sb .sbi svg{height:10px;width:auto}
+.in-phone .p3-screen > img{clip-path:inset(0 0 18px 0)}
+.pv:is([data-kind="auto"],[data-kind="clinic"],[data-kind="courses"],[data-kind="realty"],[data-kind="repair"]) .pv-img{object-fit:cover;object-position:top center}
+.pv:is([data-kind="auto"],[data-kind="clinic"],[data-kind="courses"],[data-kind="realty"],[data-kind="repair"]) .pv-body{grid-template-columns:minmax(0,1fr) 52%}
+.pv:is([data-kind="auto"],[data-kind="clinic"],[data-kind="courses"],[data-kind="realty"],[data-kind="repair"]) .pv-name{font-size:clamp(24px,6vw,40px)}
+.pv[data-kind="auto"]{background:#1c2128;color:#f2f2f0} .pv[data-kind="auto"] .pv-kind{color:#f0a640} .pv[data-kind="auto"] .pv-btn{background:#f0a640;color:#1c2128}
+.pv[data-kind="clinic"]{background:#0d5a52;color:#f2fbf9} .pv[data-kind="clinic"] .pv-kind{color:#9fe0d4} .pv[data-kind="clinic"] .pv-btn{background:#f2fbf9;color:#0d5a52}
+.pv[data-kind="courses"]{background:#2a2356;color:#f4f1ff} .pv[data-kind="courses"] .pv-kind{color:#c3b8ff} .pv[data-kind="courses"] .pv-btn{background:#ffcf5a;color:#2a2356}
+.pv[data-kind="realty"]{background:#203a30;color:#f1ece3} .pv[data-kind="realty"] .pv-kind{color:#c9a96a} .pv[data-kind="realty"] .pv-btn{background:#f1ece3;color:#203a30}
+.pv[data-kind="repair"]{background:#3a2e24;color:#f6efe6} .pv[data-kind="repair"] .pv-kind{color:#e8a36b} .pv[data-kind="repair"] .pv-btn{background:#e8a36b;color:#3a2e24}

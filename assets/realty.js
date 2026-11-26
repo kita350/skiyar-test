@@ -367,6 +367,8 @@ document.documentElement.classList.add("js");
     var img = document.createElement("img"); img.className = "lv-3d"; img.alt = ""; img.setAttribute("aria-hidden", "true"); img.width = J.w; img.height = J.h; img.src = base + "f00.webp";
     screen.classList.add("p3-screen");
     screen.insertAdjacentHTML("beforeend", '<i class="lv-island" aria-hidden="true"></i>');
+    // строка состояния, как у настоящего телефона: время, сеть, Wi-Fi, батарея
+    screen.insertAdjacentHTML("afterbegin", '<div class="p3-sb" aria-hidden="true"><b>9:41</b><span class="sbi"><svg viewBox="0 0 18 12" width="17" height="11"><rect x="0" y="8" width="3" height="4" rx=".8"/><rect x="5" y="5.5" width="3" height="6.5" rx=".8"/><rect x="10" y="3" width="3" height="9" rx=".8"/><rect x="15" y="0" width="3" height="12" rx=".8"/></svg><svg viewBox="0 0 16 12" width="15" height="11"><path d="M8 12 5.6 9.1a3.7 3.7 0 0 1 4.8 0z"/><path d="M3.9 7.1a6.4 6.4 0 0 1 8.2 0l-1.1 1.3a4.7 4.7 0 0 0-6 0z"/><path d="M1.6 4.4a9.9 9.9 0 0 1 12.8 0l-1.1 1.3a8.2 8.2 0 0 0-10.6 0z"/></svg><svg viewBox="0 0 27 12" width="25" height="11"><rect x=".6" y=".6" width="22.4" height="10.8" rx="3.2" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".45"/><rect x="2.2" y="2.2" width="17" height="7.6" rx="1.8"/><path d="M24.3 4.2v3.6a2 2 0 0 0 0-3.6z" opacity=".45"/></svg></span></div>');
     // второй слой — соседний кадр с прозрачностью = доля между кадрами: поворот плавный, без «ступенек»
     var img2 = document.createElement("img"); img2.className = "lv-3d lv-3d2"; img2.alt = ""; img2.setAttribute("aria-hidden", "true"); img2.width = J.w; img2.height = J.h; img2.style.opacity = "0";
     box.appendChild(img); box.appendChild(img2); box.appendChild(screen); wrap.replaceChild(box, old);
