@@ -33,7 +33,7 @@
     },
     en: {
       nicheLbl: "Your business", nicheAria: "Pick your business type",
-      nicheChips: ["Salon", "Restaurant", "Guesthouse", "Car service", "Clinic", "Courses", "Real estate", "Renovation"],
+      nicheChips: ["Salon", "Restaurant", "Hotel", "Car service", "Clinic", "Courses", "Real estate", "Renovation"],
       nichePrice: ["Lite 20 000 ֏ · Business 30 000 ֏ a month", "Lite 20 000 ֏ · Business 30 000 ֏ a month", "Lite 20 000 ֏ · Business 30 000 ֏ a month", "Lite 20 000 ֏ · Business 30 000 ֏ a month", "Lite 20 000 ֏ · Business 30 000 ֏ a month", "Lite 20 000 ֏ · Business 30 000 ֏ a month", "Lite 20 000 ֏ · Business 30 000 ֏ a month", "Lite 20 000 ֏ · Business 30 000 ֏ a month"],
       niches: [{ name: "Liora Beauty", av: "L", msg: "Hi, any time for a manicure on Friday?", autoT: "We’re closed now, but you can see free times here", btn: "Book online", ok: "Booked: Friday 11:00, manicure", toast: "Thursday 18:00, Ruzan replied “I’ll be there”" },
         { name: "Oriane Grill", av: "O", msg: "Good evening, any table for four on Saturday at 20:00?", autoT: "We can’t reply right now, but you can see free tables here", btn: "Book a table", ok: "Booked: Saturday 20:00, table for 4", toast: "Saturday 12:00, Aram replied “We’ll be there”" },

@@ -60,7 +60,7 @@
       bzWa8: R + "\nЗдравствуйте! У меня салон, хочу демо-сайт. Название: "
     },
     en: {
-      hFor: "Guesthouses, restaurants, car services, clinics, courses, real estate, renovation and salons →",
+      hFor: "Hotels, restaurants, car services, clinics, courses, real estate, renovation and salons →",
       bzR1: "from 20 000 ֏ a month",
       bzR2: "from 20 000 ֏ a month",
       bzR3: "from 20 000 ֏ a month",
@@ -71,7 +71,7 @@
       bzR8: "from 20 000 ֏ a month",
       bzTitle: "What kind of business do you have?",
       bzSub: "Pick yours — we’ll show what we do for your industry. The demo is free, and so is the 1st month with a one-year contract.",
-      bz1: "Guesthouse, hotel", bz1p: "Direct bookings, no 15% to Booking",
+      bz1: "Hotel, guest house", bz1p: "Direct bookings, no 15% to Booking",
       bz2: "Restaurant, café", bz2p: "Menu in 3 languages and table bookings",
       bz3: "Car service", bz3p: "Online booking, no phone calls",
       bz4: "Clinic, dentist", bz4p: "Booking and reminders, fewer no-shows",

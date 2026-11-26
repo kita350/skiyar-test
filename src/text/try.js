@@ -31,14 +31,14 @@
       tyTitle: "We’ll send you your business’s site",
       tySub: "Send DEMO and your business name, and we’ll show you how your site will look. Free, before any contract.",
       tyName: "Business name", tyPh: "For example, Velour Lodge",
-      tyKind: "Type of business", tyKSalon: "Salon", tyKRest: "Restaurant", tyKHotel: "Guesthouse",
+      tyKind: "Type of business", tyKSalon: "Salon", tyKRest: "Restaurant", tyKHotel: "Hotel",
       tyKAuto: "Car service", tyKClinic: "Clinic", tyKCourses: "Courses", tyKRealty: "Real estate", tyKRepair: "Renovation", pvAuto: "Car service", pvAutoBtn: "Book online", pvAutoNo: "Your car service", pvClinic: "Clinic", pvClinicBtn: "Book a doctor", pvClinicNo: "Your clinic", pvCourses: "Courses", pvCoursesBtn: "Book a trial lesson", pvCoursesNo: "Your school", pvRealty: "Real estate agency", pvRealtyBtn: "See listings", pvRealtyNo: "Your agency", pvRepair: "Renovation", pvRepairBtn: "Estimate the price", pvRepairNo: "Your company",
       tyOpen: "See a sample now", tyWa: "Send me a site like this", tyWaS: "within 1 day", tyKwAlt: "ԴԵՄՈ · ДЕМО", tyS1: "You send DEMO and your name", tyS2: "Our manager checks the details", tyS3: "You get a link to your site", tyIg: "Or send DEMO in an Instagram DM", tyWaMsg: "DEMO\nName: {n}\nType: {k}", tyFor: " for “{name}”",
       tyNote: "We don’t save your name, and the sample isn’t published.",
       tyMore: "Samples for other industries are below.", tyLive: "Want to try a real booking? Open the live demo of the Liora Beauty salon",
-      pvSalon: "Beauty salon", pvRest: "Restaurant", pvHotel: "Guesthouse",
+      pvSalon: "Beauty salon", pvRest: "Restaurant", pvHotel: "Hotel",
       pvSalonBtn: "Book online", pvRestBtn: "Book a table", pvHotelBtn: "Book a room",
-      pvSalonNo: "Your salon", pvRestNo: "Your restaurant", pvHotelNo: "Your guesthouse"
+      pvSalonNo: "Your salon", pvRestNo: "Your restaurant", pvHotelNo: "Your hotel"
     }
   };
   for (var l in X) for (var k in X[l]) window.T[l][k] = X[l][k];

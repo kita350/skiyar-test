@@ -36,7 +36,7 @@ a{color:inherit} button{font:inherit;color:inherit}
 .brand i{flex:none;width:28px;height:28px;display:grid;place-items:center}
 .brand span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .langs{display:flex;gap:2px;flex:none}
-.langs button{background:none;border:0;padding:8px 9px;border-radius:999px;font-size:14px;color:var(--muted);cursor:pointer}
+.langs button{min-width:44px;min-height:44px;background:none;border:0;padding:8px 9px;border-radius:999px;font-size:14px;color:var(--muted);cursor:pointer}
 .langs button[aria-pressed="true"]{background:var(--green);color:#f1ece3}
 
 .hero{padding:8px 0 0}
@@ -98,6 +98,8 @@ footer{padding:28px 0 44px;color:var(--muted);font-size:14px;border-top:1px soli
   .filters{grid-template-columns:auto 1fr;align-items:center}
 }
 @media (min-width:1060px){.list{grid-template-columns:repeat(3,1fr)}}
+/* компьютер: первый экран в две колонки — текст слева, город справа */
+@media (min-width:900px){.hero{position:relative;min-height:420px;padding-bottom:40px}.hero .wrap{padding-right:48%}.hero h1{font-size:clamp(36px,3.7vw,72px);overflow-wrap:normal;word-break:normal}.hero .sky{position:absolute;right:max(24px,calc((100% - 1120px)/2));top:24px;width:44%;height:auto;aspect-ratio:400/220;border-radius:20px}}
 </style>
 </head>
 <body data-lang="hy">

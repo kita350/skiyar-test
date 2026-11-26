@@ -99,28 +99,29 @@
       pos += (target - pos) * (1 - Math.pow(MOUSE.matches ? 0.88 : 0.84, dt / 16.7));
       if (Math.abs(target - pos) < 0.01) pos = target;
       // телефон (касание): во время прокрутки пальцем перерисовываем не чаще 30 раз в секунду — меньше нагрузки в Safari
-      if (MOUSE.matches || pos === target || now - scrollAt > 160 || now - (glide.p || 0) >= 32) { glide.p = now; paintF(pos); }
+      if (MOUSE.matches || pos === target || now - (glide.p || 0) >= 32) { glide.p = now; paintF(pos); }
       if (pos !== target) raf = requestAnimationFrame(glide); else glide.t = 0;
     }
     function go2(t) { target = t; if (!raf) raf = requestAnimationFrame(glide); }
-    // телефон (касание): мягкое покачивание влево-вправо ±9 кадров (≈ ±6°) за 6 с, пока первый экран виден, — телефон «живой»
-    var swayOn = false, heroVis = true;
-    function sway() { return swayOn ? 12 * Math.sin(performance.now() / 5000 * 2 * Math.PI) : 0; }
-    function aim() { return Math.max(0, Math.min(N - 1, fromScroll() + sway())); }
+    // телефон всегда «живой»: мягкое покачивание влево-вправо, пока первый экран виден (27.11, слова основателя: «почему не двигается»).
+    // Только касание (телефон): ±8 кадров (≈ ±5°) за 7 с вокруг положения от прокрутки. Компьютер — как было, телефон следует за мышью.
+    // Лёгкая отрисовка: на телефоне перерисовываем не чаще 30 раз в секунду (см. glide) — без подтормаживания.
+    var swayOn = false, heroVis = true, mouseT = ST;
+    function sway() { return swayOn && !MOUSE.matches ? 8 * Math.sin(performance.now() / 7000 * 2 * Math.PI) : 0; }
+    function aim() { return Math.max(0, Math.min(N - 1, (MOUSE.matches ? mouseT : fromScroll()) + sway())); }
     function swayTick() { if (!swayOn) return; if (!intro) go2(aim()); requestAnimationFrame(swayTick); }
-    function swayCheck() { var on = false; // 27.11: постоянное покачивание на телефоне подтормаживало (слова основателя) — выключено, телефон поворачивается только прокруткой
-      void heroVis; if (on && !swayOn) { swayOn = true; requestAnimationFrame(swayTick); } else if (!on) swayOn = false; }
+    function swayCheck() { var on = !still && heroVis && !MOUSE.matches; if (on && !swayOn) { swayOn = true; requestAnimationFrame(swayTick); } else if (!on) swayOn = false; }
     if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { heroVis = e[0].isIntersecting; swayCheck(); }).observe(ph);
     var scrollAt = 0;
     function onScroll() { scrollAt = performance.now(); if (still) return; // «уменьшить движение»: телефон стоит прямо
-      go2(MOUSE.matches ? target : aim()); }
+      go2(aim()); }
     window.addEventListener("scroll", onScroll, { passive: true });
     document.addEventListener("mousemove", function (e) {
       if (still || !MOUSE.matches) return;
-      go2(Math.max(0, Math.min(N - 1, ST + (e.clientX / innerWidth - 0.5) * 2 * 21)));
+      mouseT = ST + (e.clientX / innerWidth - 0.5) * 2 * 21; go2(aim());
     }, { passive: true });
-    document.documentElement.addEventListener("mouseleave", function () { if (!still && MOUSE.matches) go2(ST); });
-    if (MOUSE.addEventListener) MOUSE.addEventListener("change", function () { swayCheck(); if (!still) go2(MOUSE.matches ? ST : aim()); });
+    document.documentElement.addEventListener("mouseleave", function () { if (!still && MOUSE.matches) { mouseT = ST; go2(aim()); } });
+    if (MOUSE.addEventListener) MOUSE.addEventListener("change", function () { mouseT = ST; swayCheck(); if (!still) go2(aim()); });
     window.addEventListener("resize", function () { size(); }, { passive: true });
 
     var got = 1;

@@ -3,9 +3,12 @@
 (function () {
   var P = {
     hy: {
-      pkbOnP: "Ամբողջական կայք՝ գրանցում, ամրագրում, ճաշացանկ կամ հայտեր՝ ըստ ոլորտի, հիշեցումներ WhatsApp-ով, դոմեն և ամսական հաշվետվություն։ Միացում՝ 50 000 ֏։", pkbOnBtn: "Ուզում եմ Business", pkbStartP: "Google քարտ և մեկ էջանոց կայք", pkbAiP: "ԱԲ պատասխաններ 24/7, մինչև 500 երկխոսություն", pkbGuar: "գրանցում 2 ամսում՝ երաշխիք։ Եթե ավելի քիչ է, երրորդ ամիսն անվճար է։", pkbAaP: "Հյուրանոցներ, ցանցեր, մեծ ռեստորաններ", pkbOnceT: "Սեփականության կայք", pkbOnceP: "Առանց բաժանորդագրության, 3 ամիս սպասարկում՝ նվեր", pkbFrom: "120 000 ֏‑ից", pkbMore: "Բոլոր գները", pkbPilotP: "Դեմոն՝ անվճար → միացում՝ ըստ փաթեթի → 1‑ին ամիսն անվճար՝ մեկ տարվա պայմանագրով",
+      pkbOnP: "Ամբողջական կայք Ձեր ոլորտի համար՝ ամեն ինչ ներառված։", pkbOnBtn: "Ուզում եմ Business", pkbStartP: "Google քարտ և մեկ էջանոց կայք", pkbAiP: "ԱԲ պատասխաններ 24/7, մինչև 500 երկխոսություն", pkbGuar: "գրանցում 2 ամսում՝ երաշխիք։ Եթե ավելի քիչ է, երրորդ ամիսն անվճար է։", pkbAaP: "Հյուրանոցներ, ցանցեր, մեծ ռեստորաններ", pkbOnceT: "Սեփականության կայք", pkbOnceP: "Առանց բաժանորդագրության, 3 ամիս սպասարկում՝ նվեր", pkbFrom: "120 000 ֏‑ից", pkbMore: "Բոլոր գները", pkbPilotP: "Դեմոն՝ անվճար → միացում՝ ըստ փաթեթի → 1‑ին ամիսն անվճար՝ մեկ տարվա պայմանագրով",
       pkTitle: "Փաթեթներ և գներ",
-      pkSub: "Բաժանորդագրությունը՝ 12 ամսով։ Գները՝ հենց այստեղ։", pkFrom: "սկսած", pkMain: "Հիմնական", pkHelpT: "Ո՞րն ընտրել", pkHelp: "Lite — փոքր բիզնեսին՝ կայք, Google և գրանցման կոճակ։ Business — ամբողջական կայք գրանցումով, ամրագրումով կամ ճաշացանկով և հիշեցումներով։ + AI — ԱԲ պատասխաններ 24/7, հիմա փորձարկվում է։", pkTerm: "12 ամսվա պայմանագիր", pkFirst: "առաջին տարին՝ միացումով {x}", pkNoSetup: "առանց միացման վճարի",
+      pkSub: "Ամսական կամ մեկ տարով՝ տարեկան պայմանագրով 1‑ին ամիսն անվճար է։ Գները՝ հենց այստեղ։", pkFrom: "սկսած", pkMain: "Հիմնական", pkHelpT: "Ո՞րն ընտրել", pkHelp: "Lite — փոքր բիզնեսին՝ կայք, Google և գրանցման կոճակ։ Business — ամբողջական կայք գրանցումով, ամրագրումով կամ ճաշացանկով և հիշեցումներով։ + AI — ԱԲ պատասխաններ 24/7, հիմա փորձարկվում է։", pkTerm: "12 ամսվա պայմանագիր", pkFirst: "առաջին տարին՝ միացումով {x}", pkNoSetup: "առանց միացման վճարի",
+      pkWaAo: "Բարև ձեզ։ Կայք արդեն ունեմ, հետաքրքրում է SKIYAR AI-only-ը։",
+      pkAoA: "Գրել WhatsApp-ով",
+      pkOnL1: "Գրանցում, ամրագրում, ճաշացանկ կամ հայտեր՝ ըստ ոլորտի", pkOnL2: "Հիշեցումներ հաճախորդներին WhatsApp-ով", pkOnL3: "Դոմեն, հոսթինգ և ամսական մինչև 2 ժ փոփոխություններ", pkOnL4: "Հաշվետվություն ամեն ամիս",
       pkAoP: "Եթե կայք արդեն ունեք՝ միայն ԱԲ պատասխաններ, նվազագույնը 6 ամիս",
       pkLargeA: "Քննարկել WhatsApp-ով", pkWaLarge: "Բարև ձեզ։ Ունեմ մեծ բիզնես, հետաքրքրում է SKIYAR Large-ը։",
       pkWaLite: "Բարև ձեզ։ Հետաքրքրում է SKIYAR Lite փաթեթը։",
@@ -46,9 +49,12 @@
       w1: "Դոմենը գրանցվում է ձեր անունով։", w2: "Կայքի օրինակն անվճար է և պատրաստվում է մինչև պայմանագիրը։", w3: "12 ամիս հետո կայքը կարող եք վերցնել անվճար։", w4: "Պայմանագիրը մեկ տարով է։ Ավելի շուտ կարող եք դուրս գալ՝ զգուշացնելով 30 օր առաջ և վճարելով անվճար առաջին ամիսը։ Կայքի գնումը՝ միայն եթե ուզում եք այն վերցնել։"
     },
     ru: {
-      pkbOnP: "Полный сайт: запись, бронь, меню или заявки — по вашей нише, напоминания в WhatsApp, домен и отчёт каждый месяц. Подключение 50 000 ֏.", pkbOnBtn: "Хочу Business", pkbStartP: "Карточка Google и одна страница", pkbAiP: "ИИ-ответы 24/7, до 500 диалогов в месяц", pkbGuar: "записей за 2 месяца — гарантия. Если меньше, третий месяц бесплатно.", pkbAaP: "Отели, сети, большие рестораны", pkbOnceT: "Сайт в собственность", pkbOnceP: "Без подписки, 3 месяца сопровождения в подарок", pkbFrom: "от 120 000 ֏", pkbMore: "Все цены", pkbPilotP: "Демо бесплатно → подключение по тарифу → 1‑й месяц бесплатно при договоре на год",
+      pkbOnP: "Полный сайт для вашей ниши — всё включено.", pkbOnBtn: "Хочу Business", pkbStartP: "Карточка Google и одна страница", pkbAiP: "ИИ-ответы 24/7, до 500 диалогов в месяц", pkbGuar: "записей за 2 месяца — гарантия. Если меньше, третий месяц бесплатно.", pkbAaP: "Отели, сети, большие рестораны", pkbOnceT: "Сайт в собственность", pkbOnceP: "Без подписки, 3 месяца сопровождения в подарок", pkbFrom: "от 120 000 ֏", pkbMore: "Все цены", pkbPilotP: "Демо бесплатно → подключение по тарифу → 1‑й месяц бесплатно при договоре на год",
       pkTitle: "Пакеты и цены",
-      pkSub: "Подписка на 12 месяцев. Цены — прямо здесь.", pkFrom: "от", pkMain: "Основной", pkHelpT: "Какой выбрать", pkHelp: "Lite — маленькому бизнесу: сайт, Google и кнопка записи. Business — полный сайт с записью, бронью или меню и напоминаниями. + AI — ИИ-ответы 24/7, пока в тесте.", pkTerm: "договор на 12 месяцев", pkFirst: "первый год с подключением — {x}", pkNoSetup: "без платы за подключение",
+      pkSub: "Помесячно или на год — при договоре на год 1‑й месяц бесплатно. Цены — прямо здесь.", pkFrom: "от", pkMain: "Основной", pkHelpT: "Какой выбрать", pkHelp: "Lite — маленькому бизнесу: сайт, Google и кнопка записи. Business — полный сайт с записью, бронью или меню и напоминаниями. + AI — ИИ-ответы 24/7, пока в тесте.", pkTerm: "договор на 12 месяцев", pkFirst: "первый год с подключением — {x}", pkNoSetup: "без платы за подключение",
+      pkWaAo: "Здравствуйте! Сайт у меня уже есть, интересует SKIYAR AI-only.",
+      pkAoA: "Написать в WhatsApp",
+      pkOnL1: "Запись, бронь, меню или заявки — по вашей нише", pkOnL2: "Напоминания клиентам в WhatsApp", pkOnL3: "Домен, хостинг и правки до 2 ч в месяц", pkOnL4: "Отчёт каждый месяц",
       pkAoP: "Если сайт уже есть: только ИИ-ответы, минимум 6 месяцев",
       pkLargeA: "Обсудить в WhatsApp", pkWaLarge: "Здравствуйте! У нас большой бизнес, интересует SKIYAR Large.",
       pkWaLite: "Здравствуйте! Интересует пакет SKIYAR Lite.",
@@ -89,9 +95,12 @@
       w1: "Домен оформляется на вас.", w2: "Пример сайта бесплатный и делается до договора.", w3: "После 12 месяцев сайт можно забрать бесплатно.", w4: "Договор на год. Выйти раньше можно, предупредив за 30 дней и оплатив бесплатный первый месяц. Выкуп сайта — только если хотите забрать его себе."
     },
     en: {
-      pkbOnP: "A full site: bookings, stays, menu or requests for your industry, WhatsApp reminders, domain and a monthly report. Setup 50 000 ֏.", pkbOnBtn: "I want Business", pkbStartP: "Google listing and a one-page site", pkbAiP: "AI replies 24/7, up to 500 chats a month", pkbGuar: "bookings in 2 months, guaranteed. If fewer, month 3 is free.", pkbAaP: "Hotels, chains, large restaurants", pkbOnceT: "A site you own", pkbOnceP: "No subscription, 3 months of support included", pkbFrom: "from 120 000 ֏", pkbMore: "All prices", pkbPilotP: "Free demo → setup at the package price → 1st month free with a one-year contract",
+      pkbOnP: "A full site for your industry — everything included.", pkbOnBtn: "I want Business", pkbStartP: "Google listing and a one-page site", pkbAiP: "AI replies 24/7, up to 500 chats a month", pkbGuar: "bookings in 2 months, guaranteed. If fewer, month 3 is free.", pkbAaP: "Hotels, chains, large restaurants", pkbOnceT: "A site you own", pkbOnceP: "No subscription, 3 months of support included", pkbFrom: "from 120 000 ֏", pkbMore: "All prices", pkbPilotP: "Free demo → setup at the package price → 1st month free with a one-year contract",
       pkTitle: "Packages and prices",
-      pkSub: "Subscriptions run for 12 months. Prices are right here.", pkFrom: "from", pkMain: "Main", pkHelpT: "Which one?", pkHelp: "Lite for a small business: site, Google and a booking button. Business: a full site with bookings, stays or menu and reminders. + AI: AI replies 24/7, in testing.", pkTerm: "12-month contract", pkFirst: "first year with setup: {x}", pkNoSetup: "no setup fee",
+      pkSub: "Monthly or yearly — with a one-year contract the 1st month is free. Prices are right here.", pkFrom: "from", pkMain: "Main", pkHelpT: "Which one?", pkHelp: "Lite for a small business: site, Google and a booking button. Business: a full site with bookings, stays or menu and reminders. + AI: AI replies 24/7, in testing.", pkTerm: "12-month contract", pkFirst: "first year with setup: {x}", pkNoSetup: "no setup fee",
+      pkWaAo: "Hello! I already have a site and I’m interested in SKIYAR AI-only.",
+      pkAoA: "Message us on WhatsApp",
+      pkOnL1: "Bookings, stays, menu or requests — for your industry", pkOnL2: "WhatsApp reminders to clients", pkOnL3: "Domain, hosting and up to 2 h of edits a month", pkOnL4: "A report every month",
       pkAoP: "Already have a site: AI replies only, 6 months minimum",
       pkLargeA: "Discuss on WhatsApp", pkWaLarge: "Hello! We are a large business and are interested in SKIYAR Large.",
       pkWaLite: "Hello! I’m interested in SKIYAR Lite.",

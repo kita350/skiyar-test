@@ -31,7 +31,7 @@
     en: {
       csTitle: "", csQuote: "", csWho: "",
       grTitle: "Gor: before and after", grSub: "Same business, same people. The difference is one week.",
-      grWho: "Gor is the hero of our videos: a businessman who tries different businesses through relatives and friends — a guesthouse, a restaurant, a car service, a salon.",
+      grWho: "Gor is the hero of our videos: a businessman who tries different businesses through relatives and friends — a hotel, a restaurant, a car service, a salon.",
       grWasK: "Before: the notebook", grWasT: "Bookings in a notebook, the phone ringing till midnight",
       grW1: "clients at 15:00", grW2: "unanswered messages", grW3: "no-shows a week",
       grN1: "Fri 15:00 — Anna", grN2a: "Fri 15:00 —", grN2b: "Mari", grN3: "Sat 11:00 — ???", grN4: "call back: 6 people",
