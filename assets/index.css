@@ -1554,3 +1554,6 @@ background:linear-gradient(180deg,rgba(10,14,22,.15) 0%,rgba(10,14,22,.78) 72%),
 .in-phone .p3-screen:has(img[data-shot="realty"]){background:#f1ebe4}
 .in-phone .p3-screen:has(img[data-shot="repair"]){background:#ece8e3}
 .in-phone .p3-screen > img{clip-path:inset(0 0 10px 0)!important;-webkit-mask-image:linear-gradient(#000 84%,transparent 97%);mask-image:linear-gradient(#000 84%,transparent 97%)}
+@media (max-width:899px){ .pkb-grid .pkt-wide{grid-column:1/-1} }
+.nz-pr-side .nz-calc{color:var(--ink-2)!important;font-weight:400!important;font-size:15px!important}
+.nz-pr-side .nz-lite b,.nz-pr-side .nz-ai b{color:var(--white)}

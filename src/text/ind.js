@@ -3,9 +3,9 @@
   var I = {
     hy: {
       inTitle: "Ձեր ոլորտի համար",
-      inSub: "Online փաթեթ՝ Ձեր ոլորտի օրինակով և անհրաժեշտ գործառույթներով։ Սրահների համար՝ առանձին Salon փաթեթ։",
+      inSub: "Ընտրեք Ձեր ոլորտը՝ իր օրինակով և գործառույթներով։ Գինը կախված է բիզնեսի չափից՝ Lite կամ Business։",
       inAria: "Ոլորտներ",
-      inPer: "ամսական", inSetup: "միացում", inFree: "առաջին 5-ին՝ անվճար", inAi: "ԱԲ ադմինիստրատորով (փորձարկվում է)՝ {p} ֏ ամսական, միացում՝ {f} ֏", inPilot: "1‑ին ամիսն անվճար՝ մեկ տարվա պայմանագրով։", inTerm: "1‑ին ամիսն անվճար՝ մեկ տարվա պայմանագրով։ Տարեկան միանգամից վճարելիս՝ −15%։", inGuar: "Երաշխիք՝ {n}",
+      inPer: "ամսական", inSetup: "միացում", inFree: "առաջին 5-ին՝ անվճար", inAi: "ԱԲ-ով՝ ամսական +{p} ֏, միացում՝ +{f} ֏", inPilot: "1‑ին ամիսն անվճար՝ մեկ տարվա պայմանագրով։", inTerm: "Միացում՝ Lite 40 000 ֏, Business 50 000 ֏։ 1‑ին ամիսն անվճար՝ մեկ տարվա պայմանագրով։", inGuar: "Երաշխիք՝ {n}",
       inDemo: "Դիտել օրինակը", inMore: "Նաև՝", inBarber: "բարբերշոփ", inNails: "եղունգների ստուդիա", inLive: "Կենդանի դեմո՝ իրական գրանցումով", inMenu: "QR-ճաշացանկ", inAsk: "Ստանալ օրինակ 1 օրում",
       inAskMsg: "Բարև ձեզ։ Ուզում եմ «{v}» փաթեթի օրինակ իմ բիզնեսի համար։",
       inNoDemo: "Պատրաստի օրինակ դեռ չկա. ձեր անունով կպատրաստենք 1 օրում, անվճար։",
@@ -23,9 +23,9 @@
     },
     ru: {
       inTitle: "Под вашу отрасль",
-      inSub: "Пакет Online под вашу нишу: своё демо и нужные функции. Для салонов — отдельный пакет Salon.",
+      inSub: "Выберите свою нишу — своё демо и нужные функции. Цена зависит от размера бизнеса: Lite или Business.",
       inAria: "Отрасли",
-      inPer: "в месяц", inSetup: "подключение", inFree: "первым 5 — бесплатно", inAi: "С ИИ-администратором (в тесте) — {p} ֏ в месяц, подключение {f} ֏", inPilot: "1‑й месяц бесплатно при договоре на год.", inTerm: "1‑й месяц бесплатно при договоре на год. Оплата за год сразу — скидка 15%.", inGuar: "Гарантия: если за 2 месяца через систему пришло меньше, чем {n}, 3-й месяц бесплатно",
+      inPer: "в месяц", inSetup: "подключение", inFree: "первым 5 — бесплатно", inAi: "С ИИ — +{p} ֏ в месяц, подключение +{f} ֏", inPilot: "1‑й месяц бесплатно при договоре на год.", inTerm: "Подключение: Lite 40 000 ֏, Business 50 000 ֏. 1‑й месяц бесплатно при договоре на год.", inGuar: "Гарантия: если за 2 месяца через систему пришло меньше, чем {n}, 3-й месяц бесплатно",
       inDemo: "Посмотреть пример", inMore: "Ещё примеры:", inBarber: "барбершоп", inNails: "ногтевая студия", inLive: "Живое демо с настоящей записью", inMenu: "QR-меню", inAsk: "Получить пример за 1 день",
       inAskMsg: "Здравствуйте! Хочу пример пакета «{v}» для моего бизнеса.",
       inNoDemo: "Готового демо пока нет — пример с вашим названием сделаем за 1 день, бесплатно.",
@@ -43,9 +43,9 @@
     },
     en: {
       inTitle: "Made for your industry",
-      inSub: "The Online package for your industry: its own demo and the features it needs. Salons get the separate Salon package.",
+      inSub: "Pick your industry — its own demo and features. The price depends on the size of the business: Lite or Business.",
       inAria: "Industries",
-      inPer: "a month", inSetup: "setup", inFree: "free for the first 5", inAi: "With the AI front desk (in testing): {p} ֏ a month, setup {f} ֏", inPilot: "1st month free with a one-year contract.", inTerm: "1st month free with a one-year contract. Pay for the year at once and save 15%.", inGuar: "Guarantee: if fewer than {n} come through the system in 2 months, month 3 is free",
+      inPer: "a month", inSetup: "setup", inFree: "free for the first 5", inAi: "With AI: +{p} ֏ a month, setup +{f} ֏", inPilot: "1st month free with a one-year contract.", inTerm: "Setup: Lite 40 000 ֏, Business 50 000 ֏. 1st month free with a one-year contract.", inGuar: "Guarantee: if fewer than {n} come through the system in 2 months, month 3 is free",
       inDemo: "See the sample", inMore: "More samples:", inBarber: "barbershop", inNails: "nail studio", inLive: "Live demo with real booking", inMenu: "QR menu", inAsk: "Get a sample in 1 day",
       inAskMsg: "Hello! I’d like a sample of the “{v}” package for my business.",
       inNoDemo: "No ready demo yet: we’ll make a sample with your name in 1 day, free.",

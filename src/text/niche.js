@@ -6,7 +6,7 @@
     hy: {
       nicheLbl: "Ձեր բիզնեսը", nicheAria: "Ընտրեք ոլորտը",
       nicheChips: ["Սրահ", "Ռեստորան", "Հյուրատուն", "Ավտոսերվիս", "Կլինիկա", "Դասընթացներ", "Անշարժ գույք", "Վերանորոգում"],
-      nichePrice: ["Salon — ամսական 20 000 ֏", "Online · Ճաշացանկ — ամսական 30 000 ֏", "Online · Ամրագրում — ամսական 45 000 ֏", "Online · Գրանցում — ամսական 35 000 ֏", "Online · Գրանցում — ամսական 35 000 ֏", "Online · Խմբեր — ամսական 35 000 ֏", "Online · Հայտեր — ամսական 35 000 ֏", "Online · Հայտեր — ամսական 35 000 ֏"],
+      nichePrice: ["Lite 20 000 ֏ · Business 30 000 ֏ ամսական", "Lite 20 000 ֏ · Business 30 000 ֏ ամսական", "Lite 20 000 ֏ · Business 30 000 ֏ ամսական", "Lite 20 000 ֏ · Business 30 000 ֏ ամսական", "Lite 20 000 ֏ · Business 30 000 ֏ ամսական", "Lite 20 000 ֏ · Business 30 000 ֏ ամսական", "Lite 20 000 ֏ · Business 30 000 ֏ ամսական", "Lite 20 000 ֏ · Business 30 000 ֏ ամսական"],
       niches: [{ name: "Liora Beauty", av: "L", msg: "Բարև ձեզ, ուրբաթ օրը մատնահարդարման ազատ ժամ կա՞", autoT: "Հիմա փակ ենք, բայց ազատ ժամերը կարող եք տեսնել այստեղ", btn: "Գրանցվել առցանց", ok: "Գրանցված է՝ ուրբաթ 11:00, մատնահարդարում", toast: "Հինգշաբթի 18:00, Ռուզանը պատասխանեց՝ «Կգամ»" },
         { name: "Oriane Grill", av: "O", msg: "Բարի երեկո, շաբաթ օրը 20:00-ին չորս հոգու սեղան կա՞։", autoT: "Հիմա չենք կարող պատասխանել, բայց ազատ սեղանները կարող եք տեսնել այստեղ", btn: "Ամրագրել սեղան", ok: "Ամրագրված է՝ շաբաթ 20:00, սեղան 4 հոգու համար", toast: "Շաբաթ 12:00, Արամը պատասխանեց՝ «Կգանք»" },
         { name: "Velour Lodge", av: "V", msg: "Բարև ձեզ, դեկտեմբերի 12–14-ը երկտեղանոց սենյակ կա՞։", autoT: "Հիմա չենք կարող պատասխանել, բայց ազատ օրերը կարող եք տեսնել այստեղ", btn: "Ամրագրել սենյակ", ok: "Ամրագրված է՝ դեկտեմբերի 12–14, երկտեղանոց սենյակ", toast: "Դեկտեմբերի 11, Աննան պատասխանեց՝ «Կգանք»" },
@@ -20,7 +20,7 @@
     ru: {
       nicheLbl: "Ваш бизнес", nicheAria: "Выберите отрасль",
       nicheChips: ["Салон", "Ресторан", "Гостиница", "Автосервис", "Клиника", "Курсы", "Недвижимость", "Ремонт"],
-      nichePrice: ["Salon — 20 000 ֏ в месяц", "Online · Меню — 30 000 ֏ в месяц", "Online · Бронь — 45 000 ֏ в месяц", "Online · Запись — 35 000 ֏ в месяц", "Online · Запись — 35 000 ֏ в месяц", "Online · Группы — 35 000 ֏ в месяц", "Online · Заявки — 35 000 ֏ в месяц", "Online · Заявки — 35 000 ֏ в месяц"],
+      nichePrice: ["Lite 20 000 ֏ · Business 30 000 ֏ в месяц", "Lite 20 000 ֏ · Business 30 000 ֏ в месяц", "Lite 20 000 ֏ · Business 30 000 ֏ в месяц", "Lite 20 000 ֏ · Business 30 000 ֏ в месяц", "Lite 20 000 ֏ · Business 30 000 ֏ в месяц", "Lite 20 000 ֏ · Business 30 000 ֏ в месяц", "Lite 20 000 ֏ · Business 30 000 ֏ в месяц", "Lite 20 000 ֏ · Business 30 000 ֏ в месяц"],
       niches: [{ name: "Liora Beauty", av: "L", msg: "Здравствуйте, на маникюр в пятницу есть время?", autoT: "Сейчас закрыто, но свободное время видно здесь", btn: "Записаться онлайн", ok: "Запись: пятница 11:00, маникюр", toast: "Четверг 18:00, Рузан ответила «Приду»" },
         { name: "Oriane Grill", av: "O", msg: "Добрый вечер, есть столик на четверых в субботу в 20:00?", autoT: "Сейчас не можем ответить, но свободные столы видно здесь", btn: "Забронировать стол", ok: "Бронь: суббота 20:00, стол на 4", toast: "Суббота 12:00, Арам ответил «Будем»" },
         { name: "Velour Lodge", av: "V", msg: "Здравствуйте, есть номер на двоих с 12 по 14 декабря?", autoT: "Сейчас не можем ответить, но свободные даты видно здесь", btn: "Забронировать номер", ok: "Бронь: 12–14 декабря, номер на двоих", toast: "11 декабря, Анна ответила «Приедем»" },
@@ -34,7 +34,7 @@
     en: {
       nicheLbl: "Your business", nicheAria: "Pick your business type",
       nicheChips: ["Salon", "Restaurant", "Guesthouse", "Car service", "Clinic", "Courses", "Real estate", "Renovation"],
-      nichePrice: ["Salon — 20 000 ֏ a month", "Online · Menu — 30 000 ֏ a month", "Online · Stays — 45 000 ֏ a month", "Online · Appointments — 35 000 ֏ a month", "Online · Appointments — 35 000 ֏ a month", "Online · Groups — 35 000 ֏ a month", "Online · Requests — 35 000 ֏ a month", "Online · Requests — 35 000 ֏ a month"],
+      nichePrice: ["Lite 20 000 ֏ · Business 30 000 ֏ a month", "Lite 20 000 ֏ · Business 30 000 ֏ a month", "Lite 20 000 ֏ · Business 30 000 ֏ a month", "Lite 20 000 ֏ · Business 30 000 ֏ a month", "Lite 20 000 ֏ · Business 30 000 ֏ a month", "Lite 20 000 ֏ · Business 30 000 ֏ a month", "Lite 20 000 ֏ · Business 30 000 ֏ a month", "Lite 20 000 ֏ · Business 30 000 ֏ a month"],
       niches: [{ name: "Liora Beauty", av: "L", msg: "Hi, any time for a manicure on Friday?", autoT: "We’re closed now, but you can see free times here", btn: "Book online", ok: "Booked: Friday 11:00, manicure", toast: "Thursday 18:00, Ruzan replied “I’ll be there”" },
         { name: "Oriane Grill", av: "O", msg: "Good evening, any table for four on Saturday at 20:00?", autoT: "We can’t reply right now, but you can see free tables here", btn: "Book a table", ok: "Booked: Saturday 20:00, table for 4", toast: "Saturday 12:00, Aram replied “We’ll be there”" },
         { name: "Velour Lodge", av: "V", msg: "Hello, any room for two from 12 to 14 December?", autoT: "We can’t reply right now, but you can see free dates here", btn: "Book a room", ok: "Booked: 12–14 December, room for two", toast: "11 December, Anna replied “We’re coming”" },

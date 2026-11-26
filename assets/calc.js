@@ -1,11 +1,11 @@
-/* Посчитайте сами. Главное — сколько визитов в месяц окупают пакет (35 000 / средний чек).
+/* Посчитайте сами. Главное — сколько визитов в месяц окупают пакет (30 000 / средний чек).
    Потери: неявки × чек × 4,3 недели, «до» — часть окон занимают другие клиенты.
    Число меняется плавно (кроме reduced motion). */
 (function () {
   "use strict";
   var box = document.getElementById("calc");
   if (!box) return;
-  var PRICE = 35000, WEEKS = 4.3;
+  var PRICE = 30000, WEEKS = 4.3;
   var $ = function (s) { return box.querySelector(s); };
   var b = $("#caB"), n = $("#caN"), c = $("#caC");
   var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
