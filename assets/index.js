@@ -664,7 +664,8 @@ document.documentElement.classList.add("js");
     function sway() { return swayOn ? 12 * Math.sin(performance.now() / 5000 * 2 * Math.PI) : 0; }
     function aim() { return Math.max(0, Math.min(N - 1, fromScroll() + sway())); }
     function swayTick() { if (!swayOn) return; if (!intro) go2(aim()); requestAnimationFrame(swayTick); }
-    function swayCheck() { var on = !still && !MOUSE.matches && heroVis; if (on && !swayOn) { swayOn = true; requestAnimationFrame(swayTick); } else if (!on) swayOn = false; }
+    function swayCheck() { var on = false; // 27.11: постоянное покачивание на телефоне подтормаживало (слова основателя) — выключено, телефон поворачивается только прокруткой
+      void heroVis; if (on && !swayOn) { swayOn = true; requestAnimationFrame(swayTick); } else if (!on) swayOn = false; }
     if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { heroVis = e[0].isIntersecting; swayCheck(); }).observe(ph);
     var scrollAt = 0;
     function onScroll() { scrollAt = performance.now(); if (still) return; // «уменьшить движение»: телефон стоит прямо

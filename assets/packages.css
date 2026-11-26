@@ -1194,3 +1194,10 @@ background:linear-gradient(180deg,rgba(10,14,22,.15) 0%,rgba(10,14,22,.78) 72%),
 .pv[data-kind="courses"]{background:#2a2356;color:#f4f1ff} .pv[data-kind="courses"] .pv-kind{color:#c3b8ff} .pv[data-kind="courses"] .pv-btn{background:#ffcf5a;color:#2a2356}
 .pv[data-kind="realty"]{background:#203a30;color:#f1ece3} .pv[data-kind="realty"] .pv-kind{color:#c9a96a} .pv[data-kind="realty"] .pv-btn{background:#f1ece3;color:#203a30}
 .pv[data-kind="repair"]{background:#3a2e24;color:#f6efe6} .pv[data-kind="repair"] .pv-kind{color:#e8a36b} .pv[data-kind="repair"] .pv-btn{background:#e8a36b;color:#3a2e24}
+.in-phone .p3-screen:has(img[data-shot="auto"]){background:#121416}
+.in-phone .p3-screen:has(img[data-shot="auto"]) .p3-sb{color:#f2f2f0}
+.in-phone .p3-screen:has(img[data-shot="clinic"]){background:#f5faf8}
+.in-phone .p3-screen:has(img[data-shot="courses"]){background:#fcf5ea}
+.in-phone .p3-screen:has(img[data-shot="realty"]){background:#f1ebe4}
+.in-phone .p3-screen:has(img[data-shot="repair"]){background:#ece8e3}
+.in-phone .p3-screen > img{clip-path:inset(0 0 10px 0)!important;-webkit-mask-image:linear-gradient(#000 84%,transparent 97%);mask-image:linear-gradient(#000 84%,transparent 97%)}
