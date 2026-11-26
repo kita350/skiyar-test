@@ -25,7 +25,7 @@
       au_p3p: "Քարտ՝ աշխատանքային ժամերով, լուսանկարներով և գրանցման կոճակով։ Մեկ օր առաջ՝ հիշեցում հաճախորդին։",
       au_exT: "Այսպես կերևա գրանցումը",
       au_exP: "Ծառայություններ գներով «սկսած» և ազատ ժամեր։ Ավտոսերվիսի ամբողջական դեմո կայք կպատրաստենք Ձեր անունով 1 օրում՝ անվճար։",
-      au_exBtn: "Ստանալ դեմո անվճար",
+      au_exBtn: "Բացել օրինակը",
       au_mkH: "Torq Auto · գրանցում", au_mkTag: "Օրինակ",
       au_mk1: "Յուղի փոխարինում", au_mk1p: "8 000 ֏-ից",
       au_mk2: "Ախտորոշում", au_mk2p: "5 000 ֏-ից",
@@ -47,8 +47,8 @@
       au_a1: "Զանգը մնում է։ Գրանցումը նրանց համար է, ովքեր երեկոյան են գրում կամ չեն կարողանում զանգել, երբ Դուք մեքենայի տակ եք։ Սրանք այն հաճախորդներն են, որոնց հիմա հարևանն է տանում։",
       au_q2: "Գները տարբեր են, կայքում չես դնի",
       au_a2: "Գրում ենք «սկսած»-ով և ամենահաճախ աշխատանքները՝ յուղ, արգելակային բարձիկներ, անիվների հավասարեցում։ Ճշգրիտ գինը Դուք եք ասում զննումից հետո։",
-      au_q3: "Ինչո՞վ եք Booker-ից լավը, որ 700 ֏ արժե",
-      au_a3: "Booker-ը գեղեցկության սրահների համար է, ու դա ծրագիր է, որում Դուք պետք է աշխատեք։ Մենք ամեն ինչ անում ենք Ձեր փոխարեն՝ կայք, Google, գրանցում, հիշեցումներ։"
+      au_q3: "Որքա՞ն ժամանակ կխլի դա ինձանից",
+      au_a3: "Մոտ մեկ ժամ․ ուղարկում եք լուսանկարներ, գներ և ծառայություններ, մնացածը մենք ենք անում։ Գործարկումը՝ 7–10 օրում։"
     },
     ru: {
       _titleNz: "Сайт для автосервиса с онлайн-записью — SKIYAR",
@@ -71,7 +71,7 @@
       au_p3p: "Карточка с часами работы, фото и кнопкой записи. Накануне — напоминание клиенту.",
       au_exT: "Так будет выглядеть запись",
       au_exP: "Услуги с ценами «от» и свободное время. Полный демо-сайт автосервиса с вашим названием сделаем за 1 день — бесплатно.",
-      au_exBtn: "Получить демо бесплатно",
+      au_exBtn: "Открыть пример",
       au_mkH: "Torq Auto · запись", au_mkTag: "Пример",
       au_mk1: "Замена масла", au_mk1p: "от 8 000 ֏",
       au_mk2: "Диагностика", au_mk2p: "от 5 000 ֏",
@@ -93,8 +93,8 @@
       au_a1: "Звонок остаётся. Запись — для тех, кто пишет вечером или не дозвонился, пока вы под машиной. Это клиенты, которых сейчас забирает сосед.",
       au_q2: "Цены у нас разные, на сайт не поставишь",
       au_a2: "Ставим «от» и самые частые работы: масло, колодки, развал. Точную цену вы говорите после осмотра. Клиенту важно понять порядок цен и записаться.",
-      au_q3: "Чем вы лучше Booker за 700 ֏?",
-      au_a3: "Booker — для салонов красоты. И это программа, в которой работать вам. Мы делаем всё за вас: сайт, Google, запись, напоминания."
+      au_q3: "Сколько времени это займёт у меня?",
+      au_a3: "Около часа: присылаете фото, цены и услуги — остальное делаем мы. Запуск за 7–10 дней."
     },
     en: {
       _titleNz: "A car service website with online booking — SKIYAR",
@@ -117,7 +117,7 @@
       au_p3p: "A listing with opening hours, photos and a booking button. The day before — a reminder to the client.",
       au_exT: "This is how booking will look",
       au_exP: "Services with “from” prices and free times. We’ll make a full car service demo site with your name in 1 day — for free.",
-      au_exBtn: "Get a free demo",
+      au_exBtn: "Open the example",
       au_mkH: "Torq Auto · booking", au_mkTag: "Example",
       au_mk1: "Oil change", au_mk1p: "from 8 000 ֏",
       au_mk2: "Diagnostics", au_mk2p: "from 5 000 ֏",
@@ -139,8 +139,8 @@
       au_a1: "Calls stay. Booking is for people who write in the evening or can’t get through while you’re under a car. Those are the clients the garage next door takes now.",
       au_q2: "Our prices vary, you can’t put them on a site",
       au_a2: "We show “from” prices for the most common jobs: oil, brake pads, wheel alignment. You give the exact price after inspection. Clients just need the price range to book.",
-      au_q3: "Why you and not Booker for 700 ֏?",
-      au_a3: "Booker is for beauty salons. And it’s software you have to work in. We do it all for you: site, Google, booking, reminders."
+      au_q3: "How much of my time will it take?",
+      au_a3: "About an hour: you send photos, prices and services — we do the rest. Launch in 7–10 days."
     }
   };
   for (var l in A) for (var k in A[l]) window.T[l][k] = A[l][k];

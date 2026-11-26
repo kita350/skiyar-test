@@ -9,7 +9,7 @@
   var pv = box.querySelector(".pv");
   var link = box.querySelector("#tyOpen");
   var wa = box.querySelector("#tyWa");
-  var K = { salon: ["pvSalon", "pvSalonBtn", "pvSalonNo"], restaurant: ["pvRest", "pvRestBtn", "pvRestNo"], hotel: ["pvHotel", "pvHotelBtn", "pvHotelNo"] };
+  var K = { salon: ["pvSalon", "pvSalonBtn", "pvSalonNo"], restaurant: ["pvRest", "pvRestBtn", "pvRestNo"], hotel: ["pvHotel", "pvHotelBtn", "pvHotelNo"], auto: ["pvAuto", "pvAutoBtn", "pvAutoNo"], clinic: ["pvClinic", "pvClinicBtn", "pvClinicNo"], courses: ["pvCourses", "pvCoursesBtn", "pvCoursesNo"], realty: ["pvRealty", "pvRealtyBtn", "pvRealtyNo"], repair: ["pvRepair", "pvRepairBtn", "pvRepairNo"] };
   var kind = "hotel";
 
   function clean(s) { return (s || "").replace(/[\u0000-\u001f\u007f<>{}]/g, "").replace(/\s+/g, " ").trim().slice(0, 60); }

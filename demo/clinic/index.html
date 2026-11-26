@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="hy">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Ձեր կլինիկան — առցանց գրանցում</title>
+<meta name="description" content="Пример сайта стоматологической клиники от SKIYAR: врачи, услуги и цены, онлайн-запись через WhatsApp.">
+<meta name="theme-color" content="#f4f9f8">
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/noto-sans-armenian-armenian-xzhvodur.woff2" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect width=%2216%22 height=%2216%22 rx=%228%22 fill=%22%230c8f86%22/%3E%3C/svg%3E">
+<style>
+@font-face{font-family:'Jost';font-style:normal;font-weight:100 900;font-display:swap;src:url(../assets/fonts/jost-cyrillic-3odd4iyl.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'Jost';font-style:normal;font-weight:100 900;font-display:swap;src:url(../assets/fonts/jost-latin-w73otd4g.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Noto Sans Armenian';font-style:normal;font-weight:100 900;font-stretch:100%;font-display:swap;src:url(../assets/fonts/noto-sans-armenian-armenian-xzhvodur.woff2) format('woff2');unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
+:root{
+  --bg:#f4f9f8; --white:#fff; --mint:#dcf0ec; --mint-2:#bfe4dd; --ink:#0f2a2e; --muted:#557074; --line:#d6e6e3; --teal:#0c8f86; --teal-d:#0a6f68;
+  --sans:"Jost","Noto Sans Armenian",system-ui,sans-serif; --gut:20px; --max:1120px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:56px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit} button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+#skiyar-bar{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:6px var(--gut);background:var(--ink);color:#e8f3f1;font:400 13px/1.35 var(--sans)}
+#skiyar-bar .skb-a{flex:none;color:#9fe3d9;white-space:nowrap}
+
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;font:500 18px/1 var(--sans);text-decoration:none}
+.brand i{flex:none;width:28px;height:28px;border-radius:50%;background:var(--teal);display:grid;place-items:center}
+.brand span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.langs{display:flex;gap:2px;flex:none}
+.langs button{background:none;border:0;padding:8px 9px;border-radius:999px;font-size:14px;color:var(--muted);cursor:pointer}
+.langs button[aria-pressed="true"]{background:var(--mint);color:var(--ink)}
+
+.hero{position:relative;overflow:hidden;padding:10px 0 44px}
+.panel{position:relative;display:flex;align-items:center;gap:6px;margin-top:26px;padding:14px 14px 14px 6px;border-radius:24px;background:var(--mint);overflow:hidden;max-width:520px}
+.panel .art{flex:none;width:118px;height:118px}
+.bub{position:relative;flex:1;min-width:0;padding:10px 12px 8px;border-radius:4px 16px 16px 16px;background:#fff;box-shadow:0 6px 18px rgba(15,42,46,.08);font-size:14px;line-height:1.4}
+.bub b{display:block;margin-bottom:2px;color:var(--teal-d);font-weight:500;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bub small{display:block;text-align:right;font-size:11px;color:#53bdeb}
+.hero-in{position:relative}
+.kind{margin:0;display:inline-flex;align-items:center;gap:8px;color:var(--teal-d);font-weight:500;font-size:15px}
+.kind:before{content:"";width:18px;height:18px;background:linear-gradient(var(--teal),var(--teal)) center/18px 6px no-repeat,linear-gradient(var(--teal),var(--teal)) center/6px 18px no-repeat}
+h1{margin:14px 0 0;max-width:8.5em;font:500 clamp(46px,13.5vw,100px)/.98 var(--sans);letter-spacing:-.03em;overflow-wrap:anywhere}
+[data-lang="hy"] h1{font-weight:500;font-size:clamp(32px,10vw,80px);line-height:1.08;letter-spacing:-.01em}
+.lead{margin:18px 0 0;max-width:30em;color:var(--muted);font-size:17px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:54px;padding:0 26px;border-radius:999px;border:1px solid var(--teal);background:var(--teal);color:#fff;font-weight:500;text-decoration:none;cursor:pointer}
+.btn.ghost{background:var(--white);border-color:var(--line);color:var(--ink)}
+.btn[aria-disabled="true"]{opacity:.45;cursor:not-allowed}
+.remind{display:flex;align-items:center;gap:10px;margin:12px 0 0;font-size:14.5px;color:var(--muted);max-width:28em}
+.remind svg{flex:none}
+
+section{padding:56px 0}
+h2{margin:0 0 8px;font:500 clamp(30px,8vw,52px)/1.05 var(--sans);letter-spacing:-.02em}
+[data-lang="hy"] h2{font-size:clamp(26px,7vw,44px);line-height:1.15;letter-spacing:0}
+.sub{margin:0 0 28px;max-width:34em;color:var(--muted)}
+
+.docs{display:grid;gap:12px}
+.doc{display:grid;grid-template-columns:60px minmax(0,1fr);gap:4px 14px;align-items:center;padding:16px;border-radius:18px;background:var(--white);border:1px solid var(--line)}
+.mono{grid-row:span 2;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;font:500 20px/1 var(--sans);letter-spacing:.02em;color:var(--teal-d);background:var(--mint);border:2px solid var(--white);box-shadow:0 0 0 2px var(--mint-2)}
+.doc h3{margin:0;font:500 18px/1.25 var(--sans)}
+.doc p{margin:0;font-size:14.5px;color:var(--muted)}
+
+.prices{list-style:none;margin:0;padding:0;background:var(--white);border:1px solid var(--line);border-radius:18px}
+.prices li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:15px 18px;border-bottom:1px solid var(--line)}
+.prices li:last-child{border-bottom:0}
+.prices li span:last-child{white-space:nowrap;font-weight:500;color:var(--teal-d)}
+
+.book{background:var(--mint)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:26px}
+.step{min-width:0}
+.step h3{display:flex;align-items:center;gap:10px;margin:0 0 12px;font:500 16px/1.2 var(--sans)}
+.step h3 span:first-child{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--teal);color:#fff;font-size:14px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.chip{max-width:100%;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--mint-2);background:var(--white);cursor:pointer;font-size:15px}
+.chip.dr{display:inline-flex;align-items:center;gap:8px;padding:0 14px 0 6px}
+.chip.dr i{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--mint);font:500 12px/1 var(--sans);font-style:normal;color:var(--teal-d)}
+.chip[aria-checked="true"],.day[aria-checked="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+.chip[aria-checked="true"] i{background:#fff}
+.chip:disabled{opacity:.38;cursor:not-allowed;text-decoration:line-through}
+.days{display:grid;grid-auto-flow:column;grid-auto-columns:62px;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+.days::-webkit-scrollbar{display:none}
+.day{display:grid;place-items:center;height:70px;border-radius:999px;border:1px solid var(--mint-2);background:var(--white);cursor:pointer;line-height:1.2}
+.day small{font-size:12px;color:var(--muted)}
+.day b{font:500 19px/1 var(--sans)}
+.day[aria-checked="true"] small{color:#d7f3ef}
+.times{display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:8px}
+.times .chip{padding:0}
+.summary{margin-top:28px;padding:18px;border-radius:18px;background:var(--white)}
+.summary p{margin:0 0 14px}
+.summary .btn{width:100%}
+.note{margin:12px 0 0!important;font-size:13.5px;color:var(--muted)}
+
+.info{display:grid;gap:12px}
+.card{padding:18px;border-radius:18px;background:var(--white);border:1px solid var(--line)}
+.card h3{margin:0 0 8px;font:500 16px/1.2 var(--sans);color:var(--teal-d)}
+.card table{width:100%;border-collapse:collapse}
+.card td{padding:7px 0;border-bottom:1px solid var(--line)}
+.card td+td{text-align:right;padding-left:12px}
+.info>*{min-width:0}
+.card p{margin:0}
+footer{padding:28px 0 44px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+@media (min-width:1000px){
+  .hero{padding:40px 0 88px}
+  .hero-in{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);column-gap:64px;align-items:start}
+  .hero-in>*{grid-column:1;justify-self:start}
+  .hero-in>.panel{justify-self:stretch;grid-column:2;grid-row:1/span 6;align-self:center;max-width:none;margin:0;padding:28px 28px 28px 12px;gap:14px;border-radius:32px}
+  .panel .art{width:210px;height:210px}
+  .bub{padding:16px 18px 10px;font-size:17px}
+  .bub b{font-size:15px}
+  .docs{grid-template-columns:repeat(4,1fr)!important}
+  .doc{grid-template-columns:1fr;text-align:left}
+  .doc .mono{grid-row:auto;margin-bottom:8px}
+  .prices{display:grid;grid-template-columns:1fr 1fr;column-gap:0}
+  .prices li:nth-child(odd){border-right:1px solid var(--line)}
+  .prices li:nth-last-child(2){border-bottom:0}
+  #book .wrap{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);column-gap:56px;align-items:start}
+  #book .wrap>h2,#book .wrap>.sub{grid-column:1/-1}
+  #book .summary{margin-top:0;position:sticky;top:64px}
+}
+@media (min-width:760px){
+  .hero{padding:30px 0 72px}
+  .docs{grid-template-columns:1fr 1fr}
+  .info{grid-template-columns:1fr 1fr}
+  .days{grid-auto-flow:row;grid-template-columns:repeat(6,1fr);overflow:visible}
+}
+</style>
+</head>
+<body data-lang="hy">
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#"><i aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M5 0h4v5h5v4H9v5H5V9H0V5h5z" fill="#fff"/></svg></i><span data-i="brand"></span></a>
+    <div class="langs" role="group" data-i-aria="langAria">
+      <button type="button" data-lang-btn="hy">Հայ</button><button type="button" data-lang-btn="ru">Рус</button><button type="button" data-lang-btn="en">Eng</button>
+    </div>
+  </header>
+</div>
+<main>
+  <div class="hero">
+    <div class="wrap hero-in">
+      <p class="kind" id="kind"></p>
+      <h1 data-i="h1"></h1>
+      <p class="lead" data-i="lead"></p>
+      <div class="cta">
+        <a class="btn" href="#book" data-i="ctaBook"></a>
+        <a class="btn ghost" href="#doctors" data-i="ctaDocs"></a>
+      </div>
+      <div class="panel" aria-hidden="true">
+        <svg class="art" viewBox="20 20 180 180" aria-hidden="true">
+      <circle cx="110" cy="110" r="104" fill="#dcf0ec"/>
+      <circle cx="110" cy="110" r="78" fill="none" stroke="#bfe4dd" stroke-width="2" stroke-dasharray="2 8" stroke-linecap="round"/>
+      <path d="M78 62c-16 0-26 13-26 30 0 14 6 22 9 34 3 13 4 36 15 36 9 0 9-20 15-30 3-5 6-6 9-6s6 1 9 6c6 10 6 30 15 30 11 0 12-23 15-36 3-12 9-20 9-34 0-17-10-30-26-30-11 0-15 6-22 6s-11-6-22-6z" fill="#fff" stroke="#0c8f86" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M72 84c2-7 7-11 14-11" fill="none" stroke="#bfe4dd" stroke-width="5" stroke-linecap="round"/>
+      <path d="M160 52l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#0c8f86"/>
+      <path d="M48 150l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#0c8f86" opacity=".6"/>
+      <circle cx="172" cy="150" r="5" fill="#0c8f86" opacity=".35"/>
+    </svg>
+        <div class="bub"><b data-i="brand"></b><span data-i="bubText"></span><small>✓✓ 18:00</small></div>
+      </div>
+      <p class="remind"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#25d366"/><path d="M7 12.5l3 3 7-7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i="remind"></span></p>    </div>
+  </div>
+
+  <section id="doctors" style="padding-top:24px">
+    <div class="wrap">
+      <h2 data-i="docsTitle"></h2>
+      <p class="sub" data-i="docsSub"></p>
+      <div class="docs" id="docList"></div>
+    </div>
+  </section>
+
+  <section id="prices" style="padding-top:0">
+    <div class="wrap">
+      <h2 data-i="pricesTitle"></h2>
+      <p class="sub" data-i="pricesSub"></p>
+      <ul class="prices" id="priceList"></ul>
+    </div>
+  </section>
+
+  <section id="book" class="book">
+    <div class="wrap">
+      <h2 data-i="bookTitle"></h2>
+      <p class="sub" data-i="bookSub"></p>
+      <ol class="steps">
+        <li class="step"><h3><span>1</span><span data-i="step1"></span></h3><div class="opts" id="docOpts" role="radiogroup"></div></li>
+        <li class="step"><h3><span>2</span><span data-i="step2"></span></h3><div class="days" id="dayOpts" role="radiogroup"></div></li>
+        <li class="step"><h3><span>3</span><span data-i="step3"></span></h3><div class="times" id="timeOpts" role="radiogroup"></div></li>
+      </ol>
+      <div class="summary" aria-live="polite">
+        <p id="summary"></p>
+        <a class="btn" id="bookBtn" target="_blank" rel="noopener" aria-disabled="true" data-i="bookBtn"></a>
+        <p class="note" data-i="remind"></p>
+        <p class="note" data-i="waNote"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacts">
+    <div class="wrap">
+      <h2 data-i="contactsTitle"></h2>
+      <div class="info">
+        <div class="card"><h3 data-i="hoursTitle"></h3>
+          <table><tr><td data-i="monFri"></td><td>10:00–20:00</td></tr><tr><td data-i="sat"></td><td>10:00–16:00</td></tr><tr><td data-i="sun"></td><td data-i="closed"></td></tr></table></div>
+        <div class="card"><h3 data-i="addrTitle"></h3><p id="addr"></p><p class="note" data-i="addrNote"></p></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><p style="margin:0" data-i="footer"></p></div></footer>
+
+<script src="../assets/demo.js"></script>
+<script>
+(function () {
+  "use strict";
+  var D = window.DEMO;
+  var I = {
+    hy: { _title: "{name} — առցանց գրանցում", _noName: "Ձեր կլինիկան", brand: "{name}", h1: "{name}", langAria: "Կայքի լեզուն",
+      kind: "Ստոմատոլոգիական կլինիկա", kindCity: "Ստոմատոլոգիական կլինիկա, {city}",
+      lead: "Բուժում, մաքրում և պրոթեզավորում մեկ վայրում։ Ընտրեք բժշկին և ձեզ հարմար ժամը։",
+      ctaBook: "Գրանցվել ընդունելության", ctaDocs: "Բժիշկներ",
+      bubText: "Հիշեցում․ վաղը ժամը 11:00-ին ձեզ սպասում է բժիշկ Անի Մարտիրոսյանը։",
+      remind: "Ընդունելությունից մեկ օր առաջ կհիշեցնենք WhatsApp-ով",
+      docsTitle: "Մեր բժիշկները", docsSub: "Գրանցվելիս կարող եք ընտրել կոնկրետ բժշկի։",
+      exp: "{n} տարվա փորձ",
+      pricesTitle: "Ծառայություններ և գներ", pricesSub: "Գները օրինակելի են․ բուժման ճշգրիտ պլանը բժիշկը կկազմի խորհրդատվության ժամանակ։",
+      from: "{p}-ից",
+      bookTitle: "Առցանց գրանցում", bookSub: "Ընտրեք բժշկին, օրը և ժամը՝ հայտը կգնա կլինիկայի WhatsApp-ին։",
+      step1: "Բժիշկ", step2: "Օր", step3: "Ժամ", todayShort: "Այսօր", tomorrow: "Վաղը",
+      sumEmpty: "Ընտրեք բժշկին, օրը և ժամը։", sumFull: "{doctor}, {date}, ժամը {time}",
+      bookBtn: "Գրանցվել",
+      waNote: "Օրինակում WhatsApp-ը բացվում է առանց համարի։ Ձեր կայքում հայտը կգա անմիջապես ձեր WhatsApp-ին։",
+      waMsg: "Բարև ձեզ։ Ուզում եմ գրանցվել ընդունելության{inName}։\nԲժիշկ՝ {doctor} ({spec})\nՕր՝ {date}\nԺամ՝ {time}", inName: " «{name}»-ում",
+      contactsTitle: "Ժամեր և հասցե", hoursTitle: "Աշխատանքային ժամեր", monFri: "Երկուշաբթի – ուրբաթ", sat: "Շաբաթ", sun: "Կիրակի", closed: "Հանգստյան օր",
+      addrTitle: "Հասցե", addr: "Այստեղ կլինի կլինիկայի հասցեն", addrCity: "{city}, այստեղ կլինի կլինիկայի հասցեն",
+      addrNote: "Քարտեզի հղումով, որ պացիենտը մեկ սեղմումով կառուցի երթուղին։",
+      footer: "Սա կայքի օրինակ է SKIYAR-ից։ Բժիշկների անունները, գները և ժամերը՝ օրինակի համար։" },
+    ru: { _title: "{name} — онлайн-запись", _noName: "Ваша клиника", brand: "{name}", h1: "{name}", langAria: "Язык сайта",
+      kind: "Стоматологическая клиника", kindCity: "Стоматологическая клиника, {city}",
+      lead: "Лечение, чистка и протезирование в одном месте. Выберите врача и удобное вам время.",
+      ctaBook: "Записаться на приём", ctaDocs: "Врачи",
+      bubText: "Напоминание: завтра в 11:00 вас ждёт врач Ани Мартиросян.",
+      remind: "Напомним в WhatsApp накануне приёма",
+      docsTitle: "Наши врачи", docsSub: "При записи можно выбрать конкретного врача.",
+      exp: "Опыт {n} лет",
+      pricesTitle: "Услуги и цены", pricesSub: "Цены ориентировочные: точный план лечения врач составит на консультации.",
+      from: "от {p}",
+      bookTitle: "Онлайн-запись", bookSub: "Выберите врача, день и время — заявка уйдёт в WhatsApp клиники.",
+      step1: "Врач", step2: "День", step3: "Время", todayShort: "Сегодня", tomorrow: "Завтра",
+      sumEmpty: "Выберите врача, день и время.", sumFull: "{doctor}, {date}, в {time}",
+      bookBtn: "Записаться",
+      waNote: "В примере WhatsApp открывается без номера. На вашем сайте заявка придёт сразу в ваш WhatsApp.",
+      waMsg: "Здравствуйте! Хочу записаться на приём{inName}.\nВрач: {doctor} ({spec})\nДень: {date}\nВремя: {time}", inName: " в «{name}»",
+      contactsTitle: "Часы и адрес", hoursTitle: "Часы работы", monFri: "Понедельник — пятница", sat: "Суббота", sun: "Воскресенье", closed: "Выходной",
+      addrTitle: "Адрес", addr: "Здесь будет адрес клиники", addrCity: "{city}, здесь будет адрес клиники",
+      addrNote: "Со ссылкой на карту — пациент построит маршрут в одно касание.",
+      footer: "Это пример сайта от SKIYAR. Имена врачей, цены и часы — для примера." },
+    en: { _title: "{name} — book online", _noName: "Your clinic", brand: "{name}", h1: "{name}", langAria: "Site language",
+      kind: "Dental clinic", kindCity: "Dental clinic, {city}",
+      lead: "Treatment, cleaning and prosthetics in one place. Choose your doctor and a time that suits you.",
+      ctaBook: "Book an appointment", ctaDocs: "Doctors",
+      bubText: "Reminder: Dr Ani Martirosyan will see you tomorrow at 11:00.",
+      remind: "We’ll remind you on WhatsApp the day before",
+      docsTitle: "Our doctors", docsSub: "You can choose a specific doctor when you book.",
+      exp: "{n} years of experience",
+      pricesTitle: "Services and prices", pricesSub: "Prices are a guide; your doctor will draw up an exact treatment plan at the consultation.",
+      from: "from {p}",
+      bookTitle: "Book online", bookSub: "Choose a doctor, a day and a time. Your request goes to the clinic’s WhatsApp.",
+      step1: "Doctor", step2: "Day", step3: "Time", todayShort: "Today", tomorrow: "Tomorrow",
+      sumEmpty: "Choose a doctor, a day and a time.", sumFull: "{doctor}, {date}, at {time}",
+      bookBtn: "Book",
+      waNote: "In this sample WhatsApp opens without a number. On your site, requests go straight to your WhatsApp.",
+      waMsg: "Hello! I’d like to book an appointment{inName}.\nDoctor: {doctor} ({spec})\nDay: {date}\nTime: {time}", inName: " at “{name}”",
+      contactsTitle: "Hours and address", hoursTitle: "Opening hours", monFri: "Monday to Friday", sat: "Saturday", sun: "Sunday", closed: "Closed",
+      addrTitle: "Address", addr: "Your address goes here", addrCity: "{city}, your address goes here",
+      addrNote: "With a map link, so patients get directions in one tap.",
+      footer: "This is a sample website by SKIYAR. Doctors’ names, prices and hours are examples." }
+  };
+  var LI = { hy: 0, ru: 1, en: 2 };
+  // имя [hy, ru, en], специальность [hy, ru, en], опыт, монограмма [hy, ru, en]
+  var DR = [
+    [["Անի Մարտիրոսյան", "Ани Мартиросян", "Ani Martirosyan"], ["Ստոմատոլոգ-թերապևտ", "Стоматолог-терапевт", "General dentist"], 12, ["ԱՄ", "АМ", "AM"]],
+    [["Դավիթ Հակոբյան", "Давид Акопян", "Davit Hakobyan"], ["Օրթոպեդ ստոմատոլոգ", "Стоматолог-ортопед", "Prosthodontist"], 9, ["ԴՀ", "ДА", "DH"]],
+    [["Լիլիթ Սարգսյան", "Лилит Саргсян", "Lilit Sargsyan"], ["Օրթոդոնտ", "Ортодонт", "Orthodontist"], 7, ["ԼՍ", "ЛС", "LS"]],
+    [["Արամ Պետրոսյան", "Арам Петросян", "Aram Petrosyan"], ["Վիրաբույժ-իմպլանտոլոգ", "Хирург-имплантолог", "Oral surgeon, implants"], 15, ["ԱՊ", "АП", "AP"]]
+  ];
+  // услуга [hy, ru, en], цена, «от»
+  var PR = [
+    [["Խորհրդատվություն և զննում", "Консультация и осмотр", "Consultation and check-up"], 5000, 0],
+    [["Պրոֆեսիոնալ մաքրում", "Профессиональная чистка", "Professional cleaning"], 15000, 0],
+    [["Կարիեսի բուժում և պլոմբ", "Лечение кариеса и пломба", "Cavity treatment and filling"], 20000, 1],
+    [["Ատամի հեռացում", "Удаление зуба", "Tooth extraction"], 12000, 1],
+    [["Ատամների սպիտակեցում", "Отбеливание зубов", "Teeth whitening"], 60000, 0],
+    [["Իմպլանտ՝ պսակով", "Имплант с коронкой", "Implant with crown"], 250000, 1]
+  ];
+  var TIMES = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00"];
+  var sel = { r: 0, d: 0, t: -1 };
+
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  function days() { var out = [], d = new Date(); d.setHours(0, 0, 0, 0); while (out.length < 7) { if (d.getDay() !== 0) out.push(new Date(d)); d.setDate(d.getDate() + 1); } return out; }
+  function hoursFor(d) { return d.getDay() === 6 ? TIMES.slice(0, 6) : TIMES; }
+  function busy(r, di, ti) { return (r * 3 + di * 5 + ti * 7) % 6 === 0 || (di + ti + r) % 5 === 2; }
+  function radio(box, label, on, fn, cls, dis) {
+    var b = el("button", cls || "chip"); b.type = "button"; b.setAttribute("role", "radio"); b.setAttribute("aria-checked", String(on));
+    if (typeof label === "string") b.textContent = label; else label.forEach(function (n) { b.appendChild(n); });
+    if (dis) b.disabled = true; b.addEventListener("click", fn); box.appendChild(b); return b;
+  }
+  function dayLabel(d) { var t = new Date(); t.setHours(0, 0, 0, 0); var diff = Math.round((d - t) / 864e5); return diff === 0 ? D.t("todayShort") : diff === 1 ? D.t("tomorrow") : D.cap(D.date(d, "wd")); }
+  function freeToday() { var now = new Date(), dd = days(); if (dd[0].toDateString() !== now.toDateString()) return true; return hoursFor(dd[0]).some(function (t, i) { return parseInt(t, 10) > now.getHours() && !busy(sel.r, 0, i); }); }
+
+  function renderStatic() {
+    var L = LI[D.lang], box = document.getElementById("docList"); box.textContent = "";
+    DR.forEach(function (r) {
+      var c = el("article", "doc");
+      c.appendChild(el("span", "mono", r[3][L])).setAttribute("aria-hidden", "true");
+      c.appendChild(el("h3", null, r[0][L]));
+      c.appendChild(el("p", null, r[1][L] + " · " + D.t("exp", { n: r[2] })));
+      box.appendChild(c);
+    });
+    var ul = document.getElementById("priceList"); ul.textContent = "";
+    PR.forEach(function (p) { var li = el("li"); li.appendChild(el("span", null, p[0][L])); li.appendChild(el("span", null, p[2] ? D.t("from", { p: D.price(p[1]) }) : D.price(p[1]))); ul.appendChild(li); });
+  }
+  function renderBook() {
+    var L = LI[D.lang], o = document.getElementById("docOpts"); o.textContent = "";
+    DR.forEach(function (r, i) {
+      var m = el("i", null, r[3][L]); m.setAttribute("aria-hidden", "true");
+      radio(o, [m, el("span", null, r[0][L])], sel.r === i, function () { sel.r = i; sel.t = -1; renderBook(); }, "chip dr");
+    });
+    var dd = days(), dOpt = document.getElementById("dayOpts"); dOpt.textContent = "";
+    dd.forEach(function (d, i) { radio(dOpt, [el("small", null, dayLabel(d)), el("b", null, String(d.getDate()))], sel.d === i, function () { sel.d = i; sel.t = -1; renderBook(); }, "day"); });
+    var to = document.getElementById("timeOpts"); to.textContent = "";
+    var now = new Date(), isToday = dd[sel.d].toDateString() === now.toDateString(), hrs = hoursFor(dd[sel.d]);
+    hrs.forEach(function (t, i) { radio(to, t, sel.t === i, function () { sel.t = i; renderBook(); }, "chip", (isToday && parseInt(t, 10) <= now.getHours()) || busy(sel.r, sel.d, i)); });
+    var btn = document.getElementById("bookBtn"), sum = document.getElementById("summary");
+    if (sel.t < 0) { sum.textContent = D.t("sumEmpty"); btn.setAttribute("aria-disabled", "true"); btn.removeAttribute("href"); return; }
+    var v = { doctor: DR[sel.r][0][L], spec: DR[sel.r][1][L], date: D.date(dd[sel.d], "long"), time: hrs[sel.t] };
+    sum.textContent = D.t("sumFull", v);
+    v.inName = D.name ? D.t("inName") : "";
+    btn.href = D.wa(D.t("waMsg", v)); btn.setAttribute("aria-disabled", "false");
+  }
+  document.getElementById("bookBtn").addEventListener("click", function (e) { if (this.getAttribute("aria-disabled") === "true") { e.preventDefault(); document.getElementById("timeOpts").scrollIntoView({ block: "center" }); } });
+  if (!freeToday()) sel.d = 1;
+  D.init(I, function () {
+    document.getElementById("kind").textContent = D.city() ? D.t("kindCity") : D.t("kind");
+    document.getElementById("addr").textContent = D.city() ? D.t("addrCity") : D.t("addr");
+    renderStatic(); renderBook();
+  });
+})();
+</script>
+</body>
+</html>

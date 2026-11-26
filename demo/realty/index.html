@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="hy">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Ձեր գործակալությունը — բնակարաններ</title>
+<meta name="description" content="Пример сайта агентства недвижимости от SKIYAR: объекты с фильтром, вопрос по объекту в WhatsApp.">
+<meta name="theme-color" content="#f1ece3">
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/noto-serif-armenian-armenian-bfh8e2ew.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/noto-sans-armenian-armenian-xzhvodur.woff2" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect width=%2216%22 height=%2216%22 rx=%223%22 fill=%22%231f3b32%22/%3E%3C/svg%3E">
+<style>
+@font-face{font-family:'Forum';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/forum-cyrillic-ivopiq3g.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'Forum';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/forum-latin-ew8iropi.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Jost';font-style:normal;font-weight:100 900;font-display:swap;src:url(../assets/fonts/jost-cyrillic-3odd4iyl.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'Jost';font-style:normal;font-weight:100 900;font-display:swap;src:url(../assets/fonts/jost-latin-w73otd4g.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Noto Serif Armenian';font-style:normal;font-weight:100 900;font-stretch:100%;font-display:swap;src:url(../assets/fonts/noto-serif-armenian-armenian-bfh8e2ew.woff2) format('woff2');unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
+@font-face{font-family:'Noto Sans Armenian';font-style:normal;font-weight:100 900;font-stretch:100%;font-display:swap;src:url(../assets/fonts/noto-sans-armenian-armenian-xzhvodur.woff2) format('woff2');unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
+:root{
+  --bg:#f1ece3; --paper:#faf7f1; --ink:#1c2621; --green:#1f3b32; --green-2:#2d5146; --muted:#66706a; --line:#ddd4c5; --brass:#b08d57; --tuff:#c98b76;
+  --serif:"Forum","Noto Serif Armenian",Georgia,serif; --sans:"Jost","Noto Sans Armenian",system-ui,sans-serif; --gut:20px; --max:1160px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:56px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:300 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit} button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+#skiyar-bar{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:6px var(--gut);background:#111814;color:#ece6da;font:400 13px/1.35 var(--sans)}
+#skiyar-bar .skb-a{flex:none;color:#e2c48f;white-space:nowrap}
+
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;font:400 21px/1 var(--serif);text-decoration:none;letter-spacing:.02em}
+.brand i{flex:none;width:28px;height:28px;display:grid;place-items:center}
+.brand span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.langs{display:flex;gap:2px;flex:none}
+.langs button{background:none;border:0;padding:8px 9px;border-radius:999px;font-size:14px;color:var(--muted);cursor:pointer}
+.langs button[aria-pressed="true"]{background:var(--green);color:#f1ece3}
+
+.hero{padding:8px 0 0}
+.kind{margin:0;color:var(--brass);font-weight:500;font-size:14px;letter-spacing:.14em;text-transform:uppercase}
+[data-lang="hy"] .kind{letter-spacing:.04em;text-transform:none;font-size:15px}
+h1{margin:12px 0 0;font:400 clamp(52px,15vw,116px)/.95 var(--serif);letter-spacing:-.01em;overflow-wrap:anywhere}
+[data-lang="hy"] h1{font-weight:400;font-size:clamp(30px,9.4vw,80px);line-height:1.1}
+.lead{margin:16px 0 0;max-width:30em;color:var(--muted)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 24px;border-radius:4px;border:1px solid var(--green);background:var(--green);color:#f4efe6;font-weight:400;text-decoration:none;cursor:pointer;letter-spacing:.01em}
+.btn.ghost{background:none;color:var(--green)}
+.stats{display:flex;gap:22px;margin:22px 0 0;padding:0;list-style:none;font-size:14px;color:var(--muted)}
+.stats b{display:block;font:400 28px/1 var(--serif);color:var(--ink)}
+.sky{display:block;width:100%;height:auto;margin-top:18px}
+
+section{padding:56px 0}
+h2{margin:0 0 8px;font:400 clamp(36px,10vw,64px)/1 var(--serif)}
+[data-lang="hy"] h2{font-size:clamp(26px,7vw,44px);line-height:1.15}
+.sub{margin:0 0 22px;max-width:34em;color:var(--muted)}
+
+.filters{display:grid;gap:10px;margin-bottom:22px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--paper);cursor:pointer;font-size:15px}
+.chip[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#f4efe6}
+.list{display:grid;gap:16px}
+.obj{display:flex;flex-direction:column;border-radius:6px;background:var(--paper);border:1px solid var(--line);overflow:hidden}
+.obj .pic{position:relative;aspect-ratio:16/10;background:#e9dfcf}
+.obj .pic svg{display:block;width:100%;height:100%}
+.obj .id{position:absolute;left:12px;top:12px;padding:3px 9px;border-radius:3px;background:rgba(28,38,33,.82);color:#f1ece3;font-size:12.5px;letter-spacing:.06em}
+.obj .deal{position:absolute;right:12px;top:12px;padding:3px 9px;border-radius:3px;background:var(--brass);color:#fff;font-size:12.5px}
+.obj .body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.obj .price{font:400 27px/1.1 var(--serif)}
+.obj .price small{font:300 14px/1 var(--sans);color:var(--muted)}
+.obj .meta{margin:0;color:var(--ink);font-size:15.5px}
+.obj .dist{margin:0;color:var(--muted);font-size:14.5px}
+.obj .btn{margin-top:10px}
+.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:6px}
+
+.sell{background:var(--green);color:#efe9dd}
+.sell .sub{color:#c4cfc8}
+.sell .btn{background:#e2c48f;border-color:#e2c48f;color:var(--green)}
+.steps3{display:grid;gap:12px;margin:0 0 24px;padding:0;list-style:none;counter-reset:s}
+.steps3 li{counter-increment:s;display:flex;gap:12px;align-items:flex-start}
+.steps3 li:before{content:counter(s);flex:none;width:30px;height:30px;border:1px solid #e2c48f;border-radius:50%;display:grid;place-items:center;font:400 16px/1 var(--serif);color:#e2c48f}
+
+.info{display:grid;gap:12px}
+.card{padding:18px;border-radius:6px;background:var(--paper);border:1px solid var(--line)}
+.card h3{margin:0 0 8px;font:400 22px/1.2 var(--serif)}
+.card table{width:100%;border-collapse:collapse}
+.card td{padding:7px 0;border-bottom:1px solid var(--line)}
+.card td+td{text-align:right;padding-left:12px}
+.info>*{min-width:0}
+.card p{margin:0}
+.note{margin:10px 0 0!important;font-size:13.5px;color:var(--muted)}
+footer{padding:28px 0 44px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+@media (min-width:760px){
+  .list{grid-template-columns:repeat(2,1fr)}
+  .info{grid-template-columns:1fr 1fr}
+  .filters{grid-template-columns:auto 1fr;align-items:center}
+}
+@media (min-width:1060px){.list{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body data-lang="hy">
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#"><i aria-hidden="true"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#1f3b32" stroke-width="2"><path d="M3 12L13 4l10 8"/><path d="M6 10v12h14V10"/><path d="M11 22v-6h4v6" stroke="#b08d57"/></svg></i><span data-i="brand"></span></a>
+    <div class="langs" role="group" data-i-aria="langAria">
+      <button type="button" data-lang-btn="hy">Հայ</button><button type="button" data-lang-btn="ru">Рус</button><button type="button" data-lang-btn="en">Eng</button>
+    </div>
+  </header>
+</div>
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <p class="kind" id="kind"></p>
+      <h1 data-i="h1"></h1>
+      <p class="lead" data-i="lead"></p>
+      <div class="cta">
+        <a class="btn" href="#objects" data-i="ctaObjects"></a>
+        <a class="btn ghost" id="ctaWa" target="_blank" rel="noopener" data-i="ctaAsk"></a>
+      </div>
+      <ul class="stats">
+        <li><b>120+</b><span data-i="st1"></span></li>
+        <li><b>8</b><span data-i="st2"></span></li>
+        <li><b>7/7</b><span data-i="st3"></span></li>
+      </ul>
+    </div>
+    <svg class="sky" viewBox="0 0 400 170" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <path d="M0 120 L70 78 L105 92 L160 40 L196 62 L214 54 L262 92 L300 84 L400 120 V170 H0Z" fill="#e3dacb"/>
+      <path d="M150 49 L160 40 L172 50 L165 48 L158 52Z" fill="#faf7f1"/>
+      <g id="skyline"></g>
+      <rect x="0" y="166" width="400" height="4" fill="#1f3b32"/>
+    </svg>
+  </div>
+
+  <section id="objects">
+    <div class="wrap">
+      <h2 data-i="objTitle"></h2>
+      <p class="sub" data-i="objSub"></p>
+      <div class="filters">
+        <div class="seg" id="dealF" role="group"></div>
+        <div class="seg" id="roomF" role="group"></div>
+      </div>
+      <div class="list" id="objList" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="sell">
+    <div class="wrap">
+      <h2 data-i="sellTitle"></h2>
+      <p class="sub" data-i="sellSub"></p>
+      <ol class="steps3"><li data-i="sell1"></li><li data-i="sell2"></li><li data-i="sell3"></li></ol>
+      <a class="btn" id="sellWa" target="_blank" rel="noopener" data-i="sellBtn"></a>
+      <p class="note" style="color:#c4cfc8" data-i="waNote"></p>
+    </div>
+  </section>
+
+  <section id="contacts">
+    <div class="wrap">
+      <h2 data-i="contactsTitle"></h2>
+      <div class="info">
+        <div class="card"><h3 data-i="hoursTitle"></h3>
+          <table><tr><td data-i="monSat"></td><td>10:00–19:00</td></tr><tr><td data-i="sun"></td><td data-i="byAppt"></td></tr></table></div>
+        <div class="card"><h3 data-i="addrTitle"></h3><p id="addr"></p><p class="note" data-i="addrNote"></p></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><p style="margin:0" data-i="footer"></p></div></footer>
+
+<script src="../assets/demo.js"></script>
+<script>
+(function () {
+  "use strict";
+  var D = window.DEMO;
+  var I = {
+    hy: { _title: "{name} — բնակարաններ", _noName: "Ձեր գործակալությունը", brand: "{name}", h1: "{name}", langAria: "Կայքի լեզուն",
+      kind: "Անշարժ գույքի գործակալություն", kindCity: "Անշարժ գույք, {city}",
+      lead: "Բնակարաններ վաճառքի և վարձով։ Յուրաքանչյուր օբյեկտ ստուգված է, դիտումը՝ ձեզ հարմար ժամին։",
+      ctaObjects: "Դիտել օբյեկտները", ctaAsk: "Հարց տալ",
+      st1: "օբյեկտ բազայում", st2: "թաղամաս", st3: "կապի մեջ ենք ամեն օր",
+      objTitle: "Օբյեկտներ", objSub: "Ընտրեք գործարքը և սենյակների քանակը։ Յուրաքանչյուր օբյեկտի մասին կարող եք հարցնել WhatsApp-ով՝ հաղորդագրության մեջ արդեն կլինի նրա համարը։",
+      buy: "Գնել", rent: "Վարձակալել", all: "Բոլորը", rooms: "{n} սենյակ", roomsPlus: "{n}+ սենյակ",
+      dealBuy: "Վաճառք", dealRent: "Վարձով",
+      perMonth: "/ ամիս", meta: "{area} մ² · {rooms} սենյակ · {floor} հարկ",
+      ask: "Ճշտել՝ արդյոք առկա է", empty: "Այս ֆիլտրերով օբյեկտ չկա։ Փորձեք փոխել պայմանները։",
+      desc: "{rooms} սենյականոց, {area} մ², {district}",
+      waObj: "Բարև ձեզ։ Ինձ հետաքրքրում է{ofName} {id} օբյեկտը՝ {desc}։ Դեռ առկա՞ է։", ofName: " «{name}»-ի",
+      waAsk: "Բարև ձեզ։ Բնակարան եմ փնտրում{inName}։ Կարո՞ղ եք օգնել։", inName: " «{name}»-ի միջոցով",
+      sellTitle: "Վաճառու՞մ եք կամ վարձով եք տալիս", sellSub: "Կգնահատենք բնակարանը անվճար և կգտնենք գնորդ կամ վարձակալ։",
+      sell1: "Գրեք մեզ WhatsApp-ով", sell2: "Գործակալը կգա և կլուսանկարի օբյեկտը", sell3: "Կտեղադրենք կայքում և կբերենք դիտողներ",
+      sellBtn: "Գնահատել բնակարանը", waSell: "Բարև ձեզ։ Ուզում եմ գնահատել և վաճառել (վարձով տալ) բնակարանս{inName2}։", inName2: " «{name}»-ի միջոցով",
+      waNote: "Օրինակում WhatsApp-ը բացվում է առանց համարի։ Ձեր կայքում հայտը կգա անմիջապես ձեր WhatsApp-ին։",
+      contactsTitle: "Ժամեր և հասցե", hoursTitle: "Գրասենյակ", monSat: "Երկուշաբթի – շաբաթ", sun: "Կիրակի", byAppt: "Նախնական գրանցմամբ",
+      addrTitle: "Հասցե", addr: "Այստեղ կլինի գրասենյակի հասցեն", addrCity: "{city}, այստեղ կլինի գրասենյակի հասցեն",
+      addrNote: "Քարտեզի հղումով, որ հաճախորդը մեկ սեղմումով կառուցի երթուղին։",
+      footer: "Սա կայքի օրինակ է SKIYAR-ից։ Օբյեկտները, գները և ժամերը՝ օրինակի համար։ Լուսանկարների փոխարեն այստեղ կլինեն ձեր օբյեկտների իրական լուսանկարները։" },
+    ru: { _title: "{name} — квартиры", _noName: "Ваше агентство", brand: "{name}", h1: "{name}", langAria: "Язык сайта",
+      kind: "Агентство недвижимости", kindCity: "Недвижимость, {city}",
+      lead: "Квартиры на продажу и в аренду. Каждый объект проверен, показ — в удобное вам время.",
+      ctaObjects: "Смотреть объекты", ctaAsk: "Задать вопрос",
+      st1: "объектов в базе", st2: "районов", st3: "на связи без выходных",
+      objTitle: "Объекты", objSub: "Выберите сделку и число комнат. О любом объекте можно спросить в WhatsApp — номер объекта уже будет в сообщении.",
+      buy: "Купить", rent: "Снять", all: "Все", rooms: "{n}-комн.", roomsPlus: "{n}+ комн.",
+      dealBuy: "Продажа", dealRent: "Аренда",
+      perMonth: "/ месяц", meta: "{area} м² · {rooms} комн. · {floor} этаж",
+      ask: "Узнать, актуально ли", empty: "По этим фильтрам объектов нет. Попробуйте изменить условия.",
+      desc: "{rooms}-комнатная, {area} м², {district}",
+      waObj: "Здравствуйте! Интересует объект {id}{ofName}: {desc}. Он ещё актуален?", ofName: " в «{name}»",
+      waAsk: "Здравствуйте! Ищу квартиру{inName}. Поможете подобрать?", inName: " — пишу в «{name}»",
+      sellTitle: "Продаёте или сдаёте?", sellSub: "Бесплатно оценим квартиру и найдём покупателя или арендатора.",
+      sell1: "Напишите нам в WhatsApp", sell2: "Агент приедет и сфотографирует объект", sell3: "Разместим на сайте и приведём покупателей",
+      sellBtn: "Оценить квартиру", waSell: "Здравствуйте! Хочу оценить и продать (сдать) квартиру{inName2}.", inName2: " через «{name}»",
+      waNote: "В примере WhatsApp открывается без номера. На вашем сайте заявка придёт сразу в ваш WhatsApp.",
+      contactsTitle: "Часы и адрес", hoursTitle: "Офис", monSat: "Понедельник — суббота", sun: "Воскресенье", byAppt: "По записи",
+      addrTitle: "Адрес", addr: "Здесь будет адрес офиса", addrCity: "{city}, здесь будет адрес офиса",
+      addrNote: "Со ссылкой на карту — клиент построит маршрут в одно касание.",
+      footer: "Это пример сайта от SKIYAR. Объекты, цены и часы — для примера. Вместо рисунков здесь будут настоящие фото ваших объектов." },
+    en: { _title: "{name} — flats", _noName: "Your agency", brand: "{name}", h1: "{name}", langAria: "Site language",
+      kind: "Real estate agency", kindCity: "Real estate, {city}",
+      lead: "Flats for sale and for rent. Every listing is verified, and viewings are at a time that suits you.",
+      ctaObjects: "See listings", ctaAsk: "Ask a question",
+      st1: "listings", st2: "districts", st3: "in touch every day",
+      objTitle: "Listings", objSub: "Choose the deal and number of rooms. Ask about any listing on WhatsApp — its ID will already be in the message.",
+      buy: "Buy", rent: "Rent", all: "All", rooms: "{n} rooms", roomsPlus: "{n}+ rooms",
+      dealBuy: "For sale", dealRent: "For rent",
+      perMonth: "/ month", meta: "{area} m² · {rooms} rooms · floor {floor}",
+      ask: "Ask if it’s available", empty: "No listings match these filters. Try changing them.",
+      desc: "{rooms}-room flat, {area} m², {district}",
+      waObj: "Hello! I’m interested in listing {id}{ofName}: {desc}. Is it still available?", ofName: " at “{name}”",
+      waAsk: "Hello! I’m looking for a flat{inName}. Could you help?", inName: " and found “{name}”",
+      sellTitle: "Selling or letting?", sellSub: "We’ll value your flat for free and find a buyer or a tenant.",
+      sell1: "Message us on WhatsApp", sell2: "An agent comes and photographs the flat", sell3: "We list it on the site and bring viewers",
+      sellBtn: "Get a valuation", waSell: "Hello! I’d like to value and sell (or let) my flat{inName2}.", inName2: " through “{name}”",
+      waNote: "In this sample WhatsApp opens without a number. On your site, requests go straight to your WhatsApp.",
+      contactsTitle: "Hours and address", hoursTitle: "Office", monSat: "Monday to Saturday", sun: "Sunday", byAppt: "By appointment",
+      addrTitle: "Address", addr: "Your address goes here", addrCity: "{city}, your address goes here",
+      addrNote: "With a map link, so clients get directions in one tap.",
+      footer: "This is a sample website by SKIYAR. Listings, prices and hours are examples. Real photos of your properties will replace the drawings." }
+  };
+  var LI = { hy: 0, ru: 1, en: 2 };
+  var DIST = {
+    kentron: ["Կենտրոն", "Кентрон", "Kentron"], arabkir: ["Արաբկիր", "Арабкир", "Arabkir"], davtashen: ["Դավթաշեն", "Давташен", "Davtashen"],
+    nornork: ["Նոր Նորք", "Нор Норк", "Nor Nork"], ajapnyak: ["Աջափնյակ", "Аджапняк", "Ajapnyak"], malatia: ["Մալաթիա-Սեբաստիա", "Малатия-Себастия", "Malatia-Sebastia"]
+  };
+  // id, сделка, комнат, м², этаж, район, цена, стиль рисунка
+  var O = [
+    ["D-104", "buy", 2, 68, "6/12", "kentron", 98000000, "tower"],
+    ["D-117", "buy", 3, 92, "4/9", "arabkir", 112000000, "tuff"],
+    ["D-122", "buy", 1, 41, "8/14", "davtashen", 39000000, "slab"],
+    ["D-131", "buy", 4, 128, "3/5", "nornork", 95000000, "tuff2"],
+    ["R-208", "rent", 2, 60, "5/10", "kentron", 450000, "glass"],
+    ["R-215", "rent", 1, 38, "7/16", "arabkir", 280000, "slab"],
+    ["R-221", "rent", 3, 85, "2/9", "ajapnyak", 350000, "tuff"]
+  ];
+  var f = { deal: "buy", rooms: 0 };
+
+  // Рисунок дома вместо фото (SVG): разные фасады по стилю, окна сеткой, одно горит.
+  function house(st, seed) {
+    var P = {
+      tower: { c: "#d8cbb6", w: 120, h: 150, cols: 4, rows: 9, sky: "#cfe0e3" },
+      tuff: { c: "#c98b76", w: 190, h: 96, cols: 6, rows: 4, sky: "#e7d9c2", arch: 1 },
+      tuff2: { c: "#b97a66", w: 150, h: 78, cols: 4, rows: 3, sky: "#d9e3d6", arch: 1 },
+      slab: { c: "#bfc3bc", w: 170, h: 132, cols: 6, rows: 8, sky: "#dde4ea" },
+      glass: { c: "#4f6f78", w: 110, h: 150, cols: 3, rows: 10, sky: "#ead9c4", glass: 1 }
+    }[st];
+    var W = 320, H = 200, x0 = (W - P.w) / 2 + (seed % 3 - 1) * 14, y0 = H - 22 - P.h, s = "";
+    s += '<rect width="320" height="200" fill="' + P.sky + '"/>';
+    s += '<circle cx="' + (60 + seed * 31 % 200) + '" cy="44" r="16" fill="#fff" opacity=".55"/>';
+    s += '<rect x="' + (x0 - 70) + '" y="' + (y0 + 40) + '" width="60" height="' + (P.h - 40) + '" fill="#000" opacity=".06"/>';
+    s += '<rect x="' + (x0 + P.w + 14) + '" y="' + (y0 + 60) + '" width="54" height="' + (P.h - 60) + '" fill="#000" opacity=".05"/>';
+    s += '<rect x="' + x0 + '" y="' + y0 + '" width="' + P.w + '" height="' + P.h + '" fill="' + P.c + '"/>';
+    s += '<rect x="' + (x0 - 4) + '" y="' + (y0 - 6) + '" width="' + (P.w + 8) + '" height="6" fill="#1c2621" opacity=".25"/>';
+    var gw = P.w / P.cols, gh = (P.h - 10) / P.rows, lit = (seed * 7) % (P.cols * P.rows);
+    for (var r = 0; r < P.rows; r++) for (var c = 0; c < P.cols; c++) {
+      var wx = x0 + c * gw + gw * .22, wy = y0 + 8 + r * gh + gh * .18, ww = gw * .56, wh = gh * .6, on = (r * P.cols + c) === lit || (r * P.cols + c) === (lit + 5) % (P.cols * P.rows);
+      var fill = P.glass ? (on ? "#f4d58d" : "#9fc0c8") : (on ? "#f4d58d" : "#2f3d38");
+      if (P.arch) s += '<path d="M' + wx + " " + (wy + wh) + "V" + (wy + ww / 2) + "a" + ww / 2 + " " + ww / 2 + " 0 0 1 " + ww + " 0V" + (wy + wh) + 'z" fill="' + fill + '" opacity="' + (on ? 1 : .8) + '"/>';
+      else s += '<rect x="' + wx + '" y="' + wy + '" width="' + ww + '" height="' + wh + '" fill="' + fill + '" opacity="' + (on ? 1 : .8) + '"/>';
+      if (!P.glass && !P.arch && r % 2 === 1) s += '<rect x="' + (wx - 2) + '" y="' + (wy + wh) + '" width="' + (ww + 4) + '" height="3" fill="#1c2621" opacity=".3"/>';
+    }
+    s += '<rect x="' + (x0 + P.w / 2 - 9) + '" y="' + (H - 40) + '" width="18" height="18" fill="#1f3b32"/>';
+    s += '<rect x="0" y="178" width="320" height="22" fill="#a9b59b"/>';
+    s += '<circle cx="' + (x0 - 22) + '" cy="164" r="16" fill="#5e7a5a"/><rect x="' + (x0 - 23.5) + '" y="170" width="3" height="10" fill="#4a3b2c"/>';
+    s += '<circle cx="' + (x0 + P.w + 30) + '" cy="168" r="12" fill="#6f8c66"/>';
+    return '<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' + s + "</svg>";
+  }
+  // Силуэт города в шапке.
+  (function () {
+    var g = "", x = 0, i = 0, cols = ["#1f3b32", "#2d5146", "#c98b76", "#b08d57", "#3c5f53"];
+    while (x < 400) {
+      var w = 26 + (i * 17) % 30, h = 40 + (i * 37) % 70, c = cols[i % cols.length], y = 166 - h;
+      g += '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" fill="' + c + '"/>';
+      for (var r = y + 8; r < 160; r += 12) for (var cx = x + 5; cx < x + w - 6; cx += 9) if ((r + cx + i) % 5) g += '<rect x="' + cx + '" y="' + r + '" width="4" height="6" fill="#f1ece3" opacity="' + ((r * cx) % 7 === 0 ? .95 : .28) + '"/>';
+      x += w + 3; i++;
+    }
+    document.getElementById("skyline").innerHTML = g;
+  })();
+
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  function btn(box, label, on, fn) { var b = el("button", "chip", label); b.type = "button"; b.setAttribute("aria-pressed", String(on)); b.addEventListener("click", fn); box.appendChild(b); }
+  function render() {
+    var L = LI[D.lang];
+    var df = document.getElementById("dealF"); df.textContent = "";
+    ["buy", "rent"].forEach(function (k) { btn(df, D.t(k), f.deal === k, function () { f.deal = k; render(); }); });
+    var rf = document.getElementById("roomF"); rf.textContent = "";
+    [0, 1, 2, 3].forEach(function (n) { btn(rf, n === 0 ? D.t("all") : n === 3 ? D.t("roomsPlus", { n: 3 }) : D.t("rooms", { n: n }), f.rooms === n, function () { f.rooms = n; render(); }); });
+    var box = document.getElementById("objList"); box.textContent = "";
+    var list = O.filter(function (o) { return o[1] === f.deal && (f.rooms === 0 || (f.rooms === 3 ? o[2] >= 3 : o[2] === f.rooms)); });
+    if (!list.length) { box.appendChild(el("p", "empty", D.t("empty"))); return; }
+    list.forEach(function (o, i) {
+      var c = el("article", "obj"), pic = el("div", "pic");
+      pic.innerHTML = house(o[7], O.indexOf(o) + 1);
+      pic.appendChild(el("span", "id", "ID " + o[0]));
+      pic.appendChild(el("span", "deal", D.t(o[1] === "buy" ? "dealBuy" : "dealRent")));
+      c.appendChild(pic);
+      var b = el("div", "body"), pr = el("div", "price", D.price(o[6]));
+      if (o[1] === "rent") { pr.appendChild(document.createTextNode(" ")); pr.appendChild(el("small", null, D.t("perMonth"))); }
+      b.appendChild(pr);
+      b.appendChild(el("p", "meta", D.t("meta", { area: o[3], rooms: o[2], floor: o[4] })));
+      b.appendChild(el("p", "dist", DIST[o[5]][L]));
+      var a = el("a", "btn", D.t("ask")); a.target = "_blank"; a.rel = "noopener";
+      a.href = D.wa(D.t("waObj", { id: o[0], ofName: D.name ? D.t("ofName") : "", desc: D.t("desc", { rooms: o[2], area: o[3], district: DIST[o[5]][L] }) }));
+      b.appendChild(a); c.appendChild(b); box.appendChild(c);
+    });
+  }
+  D.init(I, function () {
+    document.getElementById("kind").textContent = D.city() ? D.t("kindCity") : D.t("kind");
+    document.getElementById("addr").textContent = D.city() ? D.t("addrCity") : D.t("addr");
+    document.getElementById("ctaWa").href = D.wa(D.t("waAsk", { inName: D.name ? D.t("inName") : "" }));
+    document.getElementById("sellWa").href = D.wa(D.t("waSell", { inName2: D.name ? D.t("inName2") : "" }));
+    render();
+  });
+})();
+</script>
+</body>
+</html>

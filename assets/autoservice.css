@@ -1127,3 +1127,21 @@ p,li,.cap-p,small{text-wrap:pretty}
 .pkt-seats p[data-t="pkbPilotP"]{font-size:18px!important;line-height:1.45;color:var(--white)!important;font-weight:700;margin-top:6px}
 .nz-hero .pilot b,.hero .pilot b{font-size:1.05em}
 @media (max-width:430px){ .pkt-on .pl-p small[data-per]{display:block;margin-top:6px} }
+.t-lang .shots .lm{display:none;flex-direction:column;justify-content:flex-end;gap:10px;width:100%;min-height:220px;padding:18px 18px 20px;border-radius:12px;color:#fff;
+background:linear-gradient(180deg,rgba(10,14,22,.15) 0%,rgba(10,14,22,.78) 72%),url(../demo/hotel/img/hero-800.webp) center 35%/cover no-repeat;animation:fadein .2s var(--ease-out)}
+.t-lang .shots:not([data-show]) .lm[lang="hy"],.t-lang .shots[data-show="hy"] .lm[lang="hy"],.t-lang .shots[data-show="ru"] .lm[lang="ru"],.t-lang .shots[data-show="en"] .lm[lang="en"]{display:flex}
+.lm-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:auto;font-size:13px;opacity:.95}
+.lm-top b{font-size:15px;letter-spacing:.02em}
+.lm-top span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.lm-k{margin:0;font-size:14px;color:#e9dcc6}
+.lm-h{margin:0;font-weight:800;font-size:clamp(22px,3vw,30px);line-height:1.12;letter-spacing:-.02em;text-wrap:balance}
+.lm-btn{align-self:flex-start;padding:10px 16px;border-radius:999px;background:#fff;color:#14110d;font-weight:700;font-size:14px}
+@media (max-width:420px){ .lm-top span{display:none} }
+.pkt-salon{grid-column:1/-1}
+@media (min-width:900px){ .pkt-salon{grid-column:1/3} }
+.ty-kinds{flex-wrap:wrap}
+.pg-sl{margin-bottom:16px;border:1px solid rgba(82,150,225,.45)}
+.pg-sl a{color:var(--sky);text-underline-offset:4px}
+@media (min-width:900px){ .pkt-salon{grid-row:3} .pkb-grid .pkt-seats{grid-column:3/5!important;grid-row:3;flex-direction:column!important;align-items:flex-start!important;justify-content:space-between} }
+.ty-kinds{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+@media (max-width:340px){ .nz-hero h1{font-size:29px!important} }
