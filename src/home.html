@@ -100,23 +100,320 @@
     </div>
   </div>
 </section>
-<section class="how" id="how">
-  <div class="wrap">
-    <div class="how-side">
-      <h2 data-t="hwTitle"></h2>
-      <p class="lead" data-t="hwSub"></p>
+<section class="story" id="story">
+  <div class="wrap st-head"><h2 data-t="stTitle"></h2></div>
+  <div class="st-track" style="--n:6">
+    <div class="st-stage">
+      <div class="wrap st-grid">
+        <div class="st-phone">
+          <div class="st-ph-box">
+            <img class="st-px px on" data-steps="1 2 3 5" src="../assets/img/px/hero-ruzan-1x.png" width="48" height="72" alt="">
+            <img class="st-px px" data-steps="4" src="../assets/img/px/hero-lusine-1x.png" width="48" height="72" alt="">
+            <img class="st-px px" data-steps="6" src="../assets/img/px/hero-gor-1x.png" width="48" height="72" alt="">
+            <div class="phone" aria-hidden="true">
+              <div class="notch"></div>
+              <div class="screen app">
+                <div class="sb"><b>23:47</b><i></i></div>
+
+                <div class="scr on" data-steps="1 2">
+                  <div class="ch-h"><i class="av">T</i><div><b data-t="pChat"></b><small data-t="pChatSub"></small></div></div>
+                  <div class="ch-body">
+                    <div class="bub out" data-t="pMsg1"></div>
+                    <div class="ch-time">23:47</div>
+                    <div class="bub in b2" data-from="2"><span class="lbl" data-t="pAuto"></span><span data-t="pMsg2"></span><span class="bub-btn" data-t="pMsg2Btn"></span></div>
+                  </div>
+                  <div class="compose"></div>
+                </div>
+
+                <div class="scr" data-steps="3">
+                  <div class="bk">
+                    <p class="bk-t">Torq Auto · <span data-t="pBook"></span></p>
+                    <div class="bk-svc"><b data-t="pSvc"></b><span>8 000 ֏</span></div>
+                    <div class="bk-m" data-t="pMaster"></div>
+                    <div class="bk-days">
+                      <span><i data-t="pD1"></i><b>25</b></span><span><i data-t="pD2"></i><b>26</b></span><span class="sel"><i data-t="pD3"></i><b>27</b></span><span><i data-t="pD4"></i><b>28</b></span>
+                    </div>
+                    <div class="bk-times"><span class="off">10:00</span><span class="sel">11:00</span><span>12:30</span><span class="off">14:00</span><span>15:30</span><span>17:00</span></div>
+                    <div class="bk-btn" data-t="pBookBtn"></div>
+                    <div class="bk-sum" data-t="pBookSum"></div>
+                  </div>
+                </div>
+
+                <div class="scr" data-steps="4 6">
+                  <div class="cal-h"><b data-t="pCal"></b><small data-t="pCalDay"></small></div>
+                  <div class="cal">
+                    <div class="cr"><time>10:00</time><div><b data-t="pC1n"></b><small data-t="pC1s"></small></div></div>
+                    <div class="cr hot" data-from="6"><time>11:00</time><div><b data-t="pC2n"></b><small data-t="pC2s"></small><br><span class="tag t-new" data-t="pNew"></span><span class="tag came t-came" data-t="pCame"></span></div></div>
+                    <div class="cr free"><time>12:30</time><div><b data-t="pC3n"></b></div></div>
+                    <div class="cr"><time>14:00</time><div><b data-t="pC4n"></b><small data-t="pC4s"></small></div></div>
+                    <div class="cr free"><time>15:30</time><div><b data-t="pC3n"></b></div></div>
+                    <div class="cr"><time>17:00</time><div><b data-t="pC5n"></b><small data-t="pC5s"></small></div></div>
+                  </div>
+                </div>
+
+                <div class="scr" data-steps="5">
+                  <div class="wa-h"><i class="av">T</i><div><b data-t="pWaFrom"></b><small data-t="pWaLabel"></small></div></div>
+                  <div class="wa-body">
+                    <div class="bub in" data-t="pWaRem"></div>
+                    <div class="wa-btns"><span data-t="pWaYes"></span><span data-t="pWaMove"></span></div>
+                    <div class="bub mine" data-t="pReply"></div>
+                    <div class="compose"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="st-copy">
+          <ol class="st-rail" data-t-aria="stAria">
+            <li><button type="button" data-go="1" aria-current="step"><span data-t="st1t"></span></button></li>
+            <li><button type="button" data-go="2"><span data-t="st2t"></span></button></li>
+            <li><button type="button" data-go="3"><span data-t="st3t"></span></button></li>
+            <li><button type="button" data-go="4"><span data-t="st4t"></span></button></li>
+            <li><button type="button" data-go="5"><span data-t="st5t"></span></button></li>
+            <li><button type="button" data-go="6"><span data-t="st6t"></span></button></li>
+          </ol>
+          <p class="st-tap" data-t="stTap"></p>
+          <div class="st-caps" aria-live="polite">
+            <div class="cap on" data-step="1"><p class="cap-t" data-t="st1t"></p><p class="cap-p" data-t="st1p"></p></div>
+            <div class="cap" data-step="2"><p class="cap-t" data-t="st2t"></p><p class="cap-p" data-t="st2p"></p></div>
+            <div class="cap" data-step="3"><p class="cap-t" data-t="st3t"></p><p class="cap-p" data-t="st3p"></p></div>
+            <div class="cap" data-step="4"><p class="cap-t" data-t="st4t"></p><p class="cap-p" data-t="st4p"></p></div>
+            <div class="cap" data-step="5"><p class="cap-t" data-t="st5t"></p><p class="cap-p" data-t="st5p"></p></div>
+            <div class="cap" data-step="6"><p class="cap-t" data-t="st6t"></p><p class="cap-p" data-t="st6p"></p></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <ol class="steps-l">
-          <li><h3><span data-t="s1t"></span><small data-t="s1d"></small></h3><p data-t="s1p"></p></li>
-          <li><h3><span data-t="s2t"></span><small data-t="s2d"></small></h3><p data-t="s2p"></p></li>
-          <li><h3><span data-t="s3t"></span><small data-t="s3d"></small></h3><p data-t="s3p"></p></li>
-          <li><h3><span data-t="s4t"></span><small data-t="s4d"></small></h3><p data-t="s4p"></p></li>
-          <li><h3><span data-t="s5t"></span><small data-t="s5d"></small></h3><p data-t="s5p"></p></li>
-          <li><h3><span data-t="s6t"></span><small data-t="s6d"></small></h3><p data-t="s6p"></p></li>
-    </ol>
+  </div>
+  <div class="wrap"><p class="st-note" data-t="stNote"></p></div>
+</section>
+<section class="gor" id="gor">
+  <div class="wrap">
+    <h2 data-t="grTitle"></h2>
+    <p class="lead" data-t="grSub"></p>
+    <p class="gr-who" data-t="grWho"></p>
+    <div class="gr-grid">
+      <article class="gr-col gr-was">
+        <span class="gr-k" data-t="grWasK"></span>
+        <h3 data-t="grWasT"></h3>
+        <div class="gr-scene"><img class="px gr-px" src="../assets/img/px/emo-gor-worry.png" width="48" height="72" alt="" data-t-alt="grAltWas" loading="lazy">
+          <div class="gr-note" aria-hidden="true"><span data-t="grN1"></span><span><span data-t="grN2a"></span> <s data-t="grN2b"></s> <em>?!</em></span><span data-t="grN3"></span><span data-t="grN4"></span></div></div>
+      </article>
+      <article class="gr-col gr-now">
+        <span class="gr-k" data-t="grNowK"></span>
+        <h3 data-t="grNowT"></h3>
+        <div class="gr-scene"><img class="px gr-px" src="../assets/img/px/emo-gor-free-hi.png" width="48" height="72" alt="" data-t-alt="grAltNow" loading="lazy">
+          <div class="gr-cal" aria-hidden="true"><b data-t="grCalT"></b><div><span>11:00</span><em data-t="grC1"></em></div><div class="hot"><span>15:00</span><em data-t="grC2"></em></div><div><span>16:30</span><em data-t="grC3"></em></div></div></div>
+      </article>
+    </div>
   </div>
 </section>
-<!-- data-taken: сколько из 5 мест для первых бизнесов занято; поменять и в src/packages.html, и в плашке src/text/hero.js -->
+<section class="bento" id="what">
+  <div class="wrap">
+    <h2 data-t="bnTitle"></h2>
+    <div class="bn-grid">
+      <article class="tile t-lang">
+        <div class="words" role="group" data-t-aria="langAria"><button type="button" class="w-hy" data-lang-btn="hy">Գրանցվել առցանց</button><button type="button" class="w-ru" data-lang-btn="ru">Записаться онлайн</button><button type="button" class="w-en" data-lang-btn="en">Book online</button></div>
+        <div class="shots" aria-hidden="true"><img src="../assets/img/shot-hotel-hy.webp" width="375" height="750" loading="lazy" alt=""><img src="../assets/img/shot-hotel-ru.webp" width="375" height="750" loading="lazy" alt=""><img src="../assets/img/shot-hotel-en.webp" width="375" height="750" loading="lazy" alt=""></div>
+        <div><h3 data-t="bnLangT"></h3><p data-t="bnLangP"></p></div>
+      </article>
+      <article class="tile t-day">
+        <div class="day" aria-hidden="true">
+          <div class="day-row"><span data-t="bnDaySalon"></span><div class="bar"><i class="open"></i></div></div>
+          <div class="day-row"><span data-t="bnDayBook"></span><div class="bar"><i class="all"></i><i class="nt n1"></i><i class="nt n2"></i><b><em>23:47</em></b></div></div>
+          <div class="ticks"><span></span><div><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div></div>
+        </div>
+        <h3 data-t="bnDayT"></h3><p data-t="bnDayP"></p>
+      </article>
+      <article class="tile t-rem">
+        <div class="rem" aria-hidden="true">
+          <div class="rem-h"><i class="av">V</i><b>Velour Lodge</b></div>
+          <div class="msg"><span data-t="bnRemMsg"></span><time>18:00 ✓✓</time><div class="btns"><span data-t="bnRemYes"></span><span data-t="bnRemMove"></span></div></div>
+        </div>
+        <h3 data-t="bnRemT"></h3><p data-t="bnRemP"></p><p class="bn-link"><a href="../demo/reminder/" target="_blank" rel="noopener" data-t="bnRemLink"></a></p>
+      </article>
+      <article class="tile t-rep">
+        <div><h3 data-t="bnRepT"></h3><p data-t="bnRepP"></p></div>
+        <div class="rep" aria-hidden="true">
+          <div class="rep-h"><span data-t="bnRepHead"></span><small data-t="bnRepEx"></small></div>
+          <div class="rep-r"><span data-t="bnRep1"></span><b>34</b></div>
+          <div class="rep-r"><span data-t="bnRep2"></span><b>9</b></div>
+          <div class="rep-r"><span data-t="bnRep3"></span><b>21</b></div>
+        </div>
+      </article>
+      <article class="tile t-guar">
+        <img class="ski px" src="../assets/img/px/hero-ski-1x.png" width="48" height="72" alt="">
+        <h3 data-t="bnGuarT"></h3>
+        <p data-t="bnGuarP"></p>
+        <p class="small" data-t="bnGuarS"></p>
+      </article>
+      <article class="tile t-dom">
+        <div><h3 data-t="bnDomT"></h3><p data-t="bnDomP"></p></div>
+        <div class="url" aria-hidden="true"><i></i>velourlodge<span>.am</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="try" id="try" data-demo-base="../demo/">
+  <div class="wrap ty-grid">
+    <div class="ty-head">
+      <h2 data-t="tyTitle"></h2>
+      <p class="lead" data-t="tySub"></p>
+    </div>
+    <div class="pv" data-kind="hotel" aria-live="polite">
+      <div class="pv-url"><i></i><span><b>yourname</b>.am</span></div>
+      <div class="pv-body">
+        <div class="pv-text"><p class="pv-name"></p><p class="pv-kind"></p><span class="pv-btn"></span></div>
+        <img class="pv-img" src="../demo/hotel/img/hero-800.webp" width="400" height="500" alt="" loading="lazy">
+      </div>
+    </div>
+    <form class="ty-form" autocomplete="off">
+      <p class="ty-kw"><b data-t="navCta"></b></p>
+      <label for="tyName" data-t="tyName"></label>
+      <div class="ty-claim"><span class="ty-pre" data-t="navCta" aria-hidden="true"></span><input class="ty-input" id="tyName" name="name" type="text" maxlength="60" data-t-ph="tyPh" enterkeyhint="send" spellcheck="false"></div>
+      <div class="ty-kinds" role="radiogroup" aria-labelledby="tyKindL">
+        <span class="lbl2" id="tyKindL" data-t="tyKind"></span>
+        <button type="button" role="radio" data-kind-btn="hotel" data-t="tyKHotel"></button>
+        <button type="button" role="radio" data-kind-btn="restaurant" data-t="tyKRest"></button>
+        <button type="button" role="radio" data-kind-btn="salon" data-t="tyKSalon"></button>
+      </div>
+      <div class="ty-btns">
+        <a class="btn btn-main" id="tyWa" target="_blank" rel="noopener"><span data-t="tyWa"></span><small data-t="tyWaS"></small></a>
+        <a class="btn btn-line" id="tyOpen" target="_blank" rel="noopener" data-t="tyOpen"></a>
+      </div>
+      <ol class="ty-steps"><li data-t="tyS1"></li><li data-t="tyS2"></li><li data-t="tyS3"></li></ol>
+      <p class="ty-ig"><span data-t="tyIg"></span> <a href="https://www.instagram.com/skiyar_technologies/" target="_blank" rel="noopener">@skiyar_technologies</a></p>
+      <p class="ty-note" data-t="tyNote"></p>
+      <p class="ty-live"><a href="https://liora-beauty.skiyar-templates.workers.dev" target="_blank" rel="noopener" data-t="tyLive"></a></p>
+    </form>
+  </div>
+</section>
+<section class="ind" id="demos" data-demo-base="../demo/">
+  <div class="wrap">
+    <h2 data-t="inTitle"></h2>
+    <p class="lead" data-t="inSub"></p>
+    <div class="in-tabs" role="tablist" data-t-aria="inAria">
+        <button type="button" role="tab" id="in-t1" aria-controls="in-p1" aria-selected="true" tabindex="0"><b data-t="in2"></b></button>
+        <button type="button" role="tab" id="in-t2" aria-controls="in-p2" aria-selected="false" tabindex="-1"><b data-t="in3"></b></button>
+        <button type="button" role="tab" id="in-t3" aria-controls="in-p3" aria-selected="false" tabindex="-1"><b data-t="in1"></b></button>
+        <button type="button" role="tab" id="in-t4" aria-controls="in-p4" aria-selected="false" tabindex="-1"><b data-t="in6"></b></button>
+        <button type="button" role="tab" id="in-t5" aria-controls="in-p5" aria-selected="false" tabindex="-1"><b data-t="in4"></b></button>
+        <button type="button" role="tab" id="in-t6" aria-controls="in-p6" aria-selected="false" tabindex="-1"><b data-t="in5"></b></button>
+    </div>
+      <div class="in-panel" role="tabpanel" id="in-p1" aria-labelledby="in-t1" tabindex="0">
+        <div class="in-phone"><div class="phone"><div class="notch"></div><div class="screen"><img data-shot="hotel" src="../assets/img/shot-hotel-hy.webp" width="375" height="750" alt="" loading="lazy"></div></div></div>
+        <div class="in-info">
+          <h3>Online · <span data-t="in2"></span></h3>
+          <p class="in-who" data-t="in2w"></p>
+          <ul class="in-feat" data-list="in2f"></ul>
+          <div class="in-price"><p><b>45 000 ֏</b> <span data-t="inPer"></span></p><p><b>80 000 ֏</b> <span data-t="inSetup"></span></p></div>
+          <p class="in-ai" data-ai="70 000|110 000"></p>
+          <p class="in-term" data-t="inTerm"></p>
+          <div class="in-btns"><a class="btn btn-main" data-demo="hotel/" target="_blank" rel="noopener" data-t="inDemo"></a><a class="btn btn-line" href="guesthouse.html" data-t="inPgH"></a></div>
+        </div>
+      </div>
+      <div class="in-panel" role="tabpanel" id="in-p2" aria-labelledby="in-t2" tabindex="0" hidden>
+        <div class="in-phone"><div class="phone"><div class="notch"></div><div class="screen"><img data-shot="rest" src="../assets/img/shot-rest-hy.webp" width="375" height="750" alt=""></div></div></div>
+        <div class="in-info">
+          <h3>Online · <span data-t="in3"></span></h3>
+          <p class="in-who" data-t="in3w"></p>
+          <ul class="in-feat" data-list="in3f"></ul>
+          <div class="in-price"><p><b>30 000 ֏</b> <span data-t="inPer"></span></p><p><b>50 000 ֏</b> <span data-t="inSetup"></span></p></div>
+          <p class="in-ai" data-ai="55 000|80 000"></p>
+          <p class="in-term" data-t="inTerm"></p>
+          <div class="in-btns"><a class="btn btn-main" data-demo="restaurant/" target="_blank" rel="noopener" data-t="inDemo"></a><a class="btn btn-line" href="restaurant.html" data-t="inPgR"></a></div>
+          <p class="in-more"><a data-demo="restaurant/menu.html" target="_blank" rel="noopener" data-t="inMenu"></a></p>
+        </div>
+      </div>
+      <div class="in-panel" role="tabpanel" id="in-p3" aria-labelledby="in-t3" tabindex="0" hidden>
+        <div class="in-phone"><div class="phone"><div class="notch"></div><div class="screen"><div class="mk"><span class="mk-tag" data-t="au_mkTag"></span><h4 data-t="au_mkH"></h4><div class="mk-f"><b data-t="au_mk1"></b><small data-t="au_mk1p"></small></div><div class="mk-f"><b data-t="au_mk2"></b><small data-t="au_mk2p"></small></div><div class="mk-f"><b data-t="au_mk3"></b><small data-t="au_mk3p"></small></div><div class="mk-tm"><small data-t="au_mkT"></small><p><span>09:00</span><span class="on">10:30</span><span>14:00</span></p></div><p class="mk-note" data-t="au_mkN"></p><div class="mk-btn" data-t="au_mkBtn"></div></div></div></div></div>
+        <div class="in-info">
+          <h3>Online · <span data-t="in1"></span></h3>
+          <p class="in-who" data-t="in1w"></p>
+          <ul class="in-feat" data-list="in1f"></ul>
+          <div class="in-price"><p><b>35 000 ֏</b> <span data-t="inPer"></span></p><p><b>50 000 ֏</b> <span data-t="inSetup"></span></p></div>
+          <p class="in-ai" data-ai="60 000|80 000"></p>
+          <p class="in-term" data-t="inTerm"></p>
+          <div class="in-btns"><a class="btn btn-main" href="autoservice.html" data-t="inPgA"></a><a class="btn btn-line" data-ask="in1" target="_blank" rel="noopener" data-t="inAsk"></a></div>
+        </div>
+      </div>
+      <div class="in-panel" role="tabpanel" id="in-p4" aria-labelledby="in-t4" tabindex="0" hidden>
+        <div class="in-phone"><div class="phone"><div class="notch"></div><div class="screen"><img data-shot="salon" src="../assets/img/shot-salon-hy.webp" width="375" height="750" alt=""></div></div></div>
+        <div class="in-info">
+          <h3>SKIYAR <span data-t="in6"></span></h3>
+          <p class="in-who" data-t="in6w"></p>
+          <ul class="in-feat" data-list="in6f"></ul>
+          <div class="in-price"><p><b>20 000 ֏</b> <span data-t="inPer"></span></p><p><b>40 000 ֏</b> <span data-t="inSetup"></span></p></div>
+          <p class="in-term" data-t="inSalonFree"></p>
+          <div class="in-btns"><a class="btn btn-main" data-demo="salon/" target="_blank" rel="noopener" data-t="inDemo"></a><a class="btn btn-line" href="https://liora-beauty.skiyar-templates.workers.dev" target="_blank" rel="noopener" data-t="inLive"></a></div>
+          <p class="in-more"><span data-t="inMore"></span> <a data-demo="barber/" target="_blank" rel="noopener" data-t="inBarber"></a> · <a data-demo="nails/" target="_blank" rel="noopener" data-t="inNails"></a></p>
+        </div>
+      </div>
+      <div class="in-panel" role="tabpanel" id="in-p5" aria-labelledby="in-t5" tabindex="0" hidden>
+        <div class="in-phone"><div class="phone"><div class="notch"></div><div class="screen"><div class="mk"><span class="mk-tag" data-t="inMock"></span><h4 data-t="mk4h"></h4>
+              <div class="mk-f"><small data-t="mk4a"></small><b data-t="mk4av"></b></div>
+              <div class="mk-f"><small data-t="mk4b"></small><div class="mk-range"><i style="width:46%"></i></div><b>65 m²</b></div>
+              <div class="mk-sum"><small data-t="mk4c"></small><b>≈ 1 950 000 ֏</b></div>
+              <div class="mk-btn" data-t="mk4d"></div></div></div></div></div>
+        <div class="in-info">
+          <h3>Online · <span data-t="in4"></span></h3>
+          <p class="in-who" data-t="in4w"></p>
+          <ul class="in-feat" data-list="in4f"></ul>
+          <div class="in-price"><p><b>35 000 ֏</b> <span data-t="inPer"></span></p><p><b>50 000 ֏</b> <span data-t="inSetup"></span></p></div>
+          <p class="in-ai" data-ai="60 000|80 000"></p>
+          <p class="in-nodemo" data-t="inNoDemo"></p>
+          <p class="in-term" data-t="inTerm"></p>
+          <div class="in-btns"><a class="btn btn-main" data-ask="in4" target="_blank" rel="noopener" data-t="inAsk"></a></div>
+        </div>
+      </div>
+      <div class="in-panel" role="tabpanel" id="in-p6" aria-labelledby="in-t6" tabindex="0" hidden>
+        <div class="in-phone"><div class="phone"><div class="notch"></div><div class="screen"><div class="mk"><span class="mk-tag" data-t="inMock"></span><h4 data-t="mk5h"></h4>
+              <div class="mk-row"><time>17:00</time><div><b data-t="mk5k1"></b><small data-t="mk5a"></small></div></div>
+              <div class="mk-row"><time>19:00</time><div><b data-t="mk5k2"></b><small data-t="mk5b"></small></div></div>
+              <div class="mk-row"><time>11:00</time><div><b data-t="mk5k3"></b><small data-t="mk5c"></small></div></div>
+              <div class="mk-btn" data-t="mk5d"></div></div></div></div></div>
+        <div class="in-info">
+          <h3>Online · <span data-t="in5"></span></h3>
+          <p class="in-who" data-t="in5w"></p>
+          <ul class="in-feat" data-list="in5f"></ul>
+          <div class="in-price"><p><b>35 000 ֏</b> <span data-t="inPer"></span></p><p><b>50 000 ֏</b> <span data-t="inSetup"></span></p></div>
+          <p class="in-ai" data-ai="60 000|80 000"></p>
+          <p class="in-nodemo" data-t="inNoDemo"></p>
+          <p class="in-term" data-t="inTerm"></p>
+          <div class="in-btns"><a class="btn btn-main" data-ask="in5" target="_blank" rel="noopener" data-t="inAsk"></a></div>
+        </div>
+      </div>
+  </div>
+</section>
+<section class="calc" id="calc">
+  <div class="wrap">
+    <h2 data-t="caTitle"></h2>
+    <p class="lead" data-t="caSub"></p>
+    <div class="ca-box">
+      <div class="ca-in">
+        <div class="ca-f"><label for="caB"><span data-t="caB"></span><output id="caBv" for="caB"></output></label><input id="caB" type="range" min="5" max="200" step="1" value="40"><div class="ca-ends" aria-hidden="true"><span>5</span><span>200</span></div></div>
+        <div class="ca-f"><label for="caN"><span data-t="caN"></span><output id="caNv" for="caN"></output></label><input id="caN" type="range" min="0" max="30" step="1" value="2"><div class="ca-ends" aria-hidden="true"><span>0</span><span>30</span></div></div>
+        <div class="ca-f"><label for="caC"><span data-t="caC"></span><output id="caCv" for="caC"></output></label><input id="caC" type="range" min="2000" max="50000" step="500" value="8000"><div class="ca-ends" aria-hidden="true"><span>2 000 ֏</span><span>50 000 ֏</span></div></div>
+      </div>
+      <div class="ca-out">
+        <p class="sr-only" id="caSay" aria-live="polite"></p>
+        <p class="ca-k" id="caK" data-t="caPayK"></p>
+        <p class="ca-sum" id="caSum"><span id="caOut">0</span> <small id="caUnit"></small><img class="ca-gor px" src="../assets/img/px/hero-gor-1x.png" width="48" height="72" alt="" loading="lazy"></p>
+        <p class="ca-msg" id="caMsg"></p>
+        <div class="ca-loss">
+          <p id="caLoss"></p>
+          <p class="ca-formula" id="caFormula"></p>
+          <div class="ca-bar" aria-hidden="true"><span class="t"><i id="caBarL"></i></span><span class="t"><i id="caBarS"></i></span></div>
+          <p class="ca-pkg"><i></i><span data-t="caPkg"></span></p>
+        </div>
+        <p class="ca-note" data-t="caNote"></p>
+        <a class="btn btn-main" target="_blank" rel="noopener" data-wa="caWa" data-t="caCta"></a>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="pk pkb" id="packages" data-sel="b" data-bill="m" data-taken="0">
   <div class="wrap">
     <div class="pk-head">
@@ -135,7 +432,7 @@
             <article class="pkt"><h3>AI Admin</h3><p data-t="pkbAaP"></p><p class="pl-p" data-m="40 000" data-y="408 000"><span class="pl-x">40 000</span> ֏ <small data-per></small></p></article>
       <article class="pkt"><h3 data-t="pkbOnceT"></h3><p data-t="pkbOnceP"></p><p class="pr"><span data-t="pkbFrom"></span></p><a class="pkt-a" href="packages.html#once" data-t="pkbMore"></a></article>
       <article class="pkt pkt-seats">
-        <div><h3 data-t="pTitle"></h3><p class="left"><span class="seats" aria-hidden="true"></span><b id="pkLeft"></b></p><p data-t="pkbPilotP"></p></div>
+        <div><h3 data-t="pTitle"></h3><p data-t="pkbPilotP"></p></div>
         <a class="btn btn-line" target="_blank" rel="noopener" data-wa="pWa" data-t="pCta"></a>
       </article>
     </div>
@@ -143,6 +440,23 @@
     <p class="pk-min"><span data-t="pkMin"></span> <a href="packages.html" data-t="pkMore"></a></p>
   </div>
 </section>
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="how-side">
+      <h2 data-t="hwTitle"></h2>
+      <p class="lead" data-t="hwSub"></p>
+    </div>
+    <ol class="steps-l">
+          <li><h3><span data-t="s1t"></span><small data-t="s1d"></small></h3><p data-t="s1p"></p></li>
+          <li><h3><span data-t="s2t"></span><small data-t="s2d"></small></h3><p data-t="s2p"></p></li>
+          <li><h3><span data-t="s3t"></span><small data-t="s3d"></small></h3><p data-t="s3p"></p></li>
+          <li><h3><span data-t="s4t"></span><small data-t="s4d"></small></h3><p data-t="s4p"></p></li>
+          <li><h3><span data-t="s5t"></span><small data-t="s5d"></small></h3><p data-t="s5p"></p></li>
+          <li><h3><span data-t="s6t"></span><small data-t="s6d"></small></h3><p data-t="s6p"></p></li>
+    </ol>
+  </div>
+</section>
+<!-- data-taken: сколько из 5 мест для первых бизнесов занято; поменять и в src/packages.html, и в плашке src/text/hero.js -->
 <section class="faq" id="faq">
   <div class="wrap">
     <h2 data-t="fqTitle"></h2>

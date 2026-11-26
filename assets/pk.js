@@ -35,13 +35,13 @@
     els = box.querySelectorAll("[data-first]");
     for (i = 0; i < els.length; i++) {
       var f = els[i].getAttribute("data-first").split(",").map(Number);
-      var total = (y ? f[1] : f[0] * 12) + f[2];
+      var total = (y ? f[1] : f[0] * 11) + f[2]; // 1-й месяц бесплатно при договоре на год (packages.md, 26.11)
       els[i].textContent = t("pkTerm") + ", " + t("pkFirst").split("{x}").join(fmt(total) + "\u00a0֏");
     }
     var taken = +box.getAttribute("data-taken");
-    box.querySelector("#pkLeft").textContent = t("pLeft").split("{n}").join(5 - taken);
-    var seats = box.querySelector(".seats"); seats.textContent = "";
-    for (i = 0; i < 5; i++) { var s = document.createElement("i"); if (i < taken) s.className = "taken"; seats.appendChild(s); }
+    var left = box.querySelector("#pkLeft"); if (left) left.textContent = t("pLeft").split("{n}").join(5 - taken);
+    var seats = box.querySelector(".seats"); if (seats) seats.textContent = "";
+    for (i = 0; seats && i < 5; i++) { var s = document.createElement("i"); if (i < taken) s.className = "taken"; seats.appendChild(s); }
   }
 
   box.addEventListener("click", function (e) {

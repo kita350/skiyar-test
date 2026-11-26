@@ -1503,3 +1503,15 @@ p,li,.cap-p,small{text-wrap:pretty}
 .nz-ex .mk-btn{margin-top:4px}
 @media (min-width:900px){ .nz-pr{align-items:start!important} }
 @media (max-width:380px){ .nz-ex .in-info{padding-right:56px} }
+.nz-pain{padding:44px 0;border-bottom:1px solid var(--line)}
+@media (min-width:900px){ .nz-pain{padding:100px 0} }
+.nz-pain h2{margin:0 0 24px;font-weight:800;font-size:clamp(28px,5vw,48px);line-height:1.06;letter-spacing:-.035em}
+.nz-pn{display:grid;gap:12px}
+@media (min-width:900px){ .nz-pn{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px} }
+.nz-pn article{padding:22px 24px;border-radius:20px;background:var(--card);border:1px solid var(--line)}
+.nz-pn h3{margin:0 0 8px;font-size:19px;line-height:1.25;font-weight:800;letter-spacing:-.01em}
+.nz-pn p{margin:0;font-size:16px;line-height:1.5;color:var(--ink-2)}
+@media (max-width:899px){ main > section.nz-pain::after,main > section.nz-how::after{display:none!important} }
+.pkt-seats p[data-t="pkbPilotP"]{font-size:18px!important;line-height:1.45;color:var(--white)!important;font-weight:700;margin-top:6px}
+.nz-hero .pilot b,.hero .pilot b{font-size:1.05em}
+@media (max-width:430px){ .pkt-on .pl-p small[data-per]{display:block;margin-top:6px} }

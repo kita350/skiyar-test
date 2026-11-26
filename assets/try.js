@@ -10,7 +10,7 @@
   var link = box.querySelector("#tyOpen");
   var wa = box.querySelector("#tyWa");
   var K = { salon: ["pvSalon", "pvSalonBtn", "pvSalonNo"], restaurant: ["pvRest", "pvRestBtn", "pvRestNo"], hotel: ["pvHotel", "pvHotelBtn", "pvHotelNo"] };
-  var kind = "salon";
+  var kind = "hotel";
 
   function clean(s) { return (s || "").replace(/[\u0000-\u001f\u007f<>{}]/g, "").replace(/\s+/g, " ").trim().slice(0, 60); }
   // латиница для адреса: армянский и русский транслитом
