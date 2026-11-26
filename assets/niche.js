@@ -45,7 +45,8 @@
     if (gor) { gor.classList.remove("nod"); void gor.offsetWidth; gor.classList.add("nod"); }
   }
 
-  grab(); build(); apply(0);
+  // ниша по умолчанию: гестхаус (ТЗ ч.7 — сайт не «про салоны»); страница ниши задаёт свою через <body data-niche="N">
+  grab(); cur = parseInt(document.body.getAttribute("data-niche") || "2", 10) || 0; build(); apply(cur);
   // базовые тексты салона берём из разметки только пока выбран салон (иначе там уже тексты другой ниши)
   window.SITE.onRender.push(function () { if (cur === 0) grab(); build(); apply(cur); });
 })();
