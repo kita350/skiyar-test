@@ -113,7 +113,7 @@
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--nav) + 8px);color-scheme:dark}
-html,body{overflow-x:clip}
+html,body{overflow-x:hidden;overflow-x:clip}
 body{margin:0;background:var(--night);color:var(--white);font:400 17px/1.55 var(--font);-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
